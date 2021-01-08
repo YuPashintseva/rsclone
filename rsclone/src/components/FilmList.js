@@ -2,6 +2,7 @@ import React from 'react';
 import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css';
 import star from './assets/star.png'
+import play from './assets/play-button.png'
 
 const responsive = {
     superLargeDesktop: {
@@ -69,6 +70,10 @@ class FilmList extends React.Component {
                             </div>
                             <div className="film-title">{el.title}</div>
                             <button type="button" className="add-to-watchlist-btn">+ Watchlist</button>
+                            <div className="additional-info">
+                                <div>Trailer</div>
+                                <div>Information</div>
+                            </div>
                         </div>
                         
                     </div>
