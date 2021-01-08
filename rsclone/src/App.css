@@ -41,4 +41,11 @@
 
 .films-list-img {
   background-color: #1a1a1a;
+  color: white;
+  text-align: left;
+}
+
+.bottom-content-wrapper {
+  padding: 0px 10px 10px 15px;
+  height: 100px;
 }

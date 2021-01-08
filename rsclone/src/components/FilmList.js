@@ -36,6 +36,7 @@ class FilmList extends React.Component {
     render() {
         //
         if (this.state.data.results) {
+            console.log(this.state.data.results[0]);
             return (
                 <Carousel
                 swipeable={false}
@@ -59,7 +60,10 @@ class FilmList extends React.Component {
                 <div>
                     <div className="films-list-img">
                         <img src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} />
-                        <div>rating</div>
+                        <div className="bottom-content-wrapper">
+                            <div>{el.vote_average}</div>
+                            <div>{el.title}</div>
+                        </div>
                     </div>
                 </div>
             ))};
