@@ -6,11 +6,11 @@ import star from './assets/star.png'
 const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
-      items: 5
+      items: 6
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 3
+      items: 6
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -49,12 +49,13 @@ class FilmList extends React.Component {
                 autoPlaySpeed={1000}
                 keyBoardControl={true}
                 customTransition="all .5"
-                transitionDuration={500}
+                transitionDuration={1000}
                 containerClass="carousel-container"
                 removeArrowOnDeviceType={["tablet", "mobile"]}
                 dotListClass="custom-dot-list-style"
                 itemClass="carousel-item-padding"
                 centerMode={false}
+                slidesToSlide={3}
             >
             
             {this.state.data.results.map(el => (
@@ -67,7 +68,9 @@ class FilmList extends React.Component {
                                 <div className="vote_average">{el.vote_average}</div>
                             </div>
                             <div className="film-title">{el.title}</div>
+                            <button type="button" className="add-to-watchlist-btn">+ Watchlist</button>
                         </div>
+                        
                     </div>
                 </div>
             ))};
