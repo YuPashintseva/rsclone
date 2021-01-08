@@ -43,9 +43,16 @@
   background-color: #1a1a1a;
   color: white;
   text-align: left;
+  border-radius: 5px 5px;
 }
 
 .bottom-content-wrapper {
-  padding: 0px 10px 10px 15px;
-  height: 100px;
+  padding: 0px 5px 15px 5px;
+  height: 150px;
+}
+
+.add-to-watchlist-btn {
+  color: #4da6ff;
+  font-weight: 600;
+  background-color: #2e2e2e;
 }
