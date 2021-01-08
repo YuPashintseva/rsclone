@@ -36,7 +36,7 @@ const FilmList = () => {
         containerClass="carousel-container"
         removeArrowOnDeviceType={["tablet", "mobile"]}
         dotListClass="custom-dot-list-style"
-        itemClass="carousel-item-padding-test"
+        itemClass="carousel-item-padding"
         centerMode={false}
       >
         <div>

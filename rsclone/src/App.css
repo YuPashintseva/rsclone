@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+/*My styles*/
+
+body {
+  color: pink
+}
+
+.films-list-img {
+  background-color: #1a1a1a;
+}
