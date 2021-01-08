@@ -5,9 +5,27 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.films-list-img img{
+  width: 100%;
+}
+.films-list {
+  width: 30%;
+}
+
+.carousel-item-padding-test {
+  padding: 1px;
+}
+
+.films-list-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
