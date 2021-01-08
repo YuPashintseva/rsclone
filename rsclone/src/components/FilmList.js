@@ -1,6 +1,7 @@
 import React from 'react';
 import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css';
+import star from './assets/star.png'
 
 const responsive = {
     superLargeDesktop: {
@@ -59,10 +60,13 @@ class FilmList extends React.Component {
             {this.state.data.results.map(el => (
                 <div>
                     <div className="films-list-img">
-                        <img src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} />
+                        <img src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} alt={el.title}/>
                         <div className="bottom-content-wrapper">
-                            <div>{el.vote_average}</div>
-                            <div>{el.title}</div>
+                            <div className="rating">
+                                <div><img src={star} alt="star" /></div>
+                                <div className="vote_average">{el.vote_average}</div>
+                            </div>
+                            <div className="film-title">{el.title}</div>
                         </div>
                     </div>
                 </div>
