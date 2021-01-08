@@ -20,47 +20,60 @@ const responsive = {
       items: 1
     }
   };
-const FilmList = () => {
-    return (
-        <Carousel
-        swipeable={false}
-        draggable={false}
-        showDots={false}
-        responsive={responsive}
-        ssr={true}
-        infinite={true}
-        autoPlaySpeed={1000}
-        keyBoardControl={true}
-        customTransition="all .5"
-        transitionDuration={500}
-        containerClass="carousel-container"
-        removeArrowOnDeviceType={["tablet", "mobile"]}
-        dotListClass="custom-dot-list-style"
-        itemClass="carousel-item-padding-test"
-        centerMode={false}
-      >
-        <div>
-            <div className="films-list-img">
-                <img src="https://image.tmdb.org/t/p/original/eDJYDXRoWoUzxjd52gtz5ODTSU1.jpg"/>
-                <div>rating</div>
-            </div>
-        </div>
-        
-        <div>
-            <div className="films-list-img">
-                <img src="https://image.tmdb.org/t/p/original/hm58Jw4Lw8OIeECIq5qyPYhAeRJ.jpg"/>
-                <div>rating</div>
-            </div>
-        </div>
-        
-        <div>
-            <div className="films-list-img">
-                <img src="https://image.tmdb.org/t/p/original/51JxCk77ZCqLzbLkrDl9Qho6KUh.jpg"/>
-                <div>rating</div>
-            </div>
-        </div>
-      </Carousel>
-    );
+
+class FilmList extends React.Component {
+    constructor() {
+        super();
+        this.state = {data: []};
+    }
+
+    async componentDidMount() {
+        const response = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=en-US&page=1');
+        const json = await response.json();
+        this.setState({ data: json });
+    }
+
+    render() {
+        //
+        if (this.state.data.results) {
+            return (
+                <Carousel
+                swipeable={false}
+                draggable={false}
+                showDots={false}
+                responsive={responsive}
+                ssr={true}
+                infinite={true}
+                autoPlaySpeed={1000}
+                keyBoardControl={true}
+                customTransition="all .5"
+                transitionDuration={500}
+                containerClass="carousel-container"
+                removeArrowOnDeviceType={["tablet", "mobile"]}
+                dotListClass="custom-dot-list-style"
+                itemClass="carousel-item-padding"
+                centerMode={false}
+            >
+            
+            {this.state.data.results.map(el => (
+                <div>
+                    <div className="films-list-img">
+                        <img src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} />
+                        <div>rating</div>
+                    </div>
+                </div>
+            ))};
+                
+            </Carousel>
+            );
+        } else {
+            return (
+                <div>Wait...</div>
+            );
+        }
+    
+    }
+
 }
 
 export default FilmList;
