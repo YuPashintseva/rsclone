@@ -1,8 +1,17 @@
+import {filmPage} from "./FilmPage.js";
+
 import React from 'react';
 import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css';
 import star from './assets/star.png'
 import play from './assets/play-button.png'
+
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
 const responsive = {
     superLargeDesktop: {
@@ -61,7 +70,8 @@ class FilmList extends React.Component {
             
             {this.state.data.results.map(el => (
                 <div>
-                    <div className="films-list-img">
+                    <div className="films-list-img App-link"    onClick={()=>filmPage(el)}>
+                        <Router><Link to= "/FilmPage">
                         <img src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} alt={el.title}/>
                         <div className="bottom-content-wrapper">
                             <div className="rating">
@@ -75,8 +85,9 @@ class FilmList extends React.Component {
                                 <div>Information</div>
                             </div>
                         </div>
-                        
+                        </Link><Switch><Route path="/FilmPage"/></Switch></Router>
                     </div>
+                   
                 </div>
             ))};
                 
