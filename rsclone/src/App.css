@@ -57,3 +57,30 @@
   font-weight: 600;
   background-color: #2e2e2e;
 }
+.wrapper{
+  display:flex;
+  flex-direction: column;
+  max-width: 100wh;
+}
+.wrapperStyle{
+  padding:1%;
+  background-color: #1a1a1a;
+  color:white;
+  font-size: larger;
+}
+.row{
+  padding-left:1%;
+  display:flex;
+  flex-direction: row;
+  max-width: 100%;
+}
+#title{
+  font-size: 3em;
+  font-weight: bolder;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.smallData{
+  margin-left: 10px;
+  margin-right: 10px;
+}
