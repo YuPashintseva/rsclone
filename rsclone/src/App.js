@@ -8,7 +8,34 @@ import 'bootstrap/dist/css/custom.css';
 function App() {
   return (
     <div className="App">
-      <h1>It will be a header</h1>
+
+     <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{margin:"24px 0"}}>
+  <a className="navbar-brand" href="javascript:void(0)">Logo</a>
+  <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
+    <span className="navbar-toggler-icon"></span>
+  </button>
+
+  <div className="collapse navbar-collapse" id="navb">
+    <ul className="navbar-nav mr-auto">
+      <li className="nav-item">
+        <a className="nav-link" href="javascript:void(0)">Home</a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="javascript:void(0)">Link</a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link disabled" href="javascript:void(0)">Disabled</a>
+      </li>
+    </ul>
+
+    <form className="form-inline my-2 my-lg-0">
+      <input className="form-control mr-sm-2" type="text" placeholder="Search"/>
+      <button className="btn btn-success my-2 my-sm-0" type="button">Search</button>
+    </form>
+    </div>
+ </nav>
+
+
       <div id="ourRoot" className="d-flex justify-content-around">
         <div className="films-list">
           <FilmList />
