@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <h1>It will be a header</h1>
-      <div className="d-flex justify-content-around">
+      <div id="ourRoot" className="d-flex justify-content-around">
         <div className="films-list">
           <FilmList />
         </div>
