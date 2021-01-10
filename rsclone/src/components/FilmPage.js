@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-
+import star from './assets/megastar.png';
 class FilmPage extends React.Component{
     constructor(props) {
         super(props);
@@ -15,9 +15,12 @@ class FilmPage extends React.Component{
                  <div className="row"></div>
                  <div className="row">Main Info:
 
-                     <div id="title">{this.data.original_title}</div>
-                     <div className="smallData">Average Vote: {this.data.vote_average}</div>
-                     <div className="smallData">Votes: {this.data.vote_count}</div>
+                     <h1 className="col">{this.data.original_title}</h1>
+                     <h3 className="col">Average Vote: {this.data.vote_average}
+                     <img src={star}></img>
+                     </h3>
+                      
+                     <h3 className="col">Votes: {this.data.vote_count}</h3>
                  </div>
                </div>
 
