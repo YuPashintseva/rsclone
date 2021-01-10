@@ -18,7 +18,7 @@ function App() {
   <div className="collapse navbar-collapse" id="navb">
     <ul className="navbar-nav mr-auto">
       <li className="nav-item">
-        <a className="nav-link" href="javascript:void(0)">Home</a>
+        <a className="nav-link" href="/">Home</a>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="javascript:void(0)">Link</a>
