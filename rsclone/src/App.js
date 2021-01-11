@@ -1,5 +1,4 @@
 import  FilmList  from "./components/FilmList";
-import FilmPage from "./components/FilmPage";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/custom.css';

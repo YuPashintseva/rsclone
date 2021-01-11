@@ -7,6 +7,8 @@ import 'react-multi-carousel/lib/styles.css';
 import star from './assets/star.png'
 import play from './assets/play.png'
 import info from './assets/info-grey.png';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/custom.css';
 
 import {
     BrowserRouter as Router,
@@ -51,6 +53,7 @@ class FilmList extends React.Component {
         if (this.state.data.results) {
          //   console.log(this.state.data.results[0]);
             return (
+                <div>
                 <Carousel
                 swipeable={false}
                 draggable={false}
@@ -90,26 +93,28 @@ class FilmList extends React.Component {
                                     <img src={play} alt="play button" className="play-button"/>  Trailer
                                 </div>
                                 <div>
-                                    <img src={info} alt="info button" className="info-button" onClick={()=>ModalWindow(el)}/> 
+                                    <img src={info} alt="info button" className="info-button" /> 
                                 </div>
                             </div>
                         </div>
 
                     </div>
-                   
                 </div>
             ))};
                 
             </Carousel>
+            <div><ModalWindow /></div>
+            </div>
             );
         } else {
             return (
                 <div>Wait...</div>
             );
         }
-    
+        
     }
 
+    
 }
 
 export default FilmList;
