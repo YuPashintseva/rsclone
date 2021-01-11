@@ -2,6 +2,7 @@ import {filmPage} from "./FilmPage.js";
 
 import React from 'react';
 import Carousel from "react-multi-carousel";
+import ModalWindow from './ModalWindow';
 import 'react-multi-carousel/lib/styles.css';
 import star from './assets/star.png'
 import play from './assets/play.png'
@@ -71,26 +72,29 @@ class FilmList extends React.Component {
             
             {this.state.data.results.map(el => (
                 <div>
-                    <div className="films-list-img App-link"    onClick={()=>filmPage(el)}>
+                    <div className="films-list-img App-link">
                         <Router><Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage">
-                        <img className="poster-img" src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} alt={el.title}/>
+                            <img className="poster-img" onClick={()=>filmPage(el)} src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} alt={el.title}/>
+                        </Link><Switch><Route path="/FilmPage"/></Switch></Router>
                         <div className="bottom-content-wrapper">
                             <div className="rating">
                                 <div><img src={star} alt="star icon" /></div>
                                 <div className="vote_average">{el.vote_average}</div>
                             </div>
-                            <div className="film-title">{el.title}</div>
+                            <Router><Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage">
+                                <div className="film-title" onClick={()=>filmPage(el)}>{el.title}</div>
+                            </Link><Switch><Route path="/FilmPage"/></Switch></Router>
                             <button type="button" className="add-to-watchlist-btn">+ Watchlist</button>
                             <div className="additional-info">
                                 <div className="trailer">
                                     <img src={play} alt="play button" className="play-button"/>  Trailer
                                 </div>
                                 <div>
-                                    <img src={info} alt="info button" className="info-button"/> 
+                                    <img src={info} alt="info button" className="info-button" onClick={()=>ModalWindow(el)}/> 
                                 </div>
                             </div>
                         </div>
-                        </Link><Switch><Route path="/FilmPage"/></Switch></Router>
+
                     </div>
                    
                 </div>
