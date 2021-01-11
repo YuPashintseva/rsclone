@@ -72,7 +72,7 @@ class FilmList extends React.Component {
             {this.state.data.results.map(el => (
                 <div>
                     <div className="films-list-img App-link"    onClick={()=>filmPage(el)}>
-                        <Router><Link to= "/FilmPage">
+                        <Router><Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage">
                         <img className="poster-img" src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} alt={el.title}/>
                         <div className="bottom-content-wrapper">
                             <div className="rating">
