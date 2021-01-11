@@ -6,6 +6,7 @@ code {
     monospace;
 }
 
+
 .films-list-img img{
   background-color: #1a1a1a;
   width: 100%;
@@ -85,6 +86,7 @@ code {
   color:white;
   font-size: larger;
 }
+
 .row{
   padding-left:1%;
   display:flex;
@@ -109,5 +111,5 @@ code {
 }
 
 .trailer {
-  text-decoration: none;
+  color: white;
 }
