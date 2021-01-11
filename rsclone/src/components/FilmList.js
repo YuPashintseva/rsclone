@@ -47,7 +47,7 @@ class FilmList extends React.Component {
     render() {
         //
         if (this.state.data.results) {
-            console.log(this.state.data.results[0]);
+         //   console.log(this.state.data.results[0]);
             return (
                 <Carousel
                 swipeable={false}
@@ -72,7 +72,7 @@ class FilmList extends React.Component {
                 <div>
                     <div className="films-list-img App-link"    onClick={()=>filmPage(el)}>
                         <Router><Link to= "/FilmPage">
-                        <img src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} alt={el.title}/>
+                        <img className="poster-img" src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} alt={el.title}/>
                         <div className="bottom-content-wrapper">
                             <div className="rating">
                                 <div><img src={star} alt="star" /></div>
