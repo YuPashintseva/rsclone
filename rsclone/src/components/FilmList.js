@@ -4,7 +4,8 @@ import React from 'react';
 import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css';
 import star from './assets/star.png'
-import play from './assets/play-button.png'
+import play from './assets/play.png'
+import info from './assets/info-grey.png';
 
 import {
     BrowserRouter as Router,
@@ -75,14 +76,18 @@ class FilmList extends React.Component {
                         <img className="poster-img" src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} alt={el.title}/>
                         <div className="bottom-content-wrapper">
                             <div className="rating">
-                                <div><img src={star} alt="star" /></div>
+                                <div><img src={star} alt="star icon" /></div>
                                 <div className="vote_average">{el.vote_average}</div>
                             </div>
                             <div className="film-title">{el.title}</div>
                             <button type="button" className="add-to-watchlist-btn">+ Watchlist</button>
                             <div className="additional-info">
-                                <div>Trailer</div>
-                                <div>Information</div>
+                                <div>
+                                    <img src={play} alt="play button" className="play-button"/>  Trailer
+                                </div>
+                                <div>
+                                    <img src={info} alt="info button" className="info-button"/> 
+                                </div>
                             </div>
                         </div>
                         </Link><Switch><Route path="/FilmPage"/></Switch></Router>
