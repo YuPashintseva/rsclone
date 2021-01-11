@@ -82,7 +82,7 @@ class FilmList extends React.Component {
                             <div className="film-title">{el.title}</div>
                             <button type="button" className="add-to-watchlist-btn">+ Watchlist</button>
                             <div className="additional-info">
-                                <div>
+                                <div className="trailer">
                                     <img src={play} alt="play button" className="play-button"/>  Trailer
                                 </div>
                                 <div>
