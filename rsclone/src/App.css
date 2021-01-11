@@ -74,3 +74,18 @@
   flex-direction: row;
   max-width: 100%;
 }
+
+.additional-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.additional-info .play-button {
+  width: 16px;
+  height: 16px;
+}
+
+.additional-info .info-button {
+  width: 25px;
+  height: 25px;
+}
