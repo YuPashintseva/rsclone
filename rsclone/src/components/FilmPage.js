@@ -44,9 +44,8 @@ class FilmPage extends React.Component{
     }
 }
 
- export function filmPage(el){
-     ReactDom.render(
-     <FilmPage value={el}/> , document.getElementById("ourRoot")
-     )
-  
+export function filmPage(el){
+    ReactDom.render(
+        <FilmPage value={el}/> , document.getElementById("ourRoot")
+    );
 }
