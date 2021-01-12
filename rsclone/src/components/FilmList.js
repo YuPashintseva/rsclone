@@ -46,13 +46,12 @@ class FilmList extends React.Component {
         const json = await response.json();
         this.setState({ data: json });
     }
-//onClick={()=>filmPage(el)}
-//onClick={()=>filmPage(el)}
+
     render() {
-        //
         if (this.state.data.results) {
-         //   console.log(this.state.data.results[0]);
             return (
+                <div>
+                <ModalWindow />
                 <Carousel
                 swipeable={false}
                 draggable={false}
@@ -108,6 +107,7 @@ class FilmList extends React.Component {
             ))};
                 
             </Carousel>
+            </div>
             );
         } else {
             return (

@@ -1,36 +1,45 @@
-import React from 'react';
+import React from 'react'
+import { Button,Modal } from 'react-bootstrap'
 
-function ModalWindow(props) {
-    return (
-        <div class="modal-body">
-            <div class="container-fluid">
-                <div className="row">
-                <div className="col-md-4">.col-md-4</div>
-                <div className="col-md-4 ml-auto">.col-md-4 .ml-auto</div>
-                </div>
-                <div className="row">
-                <div className="col-md-3 ml-auto">.col-md-3 .ml-auto</div>
-                <div className="col-md-2 ml-auto">.col-md-2 .ml-auto</div>
-                </div>
-                <div className="row">
-                <div className="col-md-6 ml-auto">.col-md-6 .ml-auto</div>
-                </div>
-                <div className="row">
-                <div className="col-sm-9">
-                    Level 1: .col-sm-9
-                    <div className="row">
-                    <div className="col-8 col-sm-6">
-                        Level 2: .col-8 .col-sm-6
-                    </div>
-                    <div className="col-4 col-sm-6">
-                        Level 2: .col-4 .col-sm-6
-                    </div>
-                    </div>
-                </div>
-                </div>
+class ModalWindow extends React.Component{
+
+    constructor(){
+        super();
+        this.state = {
+            showHide : false
+        }
+    }
+
+    handleModalShowHide() {
+        this.setState({ showHide: !this.state.showHide })
+    }
+
+    render(){
+        return(
+            <div>
+                <Button variant="primary" onClick={() => this.handleModalShowHide()}>
+                    Launch demo modal
+                </Button>
+
+                <Modal show={this.state.showHide}>
+                    <Modal.Header closeButton onClick={() => this.handleModalShowHide()}>
+                    <Modal.Title>Modal heading</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                    <Modal.Footer>
+                    <Button variant="secondary" onClick={() => this.handleModalShowHide()}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={() => this.handleModalShowHide()}>
+                        Save Changes
+                    </Button>
+                    </Modal.Footer>
+                </Modal>
+
             </div>
-        </div>
-    );
+        )
+    }
+    
 }
 
 export default ModalWindow;
