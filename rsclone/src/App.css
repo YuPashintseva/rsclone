@@ -6,6 +6,9 @@ code {
     monospace;
 }
 
+html, .App {
+  background-color: black;
+}
 
 .films-list-img img{
   background-color: #1a1a1a;
