@@ -1,11 +1,18 @@
+import ReactDOM from 'react-dom';
 import  FilmList  from "./components/FilmList";
 import FilmPage from "./components/FilmPage";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/custom.css';
+import React from 'react';
+
+
+
+
 
 
 function App() {
+  
   return (
     <div className="App">
 
@@ -37,12 +44,17 @@ function App() {
 
 
       <div id="ourRoot" className="d-flex justify-content-around">
-        <div className="films-list">
-          <FilmList />
+        <div id="fl" className="films-list">
+        <FilmList/>
         </div>
       </div>
     </div>
   ); 
+}
+export function filmPage(el) {
+  ReactDOM.render(
+    <FilmPage value={el}/>,document.getElementById('ourRoot')
+  )
 }
 
 export default App;

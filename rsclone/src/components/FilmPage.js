@@ -1,7 +1,9 @@
 import React from 'react';
-import ReactDom from 'react-dom';
+
 import star from './assets/megastar.png';
-class FilmPage extends React.Component{
+
+
+ class FilmPage extends React.Component{
     constructor(props) {
         super(props);
         this.data = props.value;
@@ -55,9 +57,5 @@ class FilmPage extends React.Component{
     }
 }
 
- export function filmPage(el){
-     ReactDom.render(
-     <FilmPage value={el}/> , document.getElementById("ourRoot")
-     )
-  
-}
+
+export default FilmPage;

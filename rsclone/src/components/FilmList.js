@@ -1,5 +1,5 @@
-import {filmPage} from "./FilmPage.js";
-
+import {filmPage} from "../App.js";
+import {ReactDOM} from 'react-dom';
 import React from 'react';
 import Carousel from "react-multi-carousel";
 import ModalWindow from './ModalWindow';
@@ -7,6 +7,7 @@ import 'react-multi-carousel/lib/styles.css';
 import star from './assets/star.png'
 import play from './assets/play.png'
 import info from './assets/info-grey.png';
+
 
 import {
     BrowserRouter as Router,
@@ -45,7 +46,8 @@ class FilmList extends React.Component {
         const json = await response.json();
         this.setState({ data: json });
     }
-
+//onClick={()=>filmPage(el)}
+//onClick={()=>filmPage(el)}
     render() {
         //
         if (this.state.data.results) {
@@ -71,19 +73,24 @@ class FilmList extends React.Component {
             >
             
             {this.state.data.results.map(el => (
+              
                 <div>
                     <div className="films-list-img App-link">
-                        <Router><Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage">
+                        <Router><Link to="/"></Link> <Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage"> 
+                    
+                       
                             <img className="poster-img" onClick={()=>filmPage(el)} src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} alt={el.title}/>
-                        </Link><Switch><Route path="/FilmPage"/></Switch></Router>
+                            </Link>    
+                        </Router>
                         <div className="bottom-content-wrapper">
                             <div className="rating">
                                 <div><img src={star} alt="star icon" /></div>
                                 <div className="vote_average">{el.vote_average}</div>
                             </div>
-                            <Router><Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage">
-                                <div className="film-title" onClick={()=>filmPage(el)}>{el.title}</div>
-                            </Link><Switch><Route path="/FilmPage"/></Switch></Router>
+                            <Router><Link to="/"></Link><Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage">
+                                <div className="film-title"onClick={()=>filmPage(el)} >{el.title}</div>
+                            </Link>
+                            </Router>
                             <button type="button" className="add-to-watchlist-btn">+ Watchlist</button>
                             <div className="additional-info">
                                 <div className="trailer">
