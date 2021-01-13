@@ -2,18 +2,6 @@ import React from 'react'
 import { Button, Modal } from 'react-bootstrap'
 
 class ModalWindow extends React.Component{
-
-    /*constructor(){
-        super();
-        this.state = {
-            showHide : false
-        }
-    }
-
-    handleModalShowHide() {
-        this.setState({ showHide: !this.state.showHide })
-    }*/
-
     render(){
         return(
             <div>
@@ -26,12 +14,8 @@ class ModalWindow extends React.Component{
                     <Button variant="secondary" onClick={this.props.handleModalShowHide}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={this.props.handleModalShowHide}>
-                        Save Changes
-                    </Button>
                     </Modal.Footer>
                 </Modal>
-
             </div>
         )
     }
