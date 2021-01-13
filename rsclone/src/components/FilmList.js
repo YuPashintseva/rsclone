@@ -18,7 +18,7 @@ import FilmPage from "./FilmPage.js";
 const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
-      items: 6
+      items: 5
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -47,6 +47,7 @@ class FilmList extends React.Component {
         const response = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=en-US&page=1');
         const json = await response.json();
         this.setState({ data: json});
+        console.log(this.state.data.results)
     }
 
     returnState(){
@@ -93,7 +94,7 @@ class FilmList extends React.Component {
             
             {this.state.data.results.map(el => (
                 
-                <div element={el} key ={el.id}>
+                <div element={el.id} key ={el.id}>
                     <div className="films-list-img App-link" >
                       <Link to="/" ></Link> <Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage" > 
                             <img className="poster-img" onMouseOver={()=> {sessionStorage.clear();sessionStorage.setItem("val",JSON.stringify(el))}}  src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} alt={el.title}/>

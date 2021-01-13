@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Modal, Container, Row, Col } from 'react-bootstrap'
+import { Button, Modal, Container, Row, Col, Image } from 'react-bootstrap'
 
 class ModalWindow extends React.Component{
     render(){
@@ -14,11 +14,12 @@ class ModalWindow extends React.Component{
                     <Modal.Body className="show-grid">
                     <Container>
                         <Row>
-                            <Col xs={9} md={6}>
-                            <img className="poster-img-modal" src={`https://image.tmdb.org/t/p/original/${this.props.filmInfo.poster_path}`} alt={this.props.filmInfo.title}/>
+                            <Col xs={6} md={4}>
+                            <Image className="poster-img-modal" src={`https://image.tmdb.org/t/p/original/${this.props.filmInfo.poster_path}`} alt={this.props.filmInfo.title} thumbnail />
                             </Col>
-                            <Col xs={9} md={6}>
-                                {this.props.filmInfo.overview}
+                            <Col xs={12} md={8}>
+                              <strong>Overview: </strong>  {this.props.filmInfo.overview} <br/><br/>
+                              <strong>Release date: </strong> {this.props.filmInfo.release_date}
                             </Col>
                         </Row>
                     </Container>
