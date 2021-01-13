@@ -1,4 +1,4 @@
-import {filmPage} from "../App.js";
+import App, {filmPage} from "../App.js";
 import {ReactDOM} from 'react-dom';
 import React from 'react';
 import Carousel from "react-multi-carousel";
@@ -15,6 +15,7 @@ import {
     Route,
     Link
   } from "react-router-dom";
+import FilmPage from "./FilmPage.js";
 
 const responsive = {
     superLargeDesktop: {
@@ -38,15 +39,19 @@ const responsive = {
 class FilmList extends React.Component {
     constructor() {
         super();
-        this.state = {data: []};
+        this.state = {data: [],value:""};
     }
 
     async componentDidMount() {
         const response = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=en-US&page=1');
         const json = await response.json();
-        this.setState({ data: json });
+        this.setState({ data: json});
     }
 
+    returnState(){
+        return this.state;
+    }
+//sessionStorage.setItem("val",JSON.stringify(el));
     render() {
         if (this.state.data.results) {
             return (
@@ -72,24 +77,25 @@ class FilmList extends React.Component {
             >
             
             {this.state.data.results.map(el => (
-              
+             
+               
                 <div>
                     <div className="films-list-img App-link">
-                        <Router><Link to="/"></Link> <Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage"> 
+                      <Link to="/" ></Link> <Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage" > 
                     
                        
-                            <img className="poster-img" onClick={()=>filmPage(el)} src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} alt={el.title}/>
+                            <img className="poster-img" onMouseOver={()=> {sessionStorage.clear();sessionStorage.setItem("val",JSON.stringify(el))}}  src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} alt={el.title}/>
                             </Link>    
-                        </Router>
+                       
                         <div className="bottom-content-wrapper">
                             <div className="rating">
                                 <div><img src={star} alt="star icon" /></div>
                                 <div className="vote_average">{el.vote_average}</div>
                             </div>
-                            <Router><Link to="/"></Link><Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage">
-                                <div className="film-title"onClick={()=>filmPage(el)} >{el.title}</div>
+                            <Link to="/"></Link><Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage">
+                                <div className="film-title" onMouseOver={()=>{ sessionStorage.clear();sessionStorage.setItem("val",JSON.stringify(el))}}>{el.title}</div>
                             </Link>
-                            </Router>
+                            
                             <button type="button" className="add-to-watchlist-btn">+ Watchlist</button>
                             <div className="additional-info">
                                 <div className="trailer">
@@ -118,5 +124,6 @@ class FilmList extends React.Component {
     }
 
 }
+
 
 export default FilmList;

@@ -1,22 +1,24 @@
 import React from 'react';
 
 import star from './assets/megastar.png';
+import FilmList from './FilmList';
 
 
  class FilmPage extends React.Component{
-    constructor(props) {
-        super(props);
-        this.data = props.value;
-        this.state = {video:""};
-      
+    constructor() {
+        super();
+        this.state = {video:"",dat:JSON.parse(sessionStorage.getItem("val"))};
+      console.log(this.state.dat)
+        //this.data = props.value;
     }
     async componentDidMount(){
-     const response = await fetch(`https://api.themoviedb.org/3/movie/${this.data.id}/videos?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=en-US`);
+     const response = await fetch(`https://api.themoviedb.org/3/movie/${this.state.dat.id}/videos?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=en-US`);
      const res = await response.json();
      this.setState({ video: res.results[0].key});
-     console.log(this.state)
+     this.setState({dat: JSON.parse(sessionStorage.getItem("val"))});
+     //console.log(this.state)
     }
-    
+
     render(){
        
         return(
@@ -27,27 +29,27 @@ import star from './assets/megastar.png';
                  <div className="row"></div>
                  <div className="row">
 
-                     <h1 className="col">{this.data.original_title}</h1>
+                     <h1 className="col">{this.state.dat.original_title}</h1>
                      <div className="col">
-                     <h3 className="row">Average Vote: {this.data.vote_average}
+                     <h3 className="row">Average Vote: {this.state.dat.vote_average}
                      <img src={star}></img>
                      </h3>
                      </div>
-                     <h3 className="col">Votes: {this.data.vote_count}</h3>
+                     <h3 className="col">Votes: {this.state.dat.vote_count}</h3>
                  </div>
                </div>
 
                <div id = "briefInfo" className="wrapper">
-                   <div>Release Date: {this.data.release_date}</div>
+                   <div>Release Date: {this.state.dat.release_date}</div>
                    <div></div>
                 </div>
 
                <div id = "photoVideo" className="row" >
                    
-               <img  width="40%"height ="auto" src={`https://image.tmdb.org/t/p/original/${this.data.poster_path}`} alt={this.data.title}/>
+               <img  width="40%"height ="auto" src={`https://image.tmdb.org/t/p/original/${this.state.dat.poster_path}`} alt={this.state.dat.title}/>
                <iframe  width="60%" height ="100%" src={`https://www.youtube.com/embed/${this.state.video}`}></iframe>
                </div>
-               <div style={{  margin: "8px"}}><h3 >Synopsis: {this.data.overview}</h3></div>
+               <div style={{  margin: "8px"}}><h3 >Synopsis: {this.state.dat.overview}</h3></div>
              
                <div id = "videoCarousel" className="wrapper"></div>
                <div id = "photoCarousel" className="wrapper"></div>
