@@ -1,6 +1,4 @@
-import App, {filmPage} from "../App.js";
-import {ReactDOM} from 'react-dom';
-import React from 'react';
+import React, { createRef } from 'react';
 import Carousel from "react-multi-carousel";
 import ModalWindow from './ModalWindow';
 import 'react-multi-carousel/lib/styles.css';
@@ -20,7 +18,7 @@ import FilmPage from "./FilmPage.js";
 const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
-      items: 6
+      items: 5
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -39,24 +37,42 @@ const responsive = {
 class FilmList extends React.Component {
     constructor() {
         super();
-        this.state = {data: [],value:""};
+        this.state = {data: [], value: "", showHide: false, currFilmInfo: {}};
+        this.handleModalShowHide = this.handleModalShowHide.bind(this);
+        this.handleModalShowHide2 = this.handleModalShowHide2.bind(this);
+
     }
 
     async componentDidMount() {
         const response = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=en-US&page=1');
         const json = await response.json();
         this.setState({ data: json});
+        console.log(this.state.data.results)
     }
 
     returnState(){
         return this.state;
     }
-//sessionStorage.setItem("val",JSON.stringify(el));
+
+    handleModalShowHide(film) {
+        this.setState({ showHide: !this.state.showHide });
+        this.setState({ currFilmInfo: film });
+    }
+
+    handleModalShowHide2() {
+        this.setState({ showHide: !this.state.showHide });
+    }
+
+
     render() {
+        let mod = '';
         if (this.state.data.results) {
+            if (this.state.showHide) {
+                mod = <ModalWindow handleModalShowHide = {this.handleModalShowHide2} filmInfo = {this.state.currFilmInfo} />
+            }
             return (
                 <div>
-                <ModalWindow />
+                {mod}
                 <Carousel
                 swipeable={false}
                 draggable={false}
@@ -77,13 +93,10 @@ class FilmList extends React.Component {
             >
             
             {this.state.data.results.map(el => (
-             
-               
-                <div>
-                    <div className="films-list-img App-link">
+                
+                <div element={el.id} key ={el.id}>
+                    <div className="films-list-img App-link" >
                       <Link to="/" ></Link> <Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage" > 
-                    
-                       
                             <img className="poster-img" onMouseOver={()=> {sessionStorage.clear();sessionStorage.setItem("val",JSON.stringify(el))}}  src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} alt={el.title}/>
                             </Link>    
                        
@@ -102,7 +115,7 @@ class FilmList extends React.Component {
                                     <img src={play} alt="play button" className="play-button"/>  Trailer
                                 </div>
                                 <div>
-                                    <img src={info} alt="info button" className="info-button" onClick={()=>ModalWindow(el)}/> 
+                                    <img src={info} alt="info button" className="info-button" onClick = {() => this.handleModalShowHide(el)}/> 
                                 </div>
                             </div>
                         </div>

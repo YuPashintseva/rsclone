@@ -2,3 +2,11 @@
 body {
     background-color: black;
 }
+.main-modal .modal-content {
+    background-color: #2e2e2e;
+    color: white;
+}
+
+.poster-img-modal {
+    width: 100%;
+}
