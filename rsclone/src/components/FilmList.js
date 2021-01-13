@@ -39,7 +39,8 @@ const responsive = {
 class FilmList extends React.Component {
     constructor() {
         super();
-        this.state = {data: [],value:""};
+        this.state = {data: [], value: "", showHide: false};
+        this.handleModalShowHide = this.handleModalShowHide.bind(this);
     }
 
     async componentDidMount() {
@@ -51,12 +52,20 @@ class FilmList extends React.Component {
     returnState(){
         return this.state;
     }
-//sessionStorage.setItem("val",JSON.stringify(el));
+
+    handleModalShowHide() {
+        this.setState({ showHide: !this.state.showHide })
+    }
+
     render() {
         if (this.state.data.results) {
+            let mod = '';
+            if (this.state.showHide) {
+                mod = <ModalWindow handleModalShowHide = {this.handleModalShowHide}/>
+            }
             return (
                 <div>
-                <ModalWindow />
+                {mod}
                 <Carousel
                 swipeable={false}
                 draggable={false}
@@ -102,7 +111,7 @@ class FilmList extends React.Component {
                                     <img src={play} alt="play button" className="play-button"/>  Trailer
                                 </div>
                                 <div>
-                                    <img src={info} alt="info button" className="info-button" onClick={()=>ModalWindow(el)}/> 
+                                    <img src={info} alt="info button" className="info-button" onClick = {this.handleModalShowHide}/> 
                                 </div>
                             </div>
                         </div>
