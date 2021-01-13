@@ -14,15 +14,15 @@ class ModalWindow extends React.Component{
                     <Modal.Body className="show-grid">
                     <Container>
                         <Row>
-                            <Col xs={12} md={8}>
-                            .col-xs-12 .col-md-8
+                            <Col xs={9} md={6}>
+                            <img className="poster-img-modal" src={`https://image.tmdb.org/t/p/original/${this.props.filmInfo.poster_path}`} alt={this.props.filmInfo.title}/>
                             </Col>
-                            <Col xs={6} md={4}>
-                            .col-xs-6 .col-md-4
+                            <Col xs={9} md={6}>
+                                {this.props.filmInfo.overview}
                             </Col>
                         </Row>
                     </Container>
-                    {this.props.filmInfo.overview}
+                    
                     </Modal.Body>
                     <Modal.Footer>
                     <Button variant="secondary" onClick={this.props.handleModalShowHide}>
