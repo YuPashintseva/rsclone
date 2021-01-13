@@ -50,7 +50,7 @@ function App() {
 
       <div id="ourRoot" className="d-flex justify-content-around">
         <div id="fl" className="films-list">
-        <Route exact path="/" ><FilmList ref={(pageComponent)=>{Window.pageComponent = pageComponent}}/></Route>
+        <Route exact path="/" ><FilmList/></Route>
     
         <Route path="/FilmPage"><FilmPage/></Route>
        

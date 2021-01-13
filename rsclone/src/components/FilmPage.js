@@ -46,8 +46,8 @@ import FilmList from './FilmList';
 
                <div id = "photoVideo" className="row" >
                    
-               <img  width="40%"height ="auto" src={`https://image.tmdb.org/t/p/original/${this.state.dat.poster_path}`} alt={this.state.dat.title}/>
-               <iframe  width="60%" height ="100%" src={`https://www.youtube.com/embed/${this.state.video}`}></iframe>
+               <img id="im" width="40%" height ="auto" src={`https://image.tmdb.org/t/p/original/${this.state.dat.poster_path}`} alt={this.state.dat.title}/>
+               <iframe  width="60%" height="auto" src={`https://www.youtube.com/embed/${this.state.video}`}></iframe>
                </div>
                <div style={{  margin: "8px"}}><h3 >Synopsis: {this.state.dat.overview}</h3></div>
              
