@@ -40,7 +40,7 @@ class FilmList extends React.Component {
         this.state = {data: [], value: "", showHide: false, currFilmInfo: {}};
         this.handleModalShowHide = this.handleModalShowHide.bind(this);
         this.handleModalShowHide2 = this.handleModalShowHide2.bind(this);
-      //  this.handleFilm = this.handleFilm.bind(this);
+
     }
 
     async componentDidMount() {
