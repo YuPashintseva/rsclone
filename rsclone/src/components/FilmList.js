@@ -1,6 +1,4 @@
-import App, {filmPage} from "../App.js";
-import {ReactDOM} from 'react-dom';
-import React from 'react';
+import React, { createRef } from 'react';
 import Carousel from "react-multi-carousel";
 import ModalWindow from './ModalWindow';
 import 'react-multi-carousel/lib/styles.css';
@@ -39,8 +37,10 @@ const responsive = {
 class FilmList extends React.Component {
     constructor() {
         super();
-        this.state = {data: [], value: "", showHide: false};
+        this.state = {data: [], value: "", showHide: false, currFilmInfo: {}};
         this.handleModalShowHide = this.handleModalShowHide.bind(this);
+        this.handleModalShowHide2 = this.handleModalShowHide2.bind(this);
+      //  this.handleFilm = this.handleFilm.bind(this);
     }
 
     async componentDidMount() {
@@ -53,15 +53,21 @@ class FilmList extends React.Component {
         return this.state;
     }
 
-    handleModalShowHide() {
-        this.setState({ showHide: !this.state.showHide })
+    handleModalShowHide(film) {
+        this.setState({ showHide: !this.state.showHide });
+        this.setState({ currFilmInfo: film });
     }
 
+    handleModalShowHide2() {
+        this.setState({ showHide: !this.state.showHide });
+    }
+
+
     render() {
+        let mod = '';
         if (this.state.data.results) {
-            let mod = '';
             if (this.state.showHide) {
-                mod = <ModalWindow handleModalShowHide = {this.handleModalShowHide}/>
+                mod = <ModalWindow handleModalShowHide = {this.handleModalShowHide2} filmInfo = {this.state.currFilmInfo} />
             }
             return (
                 <div>
@@ -86,13 +92,10 @@ class FilmList extends React.Component {
             >
             
             {this.state.data.results.map(el => (
-             
-               
-                <div>
-                    <div className="films-list-img App-link">
+                
+                <div element={el} key ={el.id}>
+                    <div className="films-list-img App-link" >
                       <Link to="/" ></Link> <Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage" > 
-                    
-                       
                             <img className="poster-img" onMouseOver={()=> {sessionStorage.clear();sessionStorage.setItem("val",JSON.stringify(el))}}  src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} alt={el.title}/>
                             </Link>    
                        
@@ -111,7 +114,7 @@ class FilmList extends React.Component {
                                     <img src={play} alt="play button" className="play-button"/>  Trailer
                                 </div>
                                 <div>
-                                    <img src={info} alt="info button" className="info-button" onClick = {this.handleModalShowHide}/> 
+                                    <img src={info} alt="info button" className="info-button" onClick = {() => this.handleModalShowHide(el)}/> 
                                 </div>
                             </div>
                         </div>
