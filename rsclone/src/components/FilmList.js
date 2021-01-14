@@ -1,6 +1,7 @@
 import React, { createRef } from 'react';
 import Carousel from "react-multi-carousel";
 import ModalWindow from './ModalWindow';
+import CaurouselMain from './CaurouselMain';
 import 'react-multi-carousel/lib/styles.css';
 import star from './assets/star.png'
 import play from './assets/play.png'
@@ -37,7 +38,7 @@ const responsive = {
 class FilmList extends React.Component {
     constructor() {
         super();
-        this.state = {data: [], value: "", showHide: false, currFilmInfo: {}};
+        this.state = {data: [], dataMain: [], value: "", showHide: false, currFilmInfo: {}};
         this.handleModalShowHide = this.handleModalShowHide.bind(this);
         this.handleModalShowHide2 = this.handleModalShowHide2.bind(this);
 
@@ -47,7 +48,6 @@ class FilmList extends React.Component {
         const response = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=en-US&page=1');
         const json = await response.json();
         this.setState({ data: json});
-        console.log(this.state.data.results)
     }
 
     returnState(){
@@ -72,6 +72,7 @@ class FilmList extends React.Component {
             }
             return (
                 <div>
+                <CaurouselMain />
                 {mod}
                 <Carousel
                 swipeable={false}
@@ -79,7 +80,7 @@ class FilmList extends React.Component {
                 showDots={false}
                 responsive={responsive}
                 ssr={true}
-                infinite={true}
+                infinite={false}
                 autoPlaySpeed={1000}
                 keyBoardControl={true}
                 customTransition="all .5"
