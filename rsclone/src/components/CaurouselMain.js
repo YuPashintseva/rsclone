@@ -16,7 +16,6 @@ class CarouselMain extends React.Component {
     render() {
         const responsive = {
             superLargeDesktop: {
-              // the naming can be any, depends on you.
               breakpoint: { max: 4000, min: 3000 },
               items: 5
             },
@@ -35,6 +34,7 @@ class CarouselMain extends React.Component {
           };
        if (this.state.dataMain.results){
           return(
+              <div className="main-carousel-wrapper">
                 <Carousel                 
                   swipeable={false}
                   draggable={false}
@@ -54,9 +54,10 @@ class CarouselMain extends React.Component {
                   slidesToSlide={3}
                 >
                 {this.state.dataMain.results.map(el => (
-                    <div>{el.title}</div>
+                    <div className="main-carousel-img"><img className="poster-img-main" src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} alt={el.title}/></div>
                 ))};
                 </Carousel>
+              </div>
           );
         } else {
           return (<div>Wait a little</div>)

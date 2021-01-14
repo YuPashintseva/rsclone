@@ -10,3 +10,24 @@ body {
 .poster-img-modal {
     width: 100%;
 }
+
+.poster-img-main {
+    width: 50%;
+}
+
+.poster-img-main img {
+    width: 100%;
+}
+
+.main-carousel-wrapper {
+   width: 40%;
+}
+
+.main-carousel-img {
+    display: flex;
+    justify-content: center;
+}
+
+.main-carousel-wrapper {
+    align-items: center;
+}
