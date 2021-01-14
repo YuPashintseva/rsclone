@@ -1,16 +1,16 @@
-
 /*My styles*/
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-html, .App {
+html,
+.App {
   background-color: black;
 }
 
-.films-list-img img{
+.films-list-img img {
   background-color: #1a1a1a;
   width: 100%;
 }
@@ -50,10 +50,10 @@ html, .App {
   border-radius: 5px;
 }
 
-.add-to-watchlist-btn, 
-.add-to-watchlist-btn:active, 
+.add-to-watchlist-btn,
+.add-to-watchlist-btn:active,
 .add-to-watchlist-btn:focus {
-    outline: none;
+  outline: none;
 }
 
 .add-to-watchlist-btn:hover {
@@ -77,27 +77,22 @@ html, .App {
   font-weight: 600;
   background-color: #2e2e2e;
 }
-.wrapper{
-  display:flex;
+.wrapper {
+  display: flex;
   flex-direction: column;
   max-width: 100wh;
   align-items: center;
 }
-.wrapperStyle{
-  padding:1%;
+.wrapperStyle {
+  padding: 1%;
   background-color: #1a1a1a;
-  color:white;
+  color: white;
   font-size: larger;
-  
 }
 
-#photoVideo{
-  
-  
+#photoVideo {
   width: 70%;
-  
 }
-
 
 .additional-info {
   display: flex;
@@ -119,3 +114,22 @@ html, .App {
   color: white;
 }
 
+/* navbar */
+
+.navbar-mainlogo {
+  height: 50px;
+}
+
+/* search full page */
+.table-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+.fill-width {
+  width: 100%;
+}
+
+/* footer */
+.footer {
+  background-color: #fff;
+}
