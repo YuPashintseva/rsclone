@@ -55,7 +55,7 @@ import FilmList from './FilmList';
                <div style={{color:'white', margin:'5%',maxWidth:'45%'}}>Sorry, there seems to be no video provided for this film. <hr/>The Universe wants you to watch it without spoilers, apparently.</div>
                )}
                </div>
-               <div style={{  margin: "8px"}}><h3 >Synopsis: {this.state.dat.overview}</h3></div>
+               <div style={{  margin: "8px"}}><h3 ><h2 style={{  fontWeight: "bolder"}}>Overview:</h2> {this.state.dat.overview}</h3></div>
              
                <div id = "videoCarousel" className="wrapper"></div>
                <div id = "photoCarousel" className="wrapper"></div>
