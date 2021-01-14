@@ -93,9 +93,8 @@ html, .App {
 }
 
 #photoVideo{
-  padding: auto;
-  align-items: center;
-  
+  border: solid black;
+  padding:auto;
   width: 70%;
 }
 
