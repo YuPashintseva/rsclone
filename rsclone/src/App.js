@@ -61,7 +61,7 @@ class App extends Component {
         <Router>
           <nav
             className="navbar navbar-expand-lg navbar-dark bg-dark"
-            style={{ margin: "24px 0" }}
+            style={{ margin: "3px 0"}}
           >
             <a className="navbar-brand">Logo</a>
             <button

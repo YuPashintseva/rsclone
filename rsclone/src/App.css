@@ -92,9 +92,10 @@ html, .App {
 }
 
 #photoVideo{
-  border: solid black;
-  padding:auto;
+  
+  
   width: 70%;
+  
 }
 
 
@@ -117,3 +118,4 @@ html, .App {
 .trailer {
   color: white;
 }
+

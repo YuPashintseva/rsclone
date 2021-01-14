@@ -29,33 +29,35 @@ import FilmList from './FilmList';
                  <div className="row"></div>
                  <div className="row">
 
-                     <h1 className="col">{this.state.dat.original_title}</h1>
+                     <h2 className="col">{this.state.dat.original_title}</h2>
                     
                      
-                     <h3 className="col-auto">Average Vote: {this.state.dat.vote_average}
+                     <h4 className="col-auto">Average Vote: {this.state.dat.vote_average}
                      <img src={star} ></img>
-                     </h3>
+                     </h4>
                      
                      
-                     <h3 className="col-auto">Votes: {this.state.dat.vote_count}</h3>
+                     <h4 className="col-auto">Votes: {this.state.dat.vote_count}</h4>
                 
                </div>
                </div>
                <div id = "briefInfo" className="wrapper">
-                   <div>Release Date: {this.state.dat.release_date}</div>
+                   <h5>Release Date: {this.state.dat.release_date}</h5>
                    <div></div>
                 </div>
 
-               <div id = "photoVideo" className="row" >
+               <div id = "photoVideo" className="row" style={{padding:'1% 5% 1% 5%', margin:'0%', border:'0%'}}>
                    
-               <img id="im" width="40%" height ="auto" src={`https://image.tmdb.org/t/p/original/${this.state.dat.poster_path}`} alt={this.state.dat.title}/>
+               <img  width="36%" height ="auto" src={`https://image.tmdb.org/t/p/original/${this.state.dat.poster_path}`} alt={this.state.dat.title} style={{ margin:'2%'}}/>
                {this.state.video?(
-               <iframe  width="60%" height="auto" src={`https://www.youtube.com/embed/${this.state.video}`} ></iframe>
+               <iframe  width="56%" height="auto" src={`https://www.youtube.com/embed/${this.state.video}`} style={{ margin:'2%'}}/>
                ):(
-               <div style={{color:'white', margin:'5%',maxWidth:'45%'}}>Sorry, there seems to be no video provided for this film. <hr/>The Universe wants you to watch it without spoilers, apparently.</div>
+               <div style={{color:'white', margin:'0% 5% 5% 1%',maxWidth:'45%'}}>Sorry, there seems to be no video provided for this film. <hr/>The Universe wants you to watch it without spoilers, apparently.</div>
                )}
                </div>
-               <div style={{  margin: "8px"}}><h3 ><h2 style={{  fontWeight: "bolder"}}>Overview:</h2> {this.state.dat.overview}</h3></div>
+               <div style={{  margin: "8px"}}>
+               <h4 style={{  fontWeight: "bolder"}}>Overview:</h4>
+              <h5 > {this.state.dat.overview}</h5></div>
              
                <div id = "videoCarousel" className="wrapper"></div>
                <div id = "photoCarousel" className="wrapper"></div>
