@@ -23,3 +23,4 @@
 [0113/124033.068:ERROR:exception_snapshot_win.cc(99)] thread ID 35924 not found in process
 [0113/124033.068:ERROR:exception_snapshot_win.cc(99)] thread ID 49924 not found in process
 [0113/220929.777:ERROR:directory_reader_win.cc(43)] FindFirstFile: Системе не удается найти указанный путь. (0x3)
+[0114/125745.168:ERROR:directory_reader_win.cc(43)] FindFirstFile: Системе не удается найти указанный путь. (0x3)

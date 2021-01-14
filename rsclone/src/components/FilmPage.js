@@ -30,15 +30,17 @@ import FilmList from './FilmList';
                  <div className="row">
 
                      <h1 className="col">{this.state.dat.original_title}</h1>
-                     <div className="col">
-                     <h3 className="row">Average Vote: {this.state.dat.vote_average}
-                     <img src={star}></img>
+                    
+                     
+                     <h3 className="col-auto">Average Vote: {this.state.dat.vote_average}
+                     <img src={star} ></img>
                      </h3>
-                     </div>
-                     <h3 className="col">Votes: {this.state.dat.vote_count}</h3>
-                 </div>
+                     
+                     
+                     <h3 className="col-auto">Votes: {this.state.dat.vote_count}</h3>
+                
                </div>
-
+               </div>
                <div id = "briefInfo" className="wrapper">
                    <div>Release Date: {this.state.dat.release_date}</div>
                    <div></div>
