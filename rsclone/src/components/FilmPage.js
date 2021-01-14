@@ -14,9 +14,9 @@ import FilmList from './FilmList';
     async componentDidMount(){
      const response = await fetch(`https://api.themoviedb.org/3/movie/${this.state.dat.id}/videos?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=en-US`);
      const res = await response.json();
-     this.setState({ video: res.results[0].key});
+     this.setState({ video: res.results[0]?res.results[0].key:''});
      this.setState({dat: JSON.parse(sessionStorage.getItem("val"))});
-     //console.log(this.state)
+     
     }
 
     render(){
@@ -49,7 +49,11 @@ import FilmList from './FilmList';
                <div id = "photoVideo" className="row" >
                    
                <img id="im" width="40%" height ="auto" src={`https://image.tmdb.org/t/p/original/${this.state.dat.poster_path}`} alt={this.state.dat.title}/>
-               <iframe  width="60%" height="auto" src={`https://www.youtube.com/embed/${this.state.video}`}></iframe>
+               {this.state.video?(
+               <iframe  width="60%" height="auto" src={`https://www.youtube.com/embed/${this.state.video}`} ></iframe>
+               ):(
+               <div style={{color:'white', margin:'5%',maxWidth:'45%'}}>Sorry, there seems to be no video provided for this film. <hr/>The Universe wants you to watch it without spoilers, apparently.</div>
+               )}
                </div>
                <div style={{  margin: "8px"}}><h3 >Synopsis: {this.state.dat.overview}</h3></div>
              
