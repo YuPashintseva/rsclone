@@ -20,7 +20,7 @@ function App() {
     <div className="App">
 <Router>
      <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{margin:"24px 0"}}>
-  <a className="navbar-brand" href="javascript:void(0)">Logo</a>
+  <a className="navbar-brand">Logo</a>
   <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
     <span className="navbar-toggler-icon"></span>
   </button>
