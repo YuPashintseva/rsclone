@@ -37,7 +37,8 @@ h2 {
     top: 85%;
     left: 0;
     width: 100%;
-    }
+}
+
 h2 span {
     color: #fff;
     font-size: 30px;
@@ -46,4 +47,10 @@ h2 span {
     background: #000;
     opacity: 0.6;
     padding: 10px;
-    }
+}
+.head-text {
+    color: #f5c518;
+    font-size: 45px;
+    padding-left: 10px;
+    padding-top: 5%;
+}

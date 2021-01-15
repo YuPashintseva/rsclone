@@ -74,6 +74,9 @@ class FilmList extends React.Component {
             return (
                 <div>
                 <CaurouselMain />
+                <div className="head-text">
+                    What to watch
+                </div>
                 {mod}
                 <Carousel
                 swipeable={false}
