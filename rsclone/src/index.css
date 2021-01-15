@@ -12,7 +12,7 @@ body {
 }
 
 .poster-img-main {
-    width: 50%;
+    width: 100%;
 }
 
 .poster-img-main img {
@@ -20,7 +20,7 @@ body {
 }
 
 .main-carousel-wrapper {
-   width: 40%;
+   width: 100%;
 }
 
 .main-carousel-img {
