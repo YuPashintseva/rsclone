@@ -110,8 +110,25 @@ html,
   height: 25px;
 }
 
+.info-button {
+  cursor: pointer;
+}
+
+.info-button:hover {
+  background-color: #3b3b3b;
+  border-radius: 10px;
+}
+
+
 .trailer {
   color: white;
+  cursor: pointer;
+  padding: 0px 5px;
+}
+
+.trailer:hover {
+  background-color: #3b3b3b;
+  border-radius: 5px;
 }
 
 /* navbar */

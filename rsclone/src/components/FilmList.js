@@ -116,7 +116,7 @@ class FilmList extends React.Component {
                                 <div className="trailer">
                                     <img src={play} alt="play button" className="play-button"/>  Trailer
                                 </div>
-                                <div>
+                                <div className="info-button-wrapper">
                                     <img src={info} alt="info button" className="info-button" onClick = {() => this.handleModalShowHide(el)}/> 
                                 </div>
                             </div>
