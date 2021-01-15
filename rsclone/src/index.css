@@ -13,6 +13,7 @@ body {
 
 .poster-img-main {
     width: 100%;
+    position: relative;
 }
 
 .poster-img-main img {
@@ -31,3 +32,18 @@ body {
 .main-carousel-wrapper {
     align-items: center;
 }
+h2 {
+    position: absolute;
+    top: 85%;
+    left: 0;
+    width: 100%;
+    }
+h2 span {
+    color: #fff;
+    font-size: 30px;
+    line-height: 55px;
+    background: rgba(0, 0, 0, 0.7);
+    background: #000;
+    opacity: 0.6;
+    padding: 10px;
+    }

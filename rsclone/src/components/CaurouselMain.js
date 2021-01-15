@@ -55,7 +55,10 @@ class CarouselMain extends React.Component {
                   slidesToSlide={3}
                 >
                 {this.state.dataMain.results.map(el => (
-                    <div className="main-carousel-img"><img className="poster-img-main" src={`https://image.tmdb.org/t/p/original/${el.backdrop_path}`} alt={el.title}/></div>
+                    <div className="main-carousel-img">
+                      <img className="poster-img-main" src={`https://image.tmdb.org/t/p/original/${el.backdrop_path}`} alt={el.title}/>
+                      <h2><span>{el.title}</span></h2>
+                    </div>
                 ))};
                 </Carousel>
               </div>
