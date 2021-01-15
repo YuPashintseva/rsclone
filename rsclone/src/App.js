@@ -2,11 +2,14 @@ import ReactDOM from "react-dom";
 import FilmList from "./components/FilmList";
 import FilmPage from "./components/FilmPage";
 import MovieRow from "./components/MovieRow";
+import mainLogo from "./logo-imdb.png";
+import rsschool from "./components/assets/rs_school_js.svg";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import $ from "jquery";
+import { Helmet } from "react-helmet";
 
 class App extends Component {
   //console.log(sessionStorage.getItem("val"))
@@ -61,9 +64,11 @@ class App extends Component {
         <Router>
           <nav
             className="navbar navbar-expand-lg navbar-dark bg-dark"
-            style={{ margin: "3px 0"}}
+            style={{ margin: "3px 0" }}
           >
-            <a className="navbar-brand">Logo</a>
+            <a className="navbar-brand">
+              <img className="navbar-mainlogo" src={mainLogo}></img>
+            </a>
             <button
               className="navbar-toggler navbar-toggler-right"
               type="button"
@@ -90,7 +95,7 @@ class App extends Component {
                 </li>
               </ul>
 
-              <form className="form-inline my-2 my-lg-0">
+              <form className="container-fluid my-2 my-lg-0">
                 <input
                   className="form-control mr-sm-2"
                   onChange={this.searchCnangeHandler.bind(this)}
@@ -117,6 +122,36 @@ class App extends Component {
             </div>
           </div>
         </Router>
+        <footer className="footer">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-4"> &copy; IMDb-clone, 2021 </div>
+              <div className="col-4">
+                <ul className="list-group list-group-flush">
+                  <li className="list-group-item">developers:</li>
+                  <li className="list-group-item">
+                    <a href="https://github.com/YuPashintseva">YuPashintseva</a>
+                  </li>
+                  <li className="list-group-item">
+                    <a href="https://github.com/anatkig">anatkig</a>
+                  </li>
+                  <li className="list-group-item">
+                    <a href="https://github.com/vegas-muffin">vegas-muffin</a>
+                  </li>
+                </ul>
+              </div>
+              <div className="col-4">
+                <a
+                  className="footer__link"
+                  target="_blank"
+                  href="https://rs.school/js/"
+                >
+                  <img className="footer__image" src={rsschool}></img>
+                </a>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
     );
   }

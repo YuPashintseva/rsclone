@@ -6,6 +6,7 @@ import 'react-multi-carousel/lib/styles.css';
 import star from './assets/star.png'
 import play from './assets/play.png'
 import info from './assets/info-grey.png';
+import { Helmet } from "react-helmet";
 
 
 import {
