@@ -122,34 +122,62 @@ class App extends Component {
             </div>
           </div>
         </Router>
-        <footer className="footer">
-          <div className="container-fluid">
+
+        <footer className="bg-light text-center text-lg-start">
+          <div className="container p-4">
             <div className="row">
-              <div className="col-4"> &copy; IMDb-clone, 2021 </div>
-              <div className="col-4">
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item">developers:</li>
-                  <li className="list-group-item">
-                    <a href="https://github.com/YuPashintseva">YuPashintseva</a>
+              <div className="col-lg-6 col-md-12 mb-4 mb-md-0">
+                <h5 className="text-uppercase"> The Rolling Scopes School</h5>
+                <p>
+                  Бесплатный курс «JavaScript/Front-end» от сообщества The
+                  Rolling Scopes -{" "}
+                  <a
+                    className="footer__link"
+                    target="_blank"
+                    href="https://rs.school/js/"
+                  >
+                    rs.school/js
+                  </a>
+                </p>
+              </div>
+
+              <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 className="text-uppercase"></h5>
+                <div>
+                  <img className="footer__image" src={rsschool}></img>
+                </div>
+              </div>
+
+              <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 className="text-uppercase mb-0">Developed by:</h5>
+
+                <ul className="list-unstyled">
+                  <li>
+                    <a className="" href="https://github.com/YuPashintseva">
+                      YuPashintseva
+                    </a>
                   </li>
-                  <li className="list-group-item">
-                    <a href="https://github.com/anatkig">anatkig</a>
+                  <li>
+                    <a className="" href="https://github.com/anatkig">
+                      anatkig
+                    </a>
                   </li>
-                  <li className="list-group-item">
-                    <a href="https://github.com/vegas-muffin">vegas-muffin</a>
+                  <li>
+                    <a className="" href="https://github.com/vegas-muffin">
+                      vegas-muffin
+                    </a>
                   </li>
                 </ul>
               </div>
-              <div className="col-4">
-                <a
-                  className="footer__link"
-                  target="_blank"
-                  href="https://rs.school/js/"
-                >
-                  <img className="footer__image" src={rsschool}></img>
-                </a>
-              </div>
             </div>
+          </div>
+
+          <div className="text-center p-3">
+            {" "}
+            &copy; 2021 Copyright{" "}
+            <a className="text-dark" href="#">
+              IMDb-clone
+            </a>
           </div>
         </footer>
       </div>

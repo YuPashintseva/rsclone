@@ -119,7 +119,6 @@ html,
   border-radius: 10px;
 }
 
-
 .trailer {
   color: white;
   cursor: pointer;
@@ -146,7 +145,6 @@ html,
   width: 100%;
 }
 
-/* footer */
-.footer {
-  background-color: #fff;
+.footer__image {
+  width: 200px;
 }
