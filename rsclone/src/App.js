@@ -40,7 +40,12 @@ class App extends Component {
             "https://image.tmdb.org/t/p/w600_and_h900_bestv2" +
             movie.poster_path;
           console.log(movie.poster_path);
-          const movieRow = <MovieRow  key={movie.id} movie={movie}/>;
+          const filmDATA = JSON.parse(sessionStorage.getItem('fullInf'));
+          const currFilm = filmDATA.filter(el=>el.original_title===movie.title);
+          let movieRow;
+          if(currFilm[0]) {
+           movieRow = <MovieRow  key={movie.id} movie={movie}/>;
+          }
           movieRows.push(movieRow);
         });
 
@@ -59,16 +64,15 @@ class App extends Component {
     boundObject.performSearch(searchTerm);
   }
   changeLinkState() {
-   // console.log(film);
+   
     
     const inp = document.querySelector('input');
     const datl = document.querySelector('#datalistOptions').childNodes;
     const filmDATA = JSON.parse(sessionStorage.getItem('fullInf'));
    
-    const currFulm = filmDATA.filter(el=>el.original_title===inp.value);
-    console.log(currFulm[0])
-    //sessionStorage.clear();
-    sessionStorage.setItem("val",JSON.stringify(currFulm[0]));
+    const currFilm = filmDATA.filter(el=>el.original_title===inp.value);
+   
+    sessionStorage.setItem("val",JSON.stringify(currFilm[0]));
 
     let flag = true;
     datl.forEach(el=>{if(el.value===inp.value)flag=false})
@@ -116,16 +120,13 @@ class App extends Component {
                 <input
                   className="form-control mr-sm-2"
                   onChange={this.searchCnangeHandler.bind(this)}
-                  //onClick={document.querySelector('input')? this.changeClass():''}
                   type="text"
                   list="datalistOptions"
                   id="exampleDataList"
                   placeholder="Search"
                 />
                </Link>
-                <datalist id="datalistOptions">
-                    {this.state.rows}
-                     </datalist>  
+                <datalist id="datalistOptions">{this.state.rows}</datalist>  
               </form>
             </div>
           </nav>
