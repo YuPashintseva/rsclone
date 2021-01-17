@@ -9,7 +9,7 @@ import { Helmet } from "react-helmet";
     constructor() {
         super();
         this.state = {video:"",dat:JSON.parse(sessionStorage.getItem("val"))};
-      console.log(this.state.dat)
+     
         //this.data = props.value;
     }
     async componentDidMount(){

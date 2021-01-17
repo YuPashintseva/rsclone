@@ -10,6 +10,7 @@ import { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import $ from "jquery";
 import { Helmet } from "react-helmet";
+import { NavLink } from "react-router-dom";
 
 class App extends Component {
   //console.log(sessionStorage.getItem("val"))
@@ -39,7 +40,7 @@ class App extends Component {
             "https://image.tmdb.org/t/p/w600_and_h900_bestv2" +
             movie.poster_path;
           console.log(movie.poster_path);
-          const movieRow = <MovieRow key={movie.id} movie={movie} />;
+          const movieRow = <MovieRow  key={movie.id} movie={movie}/>;
           movieRows.push(movieRow);
         });
 
@@ -57,11 +58,27 @@ class App extends Component {
     const searchTerm = event.target.value;
     boundObject.performSearch(searchTerm);
   }
+  changeLinkState() {
+   // console.log(film);
+    
+    const inp = document.querySelector('input');
+    const datl = document.querySelector('#datalistOptions').childNodes;
+    const filmDATA = JSON.parse(sessionStorage.getItem('fullInf'));
+   
+    const currFulm = filmDATA.filter(el=>el.original_title===inp.value);
+    console.log(currFulm[0])
+    //sessionStorage.clear();
+    sessionStorage.setItem("val",JSON.stringify(currFulm[0]));
+
+    let flag = true;
+    datl.forEach(el=>{if(el.value===inp.value)flag=false})
+    return flag;
+  }
 
   render() {
     return (
       <div className="App">
-        <Router>
+     
           <nav
             className="navbar navbar-expand-lg navbar-dark bg-dark"
             style={{ margin: "3px 0" }}
@@ -81,9 +98,8 @@ class App extends Component {
             <div className="collapse navbar-collapse" id="navb">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
-                  <Link to="/FilmPage"> </Link>
-                  <Link to="/">
-                    {" "}
+                  
+                  <Link to='/'>
                     <a className="nav-link">Home</a>
                   </Link>
                 </li>
@@ -96,16 +112,20 @@ class App extends Component {
               </ul>
 
               <form className="container-fluid my-2 my-lg-0">
+               <Link to='/FilmPage'  onClick={ (event) => {if(this.changeLinkState())event.preventDefault()}}>
                 <input
                   className="form-control mr-sm-2"
                   onChange={this.searchCnangeHandler.bind(this)}
+                  //onClick={document.querySelector('input')? this.changeClass():''}
                   type="text"
                   list="datalistOptions"
                   id="exampleDataList"
                   placeholder="Search"
                 />
-
-                <datalist id="datalistOptions">{this.state.rows}</datalist>
+               </Link>
+                <datalist id="datalistOptions">
+                    {this.state.rows}
+                     </datalist>  
               </form>
             </div>
           </nav>
@@ -121,7 +141,7 @@ class App extends Component {
               </Route>
             </div>
           </div>
-        </Router>
+       
         <footer className="footer">
           <div className="container-fluid">
             <div className="row">

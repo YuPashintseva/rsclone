@@ -1,13 +1,19 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 class MovieRow extends React.Component {
   render() {
     return (
+  
+   
       <option className="search__item" value={this.props.movie.title}>
         {this.props.movie.overview}
+        
       </option>
-
+    
+    
       // <div className="search__item" key={this.props.movie.id}>
       //   <div className="search__item-image"><img className="img" alt="poster" src={this.props.movie.poster_path} /></div>
       //   <div className="search__item-about">

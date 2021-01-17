@@ -15,7 +15,7 @@ import {
     Route,
     Link
   } from "react-router-dom";
-import FilmPage from "./FilmPage.js";
+
 
 const responsive = {
     superLargeDesktop: {
@@ -49,6 +49,7 @@ class FilmList extends React.Component {
         const response = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=en-US&page=1');
         const json = await response.json();
         this.setState({ data: json});
+        sessionStorage.setItem('fullInf',JSON.stringify(json.results))
     }
 
     returnState(){
@@ -101,8 +102,8 @@ class FilmList extends React.Component {
                 
                 <div element={el.id} key ={el.id}>
                     <div className="films-list-img App-link" >
-                      <Link to="/" ></Link> <Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage" > 
-                            <img className="poster-img" onMouseOver={()=> {sessionStorage.clear();sessionStorage.setItem("val",JSON.stringify(el))}}  src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} alt={el.title}/>
+                      <Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage" > 
+                            <img className="poster-img" onMouseOver={()=> {sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}}  src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} alt={el.title}/>
                             </Link>    
                        
                         <div className="bottom-content-wrapper">
@@ -110,8 +111,8 @@ class FilmList extends React.Component {
                                 <div><img src={star} alt="star icon" /></div>
                                 <div className="vote_average">{el.vote_average}</div>
                             </div>
-                            <Link to="/"></Link><Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage">
-                                <div className="film-title" onMouseOver={()=>{ sessionStorage.clear();sessionStorage.setItem("val",JSON.stringify(el))}}>{el.title}</div>
+                           <Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage">
+                                <div className="film-title" onMouseOver={()=>{ sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}}>{el.title}</div>
                             </Link>
                             
                             <button type="button" className="add-to-watchlist-btn">+ Watchlist</button>
