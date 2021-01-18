@@ -77,6 +77,20 @@ footer {
     margin-top: 5%;
 }
 
+.nav-link {
+    width: 7em;
+}
+
+.wl {
+    display: flex;
+}
+
 .watchlist-num {
-    background-color:  #f5c518;
+    background-color: #f5c518;
+    padding-left: 9px;
+    padding-top: 2px;
+    width: 50px;
+    height: 30px;
+    border-radius: 50%;
+    color: black;
 }

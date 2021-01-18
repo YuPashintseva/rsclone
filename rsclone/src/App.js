@@ -130,7 +130,8 @@ class App extends Component {
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
                 <Link to="/">
-                  <a className="nav-link">Watchlist {this.state.watchlist}</a>
+                  <a className="nav-link"><div className="wl">WatchList <div className="watchlist-num">{this.state.watchlist}</div></div></a>
+                  
                 </Link>
               </li>
               <li className="nav-item">
