@@ -151,11 +151,11 @@ class App extends Component {
           </div>
         </div>
 
-        <footer className="bg-light text-center text-lg-start">
+        <footer className="bg-dark text-center text-lg-start">
           <div className="container p-4">
             <div className="row">
               <div className="col-lg-6 col-md-12 mb-4 mb-md-0">
-                <h5 className="text-uppercase"> The Rolling Scopes School</h5>
+                <h5 className="text-uppercase yellow-text"> The Rolling Scopes School</h5>
                 <p>
                   Бесплатный курс «JavaScript/Front-end» от сообщества The
                   Rolling Scopes -{" "}
@@ -177,7 +177,7 @@ class App extends Component {
               </div>
 
               <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
-                <h5 className="text-uppercase mb-0">Developed by:</h5>
+                <h5 className="text-uppercase mb-0 yellow-text">Developed by:</h5>
 
                 <ul className="list-unstyled">
                   <li>

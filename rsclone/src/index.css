@@ -63,3 +63,15 @@ h2 span {
     display: flex;
     justify-content: center;
 }
+
+.yellow-text {
+    color: #f5c518;
+}
+
+.bg-dark {
+    color:  black;
+}
+
+footer {
+    margin-top: 5%;
+}
