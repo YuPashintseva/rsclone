@@ -38,11 +38,13 @@ class App extends Component {
             "https://image.tmdb.org/t/p/w600_and_h900_bestv2" +
             movie.poster_path;
           console.log(movie.poster_path);
-          const filmDATA = JSON.parse(sessionStorage.getItem('fullInf'));
-          const currFilm = filmDATA.filter(el=>el.original_title===movie.title);
+          const filmDATA = JSON.parse(sessionStorage.getItem("fullInf"));
+          const currFilm = filmDATA.filter(
+            (el) => el.original_title === movie.title
+          );
           let movieRow;
-          if(currFilm[0]) {
-           movieRow = <MovieRow  key={movie.id} movie={movie}/>;
+          if (currFilm[0]) {
+            movieRow = <MovieRow key={movie.id} movie={movie} />;
           }
           movieRows.push(movieRow);
         });
@@ -62,63 +64,63 @@ class App extends Component {
     boundObject.performSearch(searchTerm);
   }
   changeLinkState() {
-   
-    
-    const inp = document.querySelector('input');
-    const datl = document.querySelector('#datalistOptions').childNodes;
-    const filmDATA = JSON.parse(sessionStorage.getItem('fullInf'));
-   
-    const currFilm = filmDATA.filter(el=>el.original_title===inp.value);
-   
-   
-    sessionStorage.setItem("val",JSON.stringify(currFilm[0]));
-   
+    const inp = document.querySelector("input");
+    const datl = document.querySelector("#datalistOptions").childNodes;
+    const filmDATA = JSON.parse(sessionStorage.getItem("fullInf"));
+
+    const currFilm = filmDATA.filter((el) => el.original_title === inp.value);
+
+    sessionStorage.setItem("val", JSON.stringify(currFilm[0]));
+
     let flag = true;
-    datl.forEach(el=>{if(el.value===inp.value)flag=false})
-    if(!flag&&document.querySelector("#photoVideo")&&document.querySelector('h2').innerHTML!==inp.value)window.location.reload();
+    datl.forEach((el) => {
+      if (el.value === inp.value) flag = false;
+    });
+    if (
+      !flag &&
+      document.querySelector("#photoVideo") &&
+      document.querySelector("h2").innerHTML !== inp.value
+    )
+      window.location.reload();
     return flag;
   }
-
 
   render() {
     return (
       <div className="App">
-     
-          <nav
-            className="navbar navbar-expand-lg navbar-dark bg-dark"
-            style={{ margin: "3px 0" }}
+        <nav
+          className="navbar navbar-expand-lg navbar-dark bg-dark"
+          style={{ margin: "3px 0" }}
+        >
+          <a className="navbar-brand">
+            <img className="navbar-mainlogo" src={mainLogo}></img>
+          </a>
+          <button
+            className="navbar-toggler navbar-toggler-right"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navb"
           >
-            <a className="navbar-brand">
-              <img className="navbar-mainlogo" src={mainLogo}></img>
-            </a>
-            <button
-              className="navbar-toggler navbar-toggler-right"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navb"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
+            <span className="navbar-toggler-icon"></span>
+          </button>
 
-            <div className="collapse navbar-collapse" id="navb">
-              <ul className="navbar-nav mr-auto">
-                <li className="nav-item">
-                  
-                  <Link to='/'>
-                    <a className="nav-link">Watchlist</a>
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link">Link</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link disabled">Disabled</a>
-                </li>
-              </ul>
+          <div className="collapse navbar-collapse" id="navb">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item">
+                <Link to="/">
+                  <a className="nav-link">Watchlist</a>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link">Link</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link disabled">Disabled</a>
+              </li>
+            </ul>
 
-              <form className="container-fluid my-2 my-lg-0">
-               <Link to='/FilmPage'>
-               
+            <form className="container-fluid my-2 my-lg-0">
+              <Link to="/FilmPage">
                 <input
                   className="form-control mr-sm-2"
                   onChange={this.searchCnangeHandler.bind(this)}
@@ -127,54 +129,83 @@ class App extends Component {
                   id="exampleDataList"
                   placeholder="Search"
                   style={{ cursor: "pointer" }}
-                  onClick={ (event) => {if(this.changeLinkState())event.preventDefault()}}
+                  onClick={(event) => {
+                    if (this.changeLinkState()) event.preventDefault();
+                  }}
                 />
-               </Link>
-                <datalist id="datalistOptions">{this.state.rows}</datalist>  
-              </form>
-            </div>
-          </nav>
-
-          <div id="ourRoot" className="d-flex justify-content-around">
-            <div id="fl" className="films-list">
-              <Route exact path="/">
-                <FilmList />
-              </Route>
-
-              <Route path="/FilmPage">
-                <FilmPage />
-              </Route>
-            </div>
+              </Link>
+              <datalist id="datalistOptions">{this.state.rows}</datalist>
+            </form>
           </div>
-       
-        <footer className="footer">
-          <div className="container-fluid">
+        </nav>
+
+        <div id="ourRoot" className="d-flex justify-content-around">
+          <div id="fl" className="films-list">
+            <Route exact path="/">
+              <FilmList />
+            </Route>
+
+            <Route path="/FilmPage">
+              <FilmPage />
+            </Route>
+          </div>
+        </div>
+
+        <footer className="bg-light text-center text-lg-start">
+          <div className="container p-4">
             <div className="row">
-              <div className="col-4"> &copy; IMDb-clone, 2021 </div>
-              <div className="col-4">
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item">developers:</li>
-                  <li className="list-group-item">
-                    <a href="https://github.com/YuPashintseva">YuPashintseva</a>
+              <div className="col-lg-6 col-md-12 mb-4 mb-md-0">
+                <h5 className="text-uppercase"> The Rolling Scopes School</h5>
+                <p>
+                  Бесплатный курс «JavaScript/Front-end» от сообщества The
+                  Rolling Scopes -{" "}
+                  <a
+                    className="footer__link"
+                    target="_blank"
+                    href="https://rs.school/js/"
+                  >
+                    rs.school/js
+                  </a>
+                </p>
+              </div>
+
+              <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 className="text-uppercase"></h5>
+                <div>
+                  <img className="footer__image" src={rsschool}></img>
+                </div>
+              </div>
+
+              <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 className="text-uppercase mb-0">Developed by:</h5>
+
+                <ul className="list-unstyled">
+                  <li>
+                    <a className="" href="https://github.com/YuPashintseva">
+                      YuPashintseva
+                    </a>
                   </li>
-                  <li className="list-group-item">
-                    <a href="https://github.com/anatkig">anatkig</a>
+                  <li>
+                    <a className="" href="https://github.com/anatkig">
+                      anatkig
+                    </a>
                   </li>
-                  <li className="list-group-item">
-                    <a href="https://github.com/vegas-muffin">vegas-muffin</a>
+                  <li>
+                    <a className="" href="https://github.com/vegas-muffin">
+                      vegas-muffin
+                    </a>
                   </li>
                 </ul>
               </div>
-              <div className="col-4">
-                <a
-                  className="footer__link"
-                  target="_blank"
-                  href="https://rs.school/js/"
-                >
-                  <img className="footer__image" src={rsschool}></img>
-                </a>
-              </div>
             </div>
+          </div>
+
+          <div className="text-center p-3">
+            {" "}
+            &copy; 2021 Copyright{" "}
+            <a className="text-dark" href="#">
+              IMDb-clone
+            </a>
           </div>
         </footer>
       </div>
