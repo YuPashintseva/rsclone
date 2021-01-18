@@ -15,7 +15,8 @@ import { NavLink } from "react-router-dom";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.incrementWatchListNumber = this.incrementWatchListNumber.bind(this)
+    this.state = {watchlist: 0};
     this.performSearch("");
   }
 
@@ -29,7 +30,6 @@ class App extends Component {
         console.log("Fetched data successfully");
         console.log(searchResults);
         const results = searchResults.results;
-        // console.log(results[0]);
 
         var movieRows = [];
 
@@ -85,6 +85,18 @@ class App extends Component {
     return flag;
   }
 
+  incrementWatchListNumber() {
+    this.setState({watchlist: this.state.watchlist + 1});
+  }
+
+  decrementWatchListNumber() {
+    let currentNum = this.state.watchlist;
+    if (currentNum > 1) {
+      currentNum -= 1;
+    }
+    this.setState({watchlist: currentNum});
+  }
+
   render() {
     return (
       <div className="App">
@@ -108,14 +120,14 @@ class App extends Component {
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
                 <Link to="/">
-                  <a className="nav-link">Watchlist</a>
+                  <a className="nav-link">Watchlist {this.state.watchlist}</a>
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link">Link</a>
+                <a className="nav-link">Settings</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link disabled">Disabled</a>
+                <a className="nav-link disabled">Statistic</a>
               </li>
             </ul>
 
@@ -142,7 +154,7 @@ class App extends Component {
         <div id="ourRoot" className="d-flex justify-content-around">
           <div id="fl" className="films-list">
             <Route exact path="/">
-              <FilmList />
+              <FilmList watchListincrement = {this.incrementWatchListNumber} />
             </Route>
 
             <Route path="/FilmPage">

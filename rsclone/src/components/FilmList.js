@@ -117,7 +117,7 @@ class FilmList extends React.Component {
                                 <div className="film-title" onMouseOver={()=>{ sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}}>{el.title}</div>
                             </Link>
                             
-                            <button type="button" className="add-to-watchlist-btn" onClick = {() => this.handleModalShowHide(el, true)}>+ Watchlist</button>
+                            <button type="button" className="add-to-watchlist-btn" onClick = {() => {this.handleModalShowHide(el, true); this.props.watchListincrement(); }}>+ Watchlist</button>
                             <div className="additional-info">
                                 <div className="trailer">
                                     <img src={play} alt="play button" className="play-button"/>  Trailer
