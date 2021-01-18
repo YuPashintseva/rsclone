@@ -10,8 +10,6 @@ import CarouselMain from './CaurouselMain';
     constructor() {
         super();
         this.state = {video:"",dat:JSON.parse(sessionStorage.getItem("val"))};
-     
-        //this.data = props.value;
     }
     async componentDidMount(){
      const response = await fetch(`https://api.themoviedb.org/3/movie/${this.state.dat.id}/videos?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=en-US`);

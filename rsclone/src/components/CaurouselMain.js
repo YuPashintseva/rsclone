@@ -123,7 +123,7 @@ class CarouselMain extends React.Component {
                 {this.state.dataMain.results.map(el => (
                     <div className="main-carousel-img">
                       <img className="poster-img-main rounded-img" src={`https://image.tmdb.org/t/p/original/${el.profile_path}`} alt={el.profile_path}/>
-                      <h2 className="star-name-carousel"><span>{el.name}</span></h2>
+                      <h2 className="star-name-carousel"><div>{el.name}</div></h2>
                     </div>
                 ))};
                 </Carousel>
@@ -174,7 +174,7 @@ class CarouselMain extends React.Component {
                 <div>
                   <div className="main-carousel-img">
                     {el.profile_path && <img className="poster-img-main rounded-img" src={`https://image.tmdb.org/t/p/original/${el.profile_path}`} alt={el.profile_path}/>}
-                    <h2 className="star-name-carousel"><span>{el.name}</span></h2>
+                    <div><h2 className="star-name-carousel"><div>{el.name}</div></h2></div>
                   </div>
                 </div>
               ))};

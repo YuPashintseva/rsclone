@@ -114,7 +114,7 @@ class FilmList extends React.Component {
                             </div>
                            <Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage">
                                 <div className="film-title" onMouseOver={()=>{ sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}}>{el.title}</div>
-                            </Link>
+                            </Link> 
                             
                             <button type="button" className="add-to-watchlist-btn" onClick = {() => {this.handleModalShowHide(el, true); this.props.watchListincrement(el.id); }}>+ Watchlist</button>
                             <div className="additional-info">

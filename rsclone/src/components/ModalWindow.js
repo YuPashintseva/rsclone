@@ -4,11 +4,14 @@ import { Helmet } from "react-helmet";
 
 class ModalWindow extends React.Component{
     render(){
+        let msgText = 'Successfully added to WatchList';
         if (this.props.toWatchList) {
             if (localStorage.getItem('films')) {
                 let arr = JSON.parse(localStorage.getItem('films'));
                 if (! arr.includes(this.props.filmInfo.id)) {
                     arr.push(this.props.filmInfo.id);
+                } else {
+                    msgText = 'It is already in Watchlist';
                 }
                 localStorage.setItem('films', JSON.stringify(arr));
             } else { 
@@ -23,7 +26,7 @@ class ModalWindow extends React.Component{
                         <Modal.Body className="show-grid">
                         <Container>
                             <Row>
-                               Successfully added to WatchList
+                               {msgText}
                             </Row>
                         </Container>
                         
