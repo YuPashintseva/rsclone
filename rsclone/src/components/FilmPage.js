@@ -68,7 +68,7 @@ import CarouselMain from './CaurouselMain';
                <div className="head-text">
                 Actors
                </div>
-               <CarouselMain type={"people"} />
+               <CarouselMain type={"actors"} filmId={this.state.dat.id} />
             </div>
         )
     }

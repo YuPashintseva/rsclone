@@ -16,13 +16,19 @@ class CarouselMain extends React.Component {
       if (this.props.type) {
         if (this.props.type === 'films') {
           responseMain = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=en-US&page=2');
-        } else {
+        } else if (this.props.type === 'people') {
           responseMain = await fetch('https://api.themoviedb.org/3/person/popular?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=en-US&page=2');
+        } else {
+          responseMain = await fetch('https://api.themoviedb.org/3/movie/464052/credits?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=en-US');
+          if (this.props.filmId) {
+            responseMain = await fetch(`https://api.themoviedb.org/3/movie/${this.props.filmId}/credits?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=en-US`);
+          }
         }
         this.setState({ type: this.props.type })
        }
       const jsonMain = await responseMain.json();
       this.setState({ dataMain: jsonMain});
+      console.log("test111:",this.state.dataMain.cast)
   }
     render() {
 
@@ -75,7 +81,7 @@ class CarouselMain extends React.Component {
                 </Carousel>
               </div>
             );
-          } else {
+          } else if (this.state.type === "people") {
             const responsive = {
               superLargeDesktop: {
                 breakpoint: { max: 4000, min: 3000 },
@@ -125,7 +131,57 @@ class CarouselMain extends React.Component {
             );
           }
           
-        } else {
+        } else if ((this.state.type === "actors") && (this.state.dataMain.cast)) {
+          const responsive = {
+            superLargeDesktop: {
+              breakpoint: { max: 4000, min: 3000 },
+              items: 5
+            },
+            desktop: {
+              breakpoint: { max: 3000, min: 1024 },
+              items: 5
+            },
+            tablet: {
+              breakpoint: { max: 1024, min: 464 },
+              items: 4
+            },
+            mobile: {
+              breakpoint: { max: 464, min: 0 },
+              items: 2
+            }
+          };
+          return(
+            <div className="main-carousel-wrapper">
+              <Carousel                 
+                swipeable={false}
+                draggable={false}
+                showDots={false}
+                responsive={responsive}
+                ssr={true}
+                infinite={true}
+                autoPlaySpeed={1000}
+                keyBoardControl={true}
+                customTransition="all .5"
+                transitionDuration={1000}
+                containerClass="carousel-container"
+                removeArrowOnDeviceType={["tablet", "mobile"]}
+                dotListClass="custom-dot-list-style"
+                itemClass="carousel-item-padding"
+                centerMode={false}
+                slidesToSlide={3}
+              >
+              {this.state.dataMain.cast.map(el => (
+                  <div className="main-carousel-img">
+                    <img className="poster-img-main rounded-img" src={`https://image.tmdb.org/t/p/original/${el.profile_path}`} alt={el.profile_path}/>
+                    <h2 className="star-name-carousel"><span>{el.name}</span></h2>
+                  </div>
+              ))};
+              </Carousel>
+            </div>
+          );
+        }
+        
+        else {
           return (<div>Wait a little</div>)
         }
     }
