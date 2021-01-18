@@ -20,6 +20,28 @@ class App extends Component {
     this.performSearch("");
   }
 
+  incrementWatchListNumber() {
+    this.setState({watchlist: this.state.watchlist + 1});
+  }
+
+  decrementWatchListNumber() {
+    let currentNum = this.state.watchlist;
+    if (currentNum > 1) {
+      currentNum -= 1;
+    }
+    this.setState({watchlist: currentNum});
+  }
+
+  defineNumberWatchList() {
+    if (localStorage.getItem('films')) {
+      this.setState({watchlist: JSON.parse(localStorage.getItem('films')).length});
+    }
+  }
+
+  componentDidMount() {
+    this.defineNumberWatchList();
+  }
+
   performSearch(searchTerm) {
     const urlString =
       "https://api.themoviedb.org/3/search/movie?api_key=c9ebd652172bbcdaa5b3746fa2e60207&query=" +
@@ -83,18 +105,6 @@ class App extends Component {
     )
       window.location.reload();
     return flag;
-  }
-
-  incrementWatchListNumber() {
-    this.setState({watchlist: this.state.watchlist + 1});
-  }
-
-  decrementWatchListNumber() {
-    let currentNum = this.state.watchlist;
-    if (currentNum > 1) {
-      currentNum -= 1;
-    }
-    this.setState({watchlist: currentNum});
   }
 
   render() {

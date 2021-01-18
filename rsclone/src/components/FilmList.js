@@ -64,7 +64,6 @@ class FilmList extends React.Component {
 
     handleModalShowHide2() {
         this.setState({ showHide: !this.state.showHide });
-        //this.setState({ showAlert: !this.state.showHide });
     }
 
 
