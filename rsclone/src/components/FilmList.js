@@ -74,7 +74,7 @@ class FilmList extends React.Component {
             }
             return (
                 <div>
-                <CaurouselMain />
+                <CaurouselMain type={"films"} />
                 <div className="head-text">
                     What to watch
                 </div>
@@ -132,6 +132,10 @@ class FilmList extends React.Component {
             ))};
                 
             </Carousel>
+            <div className="head-text">
+                Popular people
+            </div>
+            <CaurouselMain type={"people"} />
             </div>
             );
         } else {

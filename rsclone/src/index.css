@@ -54,3 +54,12 @@ h2 span {
     padding-left: 10px;
     padding-top: 5%;
 }
+
+.rounded-img {
+    border-radius: 10%;
+}
+
+.star-name-carousel {
+    display: flex;
+    justify-content: center;
+}
