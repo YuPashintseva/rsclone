@@ -39,7 +39,7 @@ const responsive = {
 class FilmList extends React.Component {
     constructor() {
         super();
-        this.state = {data: [], dataMain: [], value: "", showHide: false, currFilmInfo: {}};
+        this.state = {data: [], dataMain: [], value: "", showHide: false, currFilmInfo: {}, showAlert: false};
         this.handleModalShowHide = this.handleModalShowHide.bind(this);
         this.handleModalShowHide2 = this.handleModalShowHide2.bind(this);
 
@@ -56,13 +56,15 @@ class FilmList extends React.Component {
         return this.state;
     }
 
-    handleModalShowHide(film) {
+    handleModalShowHide(film, isneedAlert) {
         this.setState({ showHide: !this.state.showHide });
+        this.setState({ showAlert: isneedAlert });
         this.setState({ currFilmInfo: film });
     }
 
     handleModalShowHide2() {
         this.setState({ showHide: !this.state.showHide });
+        //this.setState({ showAlert: !this.state.showHide });
     }
 
 
@@ -70,7 +72,7 @@ class FilmList extends React.Component {
         let mod = '';
         if (this.state.data.results) {
             if (this.state.showHide) {
-                mod = <ModalWindow handleModalShowHide = {this.handleModalShowHide2} filmInfo = {this.state.currFilmInfo} />
+                mod = <ModalWindow handleModalShowHide = {this.handleModalShowHide2} filmInfo = {this.state.currFilmInfo} toWatchList={this.state.showAlert} />
             }
             return (
                 <div>
@@ -115,13 +117,13 @@ class FilmList extends React.Component {
                                 <div className="film-title" onMouseOver={()=>{ sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}}>{el.title}</div>
                             </Link>
                             
-                            <button type="button" className="add-to-watchlist-btn">+ Watchlist</button>
+                            <button type="button" className="add-to-watchlist-btn" onClick = {() => this.handleModalShowHide(el, true)}>+ Watchlist</button>
                             <div className="additional-info">
                                 <div className="trailer">
                                     <img src={play} alt="play button" className="play-button"/>  Trailer
                                 </div>
                                 <div className="info-button-wrapper">
-                                    <img src={info} alt="info button" className="info-button" onClick = {() => this.handleModalShowHide(el)}/> 
+                                    <img src={info} alt="info button" className="info-button" onClick = {() => this.handleModalShowHide(el, false)}/> 
                                 </div>
                             </div>
                         </div>

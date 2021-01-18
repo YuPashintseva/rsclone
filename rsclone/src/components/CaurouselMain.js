@@ -60,7 +60,7 @@ class CarouselMain extends React.Component {
                   showDots={false}
                   responsive={responsive}
                   ssr={true}
-                  infinite={true}
+                  infinite={false}
                   autoPlaySpeed={1000}
                   keyBoardControl={true}
                   customTransition="all .5"
@@ -108,7 +108,7 @@ class CarouselMain extends React.Component {
                   showDots={false}
                   responsive={responsive}
                   ssr={true}
-                  infinite={true}
+                  infinite={false}
                   autoPlaySpeed={1000}
                   keyBoardControl={true}
                   customTransition="all .5"
@@ -158,7 +158,7 @@ class CarouselMain extends React.Component {
                 showDots={false}
                 responsive={responsive}
                 ssr={true}
-                infinite={true}
+                infinite={false}
                 autoPlaySpeed={1000}
                 keyBoardControl={true}
                 customTransition="all .5"
@@ -171,10 +171,12 @@ class CarouselMain extends React.Component {
                 slidesToSlide={3}
               >
               {this.state.dataMain.cast.map(el => (
+                <div>
                   <div className="main-carousel-img">
-                    <img className="poster-img-main rounded-img" src={`https://image.tmdb.org/t/p/original/${el.profile_path}`} alt={el.profile_path}/>
+                    {el.profile_path && <img className="poster-img-main rounded-img" src={`https://image.tmdb.org/t/p/original/${el.profile_path}`} alt={el.profile_path}/>}
                     <h2 className="star-name-carousel"><span>{el.name}</span></h2>
                   </div>
+                </div>
               ))};
               </Carousel>
             </div>

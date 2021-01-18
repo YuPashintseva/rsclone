@@ -13,8 +13,6 @@ import { Helmet } from "react-helmet";
 import { NavLink } from "react-router-dom";
 
 class App extends Component {
-  //console.log(sessionStorage.getItem("val"))
-
   constructor(props) {
     super(props);
     this.state = {};
@@ -107,7 +105,7 @@ class App extends Component {
                 <li className="nav-item">
                   
                   <Link to='/'>
-                    <a className="nav-link">Home</a>
+                    <a className="nav-link">Watchlist</a>
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -184,11 +182,4 @@ class App extends Component {
   }
 }
 
-/*
-export function filmPage(el) {
-  ReactDOM.render(
-    <FilmPage value={el}/>,document.getElementById('ourRoot')
-  )
-}
-*/
 export default App;
