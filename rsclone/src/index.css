@@ -87,10 +87,11 @@ footer {
 
 .watchlist-num {
     background-color: #f5c518;
-    padding-left: 9px;
-    padding-top: 2px;
+    display: flex;
+    justify-content: center;
     width: 50px;
     height: 30px;
+    padding: 3px 6px;
     border-radius: 50%;
     color: black;
 }

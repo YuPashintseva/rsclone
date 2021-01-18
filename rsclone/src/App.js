@@ -20,8 +20,15 @@ class App extends Component {
     this.performSearch("");
   }
 
-  incrementWatchListNumber() {
-    this.setState({watchlist: this.state.watchlist + 1});
+  incrementWatchListNumber(filmid) {
+    let arr = JSON.parse(localStorage.getItem('films'));
+    if (arr) {
+      if (! arr.includes(filmid)) {
+        this.setState({watchlist: this.state.watchlist + 1});
+      }
+    } else {
+      this.setState({watchlist: this.state.watchlist + 1});
+    }   
   }
 
   decrementWatchListNumber() {
