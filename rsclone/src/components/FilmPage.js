@@ -3,6 +3,7 @@ import React from 'react';
 import star from './assets/megastar.png';
 import FilmList from './FilmList';
 import { Helmet } from "react-helmet";
+import CarouselMain from './CaurouselMain';
 
 
  class FilmPage extends React.Component{
@@ -64,6 +65,10 @@ import { Helmet } from "react-helmet";
                <div id = "videoCarousel" className="wrapper"></div>
                <div id = "photoCarousel" className="wrapper"></div>
                <div id = "cast"></div>
+               <div className="head-text">
+                Actors
+               </div>
+               <CarouselMain type={"people"} />
             </div>
         )
     }
