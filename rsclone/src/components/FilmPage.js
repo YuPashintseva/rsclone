@@ -16,7 +16,8 @@ import { Helmet } from "react-helmet";
      const response = await fetch(`https://api.themoviedb.org/3/movie/${this.state.dat.id}/videos?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=en-US`);
      const res = await response.json();
      this.setState({ video: res.results[0]?res.results[0].key:''});
-     this.setState({dat: JSON.parse(sessionStorage.getItem("val"))});
+     let val = JSON.parse(sessionStorage.getItem("val"));
+     this.setState({dat: val});
      
     }
 

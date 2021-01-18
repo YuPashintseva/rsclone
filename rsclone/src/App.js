@@ -72,12 +72,15 @@ class App extends Component {
    
     const currFilm = filmDATA.filter(el=>el.original_title===inp.value);
    
+   
     sessionStorage.setItem("val",JSON.stringify(currFilm[0]));
-
+   
     let flag = true;
     datl.forEach(el=>{if(el.value===inp.value)flag=false})
+    if(!flag&&document.querySelector("#photoVideo")&&document.querySelector('h2').innerHTML!==inp.value)window.location.reload();
     return flag;
   }
+
 
   render() {
     return (
@@ -116,7 +119,8 @@ class App extends Component {
               </ul>
 
               <form className="container-fluid my-2 my-lg-0">
-               <Link to='/FilmPage'  onClick={ (event) => {if(this.changeLinkState())event.preventDefault()}}>
+               <Link to='/FilmPage'>
+               
                 <input
                   className="form-control mr-sm-2"
                   onChange={this.searchCnangeHandler.bind(this)}
@@ -124,6 +128,8 @@ class App extends Component {
                   list="datalistOptions"
                   id="exampleDataList"
                   placeholder="Search"
+                  style={{ cursor: "pointer" }}
+                  onClick={ (event) => {if(this.changeLinkState())event.preventDefault()}}
                 />
                </Link>
                 <datalist id="datalistOptions">{this.state.rows}</datalist>  
