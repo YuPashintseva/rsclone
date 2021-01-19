@@ -2,6 +2,12 @@ import React from 'react';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Helmet } from "react-helmet";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 class CarouselMain extends React.Component {
     constructor() {
@@ -74,7 +80,9 @@ class CarouselMain extends React.Component {
                 >
                 {this.state.dataMain.results.map(el => (
                     <div className="main-carousel-img">
+                      <Link to='/FilePage'>
                       <img className="poster-img-main" src={`https://image.tmdb.org/t/p/original/${el.backdrop_path}`} alt={el.title}/>
+                      </Link>
                       <h2><span>{el.title}</span></h2>
                     </div>
                 ))};
@@ -122,7 +130,9 @@ class CarouselMain extends React.Component {
                 >
                 {this.state.dataMain.results.map(el => (
                     <div className="main-carousel-img">
+                      <Link to='/FilePage'>
                       <img className="poster-img-main rounded-img" src={`https://image.tmdb.org/t/p/original/${el.profile_path}`} alt={el.profile_path}/>
+                      </Link>
                       <h2 className="star-name-carousel"><div>{el.name}</div></h2>
                     </div>
                 ))};
@@ -173,7 +183,7 @@ class CarouselMain extends React.Component {
               {this.state.dataMain.cast.map(el => (
                 <div>
                   <div className="main-carousel-img">
-                    {el.profile_path && <img className="poster-img-main rounded-img" src={`https://image.tmdb.org/t/p/original/${el.profile_path}`} alt={el.profile_path}/>}
+                    {el.profile_path && <Link to='/FilePage'><img className="poster-img-main rounded-img" src={`https://image.tmdb.org/t/p/original/${el.profile_path}`} alt={el.profile_path}/></Link>}
                     <div><h2 className="star-name-carousel"><div>{el.name}</div></h2></div>
                   </div>
                 </div>
