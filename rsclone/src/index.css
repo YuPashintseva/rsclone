@@ -120,3 +120,24 @@ footer {
 .row-bottom-padding {
     padding-bottom: 4%;
 }
+
+.top-menu-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.back-button {
+    margin-top: 5%;
+    padding: 0% 10%;
+    color: #4da6ff;
+    font-weight: 600;
+    background-color: #2e2e2e;
+    border: none;
+    border-radius: 5px;
+
+}
+
+.back-button:hover {
+    background-color: #3b3b3b;
+    border: none;
+}

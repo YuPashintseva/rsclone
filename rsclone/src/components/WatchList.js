@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Modal, Container, Row, Col, Image } from 'react-bootstrap'
+import { Button, Modal, Container, Row, Col, Image } from 'react-bootstrap';
+
 
 class Watchlist extends React.Component{
     constructor() {
@@ -10,7 +11,10 @@ class Watchlist extends React.Component{
         if (filmsList) {
             return (
                 <div id = "fp" className="container-fluid wrapperStyle">
-                    <div className="head-text">Your Watchlist</div>
+                    <div className="top-menu-wrapper">
+                        <div className="head-text">Your Watchlist</div>
+                        <button className="back-button" >Back</button>
+                    </div>
                     <div>
                     {filmsList.map(el => (
                         <Row className="row-bottom-padding">
