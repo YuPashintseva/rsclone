@@ -1,6 +1,7 @@
 import ReactDOM from "react-dom";
 import FilmList from "./components/FilmList";
 import FilmPage from "./components/FilmPage";
+import WatchList from "./components/WatchList";
 import MovieRow from "./components/MovieRow";
 import mainLogo from "./logo-imdb.png";
 import rsschool from "./components/assets/rs_school_js.svg";
@@ -11,6 +12,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import $ from "jquery";
 import { Helmet } from "react-helmet";
 import { NavLink } from "react-router-dom";
+import Watchlist from "./components/WatchList";
 
 class App extends Component {
   constructor(props) {
@@ -136,9 +138,8 @@ class App extends Component {
           <div className="collapse navbar-collapse" id="navb">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
-                <Link to="/">
+                <Link style={{ textDecoration: 'none' }} to= "/WatchList">
                   <a className="nav-link"><div className="wl">WatchList <div className="watchlist-num">{this.state.watchlist}</div></div></a>
-                  
                 </Link>
               </li>
               <li className="nav-item">
@@ -177,6 +178,10 @@ class App extends Component {
 
             <Route path="/FilmPage">
               <FilmPage />
+            </Route>
+
+            <Route path="/WatchList">
+             <Watchlist />
             </Route>
           </div>
         </div>
