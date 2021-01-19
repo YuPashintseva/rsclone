@@ -16,6 +16,7 @@ html,
 }
 .films-list {
   width: 65%;
+  margin-top: 4%;
 }
 .carousel-item-padding {
   padding: 10px;
