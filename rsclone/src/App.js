@@ -43,7 +43,7 @@ class App extends Component {
 
   defineNumberWatchList() {
     if (localStorage.getItem('films')) {
-      this.setState({watchlist: JSON.parse(localStorage.getItem('films')).length});
+      this.setState({watchlist: JSON.parse(localStorage.getItem('films')).length/2});
     }
   }
 

@@ -10,12 +10,20 @@ class ModalWindow extends React.Component{
                 let arr = JSON.parse(localStorage.getItem('films'));
                 if (! arr.includes(this.props.filmInfo.id)) {
                     arr.push(this.props.filmInfo.id);
+                    let infoArr = [];
+                    infoArr.push(this.props.filmInfo.poster_path);
+                    infoArr.push(this.props.filmInfo.release_date);
+                    infoArr.push(this.props.filmInfo.vote_average);
+                    infoArr.push(this.props.filmInfo.title);
+                    infoArr.push(this.props.filmInfo.overview);
+                    arr.push(infoArr);
                 } else {
                     msgText = 'It is already in Watchlist';
                 }
                 localStorage.setItem('films', JSON.stringify(arr));
             } else { 
-                localStorage.setItem('films', JSON.stringify([this.props.filmInfo.id]));
+                console.log("filmInfo",this.props.filmInfo);
+                localStorage.setItem('films', JSON.stringify([this.props.filmInfo.id, [this.props.filmInfo.poster_path,this.props.filmInfo.release_date, this.props.filmInfo.vote_average, this.props.filmInfo.title, this.props.filmInfo.overview]]));
             }
             return(
                 <div>
@@ -50,7 +58,7 @@ class ModalWindow extends React.Component{
                         <Container>
                             <Row>
                                 <Col xs={6} md={4}>
-                                <Image className="poster-img-modal" src={`https://image.tmdb.org/t/p/original/${this.props.filmInfo.poster_path}`} alt={this.props.filmInfo.title} thumbnail />
+                                    <Image className="poster-img-modal" src={`https://image.tmdb.org/t/p/original/${this.props.filmInfo.poster_path}`} alt={this.props.filmInfo.title} thumbnail />
                                 </Col>
                                 <Col xs={12} md={8}>
                                 <strong>Overview: </strong>  {this.props.filmInfo.overview} <br/><br/>

@@ -112,3 +112,11 @@ footer {
     display: flex;
     justify-content: center;
 }
+
+.img-watchlist {
+    width: 70%;
+}
+
+.row-bottom-padding {
+    padding-bottom: 4%;
+}
