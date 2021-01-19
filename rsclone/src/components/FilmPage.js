@@ -24,7 +24,7 @@ import CarouselMain from './CaurouselMain';
        
         return(
             
-            <div id = "fp" className=" container-fluid wrapper wrapperStyle">
+            <div id = "fp" className=" container-fluid wrapperStyle">
                
                <div id = "upperBlock" className="wrapper">
                  <div className="row"></div>

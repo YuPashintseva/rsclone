@@ -6,7 +6,9 @@ class Watchlist extends React.Component{
     }
     render() {
         return (
-            <div style={{color:'white'}}>Test</div>
+            <div id = "fp" className="container-fluid wrapperStyle">
+                <div className="head-text">Your Watchlist</div>
+            </div>
         )
     }
 }
