@@ -73,7 +73,7 @@ footer {
 }
 
 .nav-link {
-    width: 7em;
+    width: 7.5em;
     text-decoration: none;
 }
 
@@ -90,6 +90,7 @@ footer {
     padding: 3px 6px;
     border-radius: 50%;
     color: black;
+    margin-left: 7px;
 }
 
 .star-name-carousel {
