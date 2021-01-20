@@ -154,4 +154,5 @@ footer {
 .close-btn-img:hover {
     border-radius: 50%;
     background-color: #f5c518;
+    cursor: pointer;
 }
