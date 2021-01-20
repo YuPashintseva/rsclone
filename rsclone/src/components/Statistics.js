@@ -8,15 +8,19 @@ class Statistics extends React.Component {
         render () {
             return (
              <div id = 'st' className = 'container-fluid'>
-              <div id = 'bestRatings'></div>
-              <div id = 'mostOftenSeen'></div>
-              <div id = 'mostRecent'></div>
-              <div id = 'youWereInterested'></div>
-              <div id = 'columnchart_values' style={{ width: "900px", height: "300px" }}></div>
-              <Chart
-  width={'500px'}
-  height={'300px'}
-  chartType="BarChart"
+               <div className='row' style={{margin: '1%'}}>
+              <button id = 'bestRatings' >bestRatings</button>
+              <button id = 'mostOftenSeen' >mostOftenSeen</button>
+              <button id = 'mostRecent' >mostRecent</button>
+              <button id = 'youWereInterested' >youWereInterested</button>
+              </div>
+              <div id = 'columnchart_values' style={{height:'60vh', backgroundColor: 'white', padding: '2%'}}>
+              
+  <Chart
+              
+  width={'100%'}
+  height={'95%'}
+  chartType="Bar"
   loader={<div>Loading Chart</div>}
   data={[
     ['City', '2010 Population', '2000 Population'],
@@ -26,20 +30,21 @@ class Statistics extends React.Component {
     ['Houston, TX', 2099000, 1953000],
     ['Philadelphia, PA', 1526000, 1517000],
   ]}
+
   options={{
+  
+    chart:{
     title: 'Population of Largest U.S. Cities',
-    chartArea: { width: '50%' },
-    hAxis: {
-      title: 'Total Population',
-      minValue: 0,
+    subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+    
+  
     },
-    vAxis: {
-      title: 'City',
-    },
+    
   }}
   // For tests
   rootProps={{ 'data-testid': '1' }}
 />
+            </div>
              </div>
             )
         }
