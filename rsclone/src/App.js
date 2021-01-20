@@ -1,7 +1,6 @@
 import ReactDOM from "react-dom";
 import FilmList from "./components/FilmList";
 import FilmPage from "./components/FilmPage";
-import WatchList from "./components/WatchList";
 import MovieRow from "./components/MovieRow";
 import mainLogo from "./logo-imdb.png";
 import rsschool from "./components/assets/rs_school_js.svg";
@@ -13,6 +12,7 @@ import $ from "jquery";
 import { Helmet } from "react-helmet";
 import { NavLink } from "react-router-dom";
 import Watchlist from "./components/WatchList";
+import Statistics from "./components/Statistics";
 
 class App extends Component {
   constructor(props) {
@@ -146,7 +146,9 @@ class App extends Component {
                 <a className="nav-link">Settings</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link disabled">Statistic</a>
+                <Link to = "/Statistics">
+                <a className="nav-link">Statistics</a>
+                </Link>
               </li>
             </ul>
 
@@ -182,6 +184,10 @@ class App extends Component {
 
             <Route path="/WatchList">
              <Watchlist />
+            </Route>
+
+            <Route path="/Statistics">
+             <Statistics />
             </Route>
           </div>
         </div>
