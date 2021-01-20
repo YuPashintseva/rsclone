@@ -11,6 +11,7 @@ class ModalWindow extends React.Component{
                 if (! arr.includes(this.props.filmInfo.id)) {
                     arr.push(this.props.filmInfo.id);
                     let infoArr = [];
+                    infoArr.push(this.props.filmInfo.id);
                     infoArr.push(this.props.filmInfo.poster_path);
                     infoArr.push(this.props.filmInfo.release_date);
                     infoArr.push(this.props.filmInfo.vote_average);
@@ -23,7 +24,7 @@ class ModalWindow extends React.Component{
                 localStorage.setItem('films', JSON.stringify(arr));
             } else { 
                 console.log("filmInfo",this.props.filmInfo);
-                localStorage.setItem('films', JSON.stringify([this.props.filmInfo.id, [this.props.filmInfo.poster_path,this.props.filmInfo.release_date, this.props.filmInfo.vote_average, this.props.filmInfo.title, this.props.filmInfo.overview]]));
+                localStorage.setItem('films', JSON.stringify([this.props.filmInfo.id, [this.props.filmInfo.id, this.props.filmInfo.poster_path,this.props.filmInfo.release_date, this.props.filmInfo.vote_average, this.props.filmInfo.title, this.props.filmInfo.overview]]));
             }
             return(
                 <div>
