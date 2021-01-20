@@ -156,3 +156,8 @@ footer {
     background-color: #f5c518;
     cursor: pointer;
 }
+
+.main-img-wrapper:hover {
+    
+    background-color: #2e2e2e;
+}

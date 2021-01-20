@@ -1,6 +1,7 @@
 import ReactDOM from "react-dom";
 import FilmList from "./components/FilmList";
 import FilmPage from "./components/FilmPage";
+import Trailer from "./components/Trailer";
 import MovieRow from "./components/MovieRow";
 import mainLogo from "./logo-imdb.png";
 import rsschool from "./components/assets/rs_school_js.svg";
@@ -126,7 +127,8 @@ class App extends Component {
           style={{ margin: "3px 0" }}
         >
           <a className="navbar-brand">
-          <Link to='/'><img className="navbar-mainlogo" src={mainLogo}></img></Link>
+          <Link to='/'>
+            <div className="main-img-wrapper"><img className="navbar-mainlogo" src={mainLogo}></img></div></Link>
           </a>
           <button
             className="navbar-toggler navbar-toggler-right"
@@ -191,6 +193,9 @@ class App extends Component {
             <Route path="/Statistics">
              <Statistics />
             </Route>
+            <Route path="/Trailer">
+              <Trailer />
+           </Route>
           </div>
         </div>
 
