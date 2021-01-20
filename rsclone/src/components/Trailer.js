@@ -10,14 +10,11 @@ class Trailer extends React.Component{
         
     }
     
-    render() {
-        
-
+    render() {  
             return (
                 <div id = "fp" className="container-fluid wrapperStyle">
                     <div className="top-menu-wrapper">
                         <div className="head-text">Trailer</div>
-                        <button className="back-button">Home</button>
                     </div>
                     <div>
                     </div>

@@ -118,7 +118,7 @@ class FilmList extends React.Component {
                             
                             <button type="button" className="add-to-watchlist-btn" onClick = {() => {this.handleModalShowHide(el, true); this.props.watchListincrement(el.id); }}>+ Watchlist</button>
                             <div className="additional-info">
-                                <Link to= "/Trailer" > 
+                                <Link to= {{pathname:'/Trailer',testinfo:'test'}}> 
                                     <div className="trailer">                                
                                         <img src={play} alt="play button" className="play-button"/>  Trailer
                                     </div>
