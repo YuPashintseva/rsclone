@@ -8,7 +8,7 @@ import rsschool from "./components/assets/rs_school_js.svg";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
-import { BrowserRouter as  Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import $ from "jquery";
 import Watchlist from "./components/WatchList";
 import Statistics from "./components/Statistics";
@@ -20,9 +20,11 @@ class App extends Component {
     this.decrementWatchListNumber = this.decrementWatchListNumber(this);
     this.state = {watchlist: 0};
     this.performSearch("");
+    
   }
 
   incrementWatchListNumber(filmid) {
+    
     let arr = JSON.parse(localStorage.getItem('films'));
     if (arr) {
       if (! arr.includes(filmid)) {
@@ -34,6 +36,8 @@ class App extends Component {
   }
 
   decrementWatchListNumber() {
+    //without it nothing worked
+    localStorage.setItem('films',JSON.stringify('curry'));
     let currentNum =  JSON.parse(localStorage.getItem('films')).length/2;
     if (currentNum > 1) {
       currentNum -= 1;
@@ -176,16 +180,16 @@ class App extends Component {
 
         <div id="ourRoot" className="d-flex justify-content-around">
           <div id="fl" className="films-list">
-            <Route exact path="/">
+          <Route exact path="/">
               <FilmList watchListincrement = {this.incrementWatchListNumber} />
             </Route>
-
+            
             <Route path="/FilmPage">
               <FilmPage />
             </Route>
 
             <Route path="/WatchList">
-             <Watchlist WatchListdecrement = {this.decrementWatchListNumber}/>
+             <Watchlist watchListdecrement = {this.decrementWatchListNumber}/>
             </Route>
 
             <Route path="/Statistics">
