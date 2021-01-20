@@ -17,7 +17,8 @@ import Statistics from "./components/Statistics";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.incrementWatchListNumber = this.incrementWatchListNumber.bind(this)
+    this.incrementWatchListNumber = this.incrementWatchListNumber.bind(this);
+    this.decrementWatchListNumber = this.decrementWatchListNumber(this);
     this.state = {watchlist: 0};
     this.performSearch("");
   }
@@ -34,11 +35,12 @@ class App extends Component {
   }
 
   decrementWatchListNumber() {
-    let currentNum = this.state.watchlist;
+    let currentNum =  JSON.parse(localStorage.getItem('films')).length/2;
     if (currentNum > 1) {
       currentNum -= 1;
+      this.setState({watchlist: currentNum});
     }
-    this.setState({watchlist: currentNum});
+    
   }
 
   defineNumberWatchList() {
@@ -183,7 +185,7 @@ class App extends Component {
             </Route>
 
             <Route path="/WatchList">
-             <Watchlist />
+             <Watchlist WatchListdecrement = {this.decrementWatchListNumber}/>
             </Route>
 
             <Route path="/Statistics">

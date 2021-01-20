@@ -49,7 +49,7 @@ class Watchlist extends React.Component{
                                 {el[5] ? <div><strong>Overview: </strong> {el[5]}</div> : null}
                             </Col>
                             <Col xs={1} md={1}>
-                                {el[0] ? <div className="background-close-btn"><Image className="close-btn-img" src={close} alt="close button" onClick = {() => {this.updateWatchList(el[0])}}/></div> : null}
+                                {el[0] ? <div className="background-close-btn"><Image className="close-btn-img" src={close} alt="close button" onClick = {() => {this.updateWatchList(el[0]); }}/></div> : null}
                             </Col>
                         </Row>
                         
