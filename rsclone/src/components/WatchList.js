@@ -6,10 +6,16 @@ import close from './assets/close.png'
 class Watchlist extends React.Component{
     constructor() {
         super();
+        this.state = {data: []};
+    }
+
+    componentDidMount() {
+        let filmsList = JSON.parse(localStorage.getItem('films'));
+        this.setState({data: filmsList});
     }
     render() {
-        let filmsList = JSON.parse(localStorage.getItem('films'));
-        if (filmsList) {
+        
+        if (this.state.data) {
             return (
                 <div id = "fp" className="container-fluid wrapperStyle">
                     <div className="top-menu-wrapper">
@@ -17,7 +23,7 @@ class Watchlist extends React.Component{
                         <button className="back-button">Home</button>
                     </div>
                     <div>
-                    {filmsList.map(el => (
+                    {this.state.data.map(el => (
                         <Row className="row-bottom-padding">
                             <Col xs={6} md={4}>
                                 {el[0] ? <Image className="poster-img-modal img-watchlist" src={`https://image.tmdb.org/t/p/original/${el[0]}`} alt={el[0]} thumbnail />: null}
