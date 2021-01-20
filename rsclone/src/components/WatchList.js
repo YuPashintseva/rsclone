@@ -23,7 +23,7 @@ class Watchlist extends React.Component{
         currentArray.splice(idx, 1);
         localStorage.setItem('films', JSON.stringify(currentArray));
         this.setState({data: currentArray});
-        
+        console.log('this is it'+ currentArray)
     }
     
     render() {

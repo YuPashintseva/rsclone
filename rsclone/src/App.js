@@ -8,10 +8,8 @@ import rsschool from "./components/assets/rs_school_js.svg";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as  Route, Link } from "react-router-dom";
 import $ from "jquery";
-import { Helmet } from "react-helmet";
-import { NavLink } from "react-router-dom";
 import Watchlist from "./components/WatchList";
 import Statistics from "./components/Statistics";
 
