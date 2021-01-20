@@ -141,3 +141,17 @@ footer {
     background-color: #3b3b3b;
     border: none;
 }
+
+.background-close-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.close-btn-img {
+    padding: 20%;
+}
+
+.close-btn-img:hover {
+    border-radius: 50%;
+    background-color: #f5c518;
+}
