@@ -124,7 +124,7 @@ class App extends Component {
           style={{ margin: "3px 0" }}
         >
           <a className="navbar-brand">
-            <img className="navbar-mainlogo" src={mainLogo}></img>
+          <Link to='/'><img className="navbar-mainlogo" src={mainLogo}></img></Link>
           </a>
           <button
             className="navbar-toggler navbar-toggler-right"
