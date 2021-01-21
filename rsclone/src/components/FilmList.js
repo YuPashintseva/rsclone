@@ -109,8 +109,11 @@ class FilmList extends React.Component {
                        
                         <div className="bottom-content-wrapper">
                             <div className="rating">
-                                <div><img src={star} alt="star icon" /></div>
-                                <div className="vote_average">{el.vote_average}</div>
+                                <div className="vote">
+                                    <img src={star} alt="star icon" />
+                                    <div className="vote_average">{el.vote_average}</div>
+                                </div>
+                                <div className="like-film">Like this film</div>
                             </div>
                            <Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage">
                                 <div className="film-title" onMouseOver={()=>{ sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}}>{el.title}</div>
