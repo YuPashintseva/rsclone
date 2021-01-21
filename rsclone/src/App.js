@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import $ from "jquery";
 import Watchlist from "./components/WatchList";
 import Statistics from "./components/Statistics";
+import GoogleAuth from "./components/GoogleAuth";
 
 class App extends Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class App extends Component {
 
   decrementWatchListNumber() {
     //without it nothing worked
-    localStorage.setItem('films',JSON.stringify('curry'));
+    localStorage.setItem('films',JSON.stringify([]));
     let currentNum =  JSON.parse(localStorage.getItem('films')).length/2;
     if (currentNum > 1) {
       currentNum -= 1;
@@ -155,6 +156,12 @@ class App extends Component {
                 <Link to = "/Statistics">
                 <a className="nav-link">Statistics</a>
                 </Link>
+              </li>
+              <li className="nav-item">
+                <Link to = "/">
+                  <a className="nav-link">Log In</a>
+                </Link>
+                <GoogleAuth />
               </li>
             </ul>
 
