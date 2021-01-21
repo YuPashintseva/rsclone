@@ -209,4 +209,9 @@ footer {
 
 .like-film {
     padding-top: 2px;
+    cursor: pointer;
 }
+.like-film:hover {
+    color: #f5c518;
+}
+
