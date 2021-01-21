@@ -79,12 +79,13 @@ class CarouselMain extends React.Component {
                   slidesToSlide={3}
                 >
                 {this.state.dataMain.results.map(el => (
+                    el.backdrop_path ?
                     <div className="main-carousel-img">
                       <Link to='/FilmPage'>
                       <img className="poster-img-main" onMouseOver={()=> {sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}}  src={`https://image.tmdb.org/t/p/original/${el.backdrop_path}`} alt={el.title}/>
                       </Link>
                       <h2><span>{el.title}</span></h2>
-                    </div>
+                    </div> : null
                 ))};
                 </Carousel>
               </div>
