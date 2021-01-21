@@ -130,12 +130,13 @@ class CarouselMain extends React.Component {
                   slidesToSlide={3}
                 >
                 {this.state.dataMain.results.map(el => (
+                    el.profile_path ?
                     <div className="main-carousel-img">
                       <Link to='/FilmPage'>
                       <img className="poster-img-main rounded-img" onMouseOver={()=> {sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}} src={`https://image.tmdb.org/t/p/original/${el.profile_path}`} alt={el.profile_path}/>
                       </Link>
                       <h2 className="star-name-carousel"><div>{el.name}</div></h2>
-                    </div>
+                    </div> : null
                 ))};
                 </Carousel>
               </div>
@@ -182,12 +183,13 @@ class CarouselMain extends React.Component {
                 slidesToSlide={3}
               >
               {this.state.dataMain.cast.map(el => (
+                el.profile_path ?
                 <div>
                   <div className="main-carousel-img">
                     {el.profile_path && <Link to='/FilmPage'><img className="poster-img-main rounded-img" onMouseOver={()=> {sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}} src={`https://image.tmdb.org/t/p/original/${el.profile_path}`} alt={el.profile_path}/></Link>}
                     <div><h2 className="star-name-carousel"><div>{el.name}</div></h2></div>
                   </div>
-                </div>
+                </div> : null
               ))};
               </Carousel>
             </div>
