@@ -10,7 +10,14 @@ class Statistics extends React.Component {
         };
        
     }
-
+    mostRecent() {
+      let all = this.state.data;
+      all.sort((a,b)=>Date.parse(b.release_date)-Date.parse(a.release_date));
+      all = all.slice(0,5);
+      all = all.map(el=>[el.original_title,el.release_date]);
+      all.unshift(['Film','Recent']);
+      return all;
+    }
     
     bestRatings() {
       let all = this.state.data;
@@ -35,7 +42,7 @@ class Statistics extends React.Component {
                <div className='row' style={{margin: '1%'}}>
               <button id = 'bestRatings' onClick={()=>this.setState({switcher:0})}>Best Ratings</button>
               <button id = 'mostOftenSeen' onMouseUp={()=>this.setState({switcher:1})}>Most Often Seen</button>
-              <button id = 'mostRecent' >Most Recent</button>
+              <button id = 'mostRecent' onClick={()=>this.setState({switcher:2})}>Most Recent</button>
               <button id = 'youWereInterested' >You Were Interested</button>
               </div>
               <div id = 'columnchart_values' style={{height:'90vh', backgroundColor: 'white', padding: '2%'}}>
@@ -46,13 +53,13 @@ class Statistics extends React.Component {
   height={'95%'}
   chartType="Bar"
   loader={<div>Loading Chart</div>}
-  data={this.state.switcher===0?this.bestRatings():this.mostOftenSeen()}
+  data={this.state.switcher===0?this.bestRatings():this.state.switcher===1?this.mostOftenSeen():this.mostRecent()}
 
   options={{
   
     chart:{
-    title: 'Population of Largest U.S. Cities',
-    subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+    title: `${this.state.switcher===0?'Best Rated Movies':this.state.switcher===1?'Movies Seen by the Largest Number of People':'Most Recently Released Movies'}`,
+    subtitle: '',
     
   
     },
