@@ -43,20 +43,20 @@ class Statistics extends React.Component {
 
              <div id = 'st' className = 'container-fluid'>
                <div className='row' style={{margin: '1%'}}>
-              <button id = 'bestRatings' onClick={()=>this.setState({switcher:0}),()=> this.switch()}>Best Ratings</button>
-              <button id = 'mostOftenSeen' onMouseUp={()=>this.setState({switcher:1}), ()=>this.switch()}>Most Often Seen</button>
+              <button id = 'bestRatings' onClick={()=>this.setState({switcher:0})}>Best Ratings</button>
+              <button id = 'mostOftenSeen' onMouseUp={()=>this.setState({switcher:1})}>Most Often Seen</button>
               <button id = 'mostRecent' >Most Recent</button>
               <button id = 'youWereInterested' >You Were Interested</button>
               </div>
               <div id = 'columnchart_values' style={{height:'90vh', backgroundColor: 'white', padding: '2%'}}>
               
-  <Chart
+  <Chart 
               
   width={'100%'}
   height={'95%'}
   chartType="Bar"
   loader={<div>Loading Chart</div>}
-  data={this.state.current}
+  data={this.state.switcher===0?this.bestRatings():this.mostOftenSeen()}
 
   options={{
   
