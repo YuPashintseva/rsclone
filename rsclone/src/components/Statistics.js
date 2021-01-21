@@ -6,22 +6,12 @@ class Statistics extends React.Component {
         super();
         this.state={
          data: JSON.parse(sessionStorage.getItem('fullInf')),
-         current:'',
          switcher:0,
         };
        
     }
- 
-   componentDidMount(){
-     this.setState({current: this.bestRatings()});
-     
-   }
 
-    switch(){
-      let sw = this.state.switcher;
-      if(sw===0)this.setState({current:this.bestRatings()});
-      else this.setState({current:this.mostOftenSeen()});
-    }
+    
     bestRatings() {
       let all = this.state.data;
       all.sort((a,b)=>parseFloat(b.vote_average)-parseFloat(a.vote_average));
