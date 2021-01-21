@@ -129,59 +129,56 @@ class App extends Component {
           className="navbar navbar-expand-lg navbar-dark bg-dark"
           style={{ margin: "3px 0" }}
         >
-          <a className="navbar-brand">
-          <Link to='/'>
-            <div className="main-img-wrapper"><img className="navbar-mainlogo" src={mainLogo}></img></div></Link>
-          </a>
-          <button
-            className="navbar-toggler navbar-toggler-right"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navb"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
 
-          <div className="collapse navbar-collapse" id="navb">
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <Link style={{ textDecoration: 'none' }} to= "/WatchList">
-                  <a className="nav-link"><div className="wl">WatchList <div className="watchlist-num">{this.state.watchlist}</div></div></a>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link">Settings</a>
-              </li>
-              <li className="nav-item">
-                <Link to = "/Statistics">
-                <a className="nav-link">Statistics</a>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to = "/">
-                  <GoogleAuth />
-                </Link>
-                
-              </li>
-            </ul>
-
-            <form className="container-fluid my-2 my-lg-0">
-              <Link to="/FilmPage">
-                <input
-                  className="form-control mr-sm-2"
-                  onChange={this.searchCnangeHandler.bind(this)}
-                  type="text"
-                  list="datalistOptions"
-                  id="exampleDataList"
-                  placeholder="Search"
-                  style={{ cursor: "pointer" }}
-                  onClick={(event) => {
-                    if (this.changeLinkState()) event.preventDefault();
-                  }}
-                />
-              </Link>
-              <datalist id="datalistOptions">{this.state.rows}</datalist>
-            </form>
+          <div className="header-wrapper">
+            <div className="collapse navbar-collapse" id="navb">
+              <div className="navb-wrapper-wrapper">
+                <div className="navb-wrapper">
+                  <a className="navbar-brand">
+                    <Link to='/'>
+                      <div className="main-img-wrapper"><img className="navbar-mainlogo" src={mainLogo}></img></div>
+                    </Link>
+                  </a>
+                  <form className="container-fluid my-2 my-lg-0">
+                    <Link to="/FilmPage">
+                      <input
+                        className="form-control mr-sm-2"
+                        onChange={this.searchCnangeHandler.bind(this)}
+                        type="text"
+                        list="datalistOptions"
+                        id="exampleDataList"
+                        placeholder="Search"
+                        style={{ cursor: "pointer" }}
+                        onClick={(event) => {
+                          if (this.changeLinkState()) event.preventDefault();
+                        }}
+                      />
+                    </Link>
+                    <datalist id="datalistOptions">{this.state.rows}</datalist>
+                  </form>
+                  <ul className="navbar-nav mr-auto">
+                    <li className="nav-item">
+                      <Link style={{ textDecoration: 'none' }} to= "/WatchList">
+                        <a className="nav-link"><div className="wl">WatchList <div className="watchlist-num">{this.state.watchlist}</div></div></a>
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link">Settings</a>
+                    </li>
+                    <li className="nav-item">
+                      <Link to = "/Statistics">
+                        <a className="nav-link">Statistics</a>
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      
+                        <GoogleAuth />
+                    
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </nav>
 

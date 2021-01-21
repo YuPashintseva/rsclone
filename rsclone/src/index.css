@@ -158,6 +158,37 @@ footer {
 }
 
 .main-img-wrapper:hover {
-    
     background-color: #2e2e2e;
 }
+
+.header-wrapper {
+    width: 65%;
+    margin-left: 16%;
+}
+.navb-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.navb-wrapper-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-collapse {
+    justify-content: center;
+}
+
+.navbar-expand-lg {
+    justify-content: center;
+}
+
+.log-in-button {
+    width: 6rem;
+}
+
+.log-in-button-wrapper {
+    padding-top: 1%;
+}
+
