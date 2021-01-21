@@ -159,9 +159,9 @@ class App extends Component {
               </li>
               <li className="nav-item">
                 <Link to = "/">
-                  <a className="nav-link">Log In</a>
+                  <GoogleAuth />
                 </Link>
-                <GoogleAuth />
+                
               </li>
             </ul>
 
