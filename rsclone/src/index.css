@@ -185,10 +185,25 @@ footer {
 }
 
 .log-in-button {
-    width: 6rem;
+    width: 7rem;
+    display: flex;
+    color: #f5c518;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+.log-in-button:hover {
+    text-decoration: none;
+    color: white;
 }
 
 .log-in-button-wrapper {
     padding-top: 1%;
+}
+
+.user-img {
+    border-radius: 50%;
+    width: 40%;
 }
 

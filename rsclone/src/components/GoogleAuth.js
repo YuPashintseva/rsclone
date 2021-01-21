@@ -19,8 +19,8 @@ class GoogleAuth extends React.Component {
     
      showCurrentUserInfo() {
         var googleUser = this.auth.currentUser.get();
-        console.log('users info ', googleUser.Mt.Ed);
-        return googleUser.Mt.Ed;
+        console.log('users info ', googleUser.Mt);
+        return googleUser.Mt;
       }
     
     onAuthChange = () => {
@@ -41,8 +41,9 @@ class GoogleAuth extends React.Component {
         } else if (this.state.isSignedIn) {
             let user =this.showCurrentUserInfo();
             return (
-                <a onClick={this.onSignOut} className="nav-link log-in-button">
-                    {user}
+                <a onClick={this.onSignOut} className="log-in-button">
+                    {user.Ed}
+                    <img className="user-img" src={user.PK} alt="user image" />
                 </a>
             );
         } else {
