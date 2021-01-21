@@ -4,17 +4,51 @@ import Chart from "react-google-charts";
 class Statistics extends React.Component {
     constructor(){
         super();
+        this.state={
+         data: JSON.parse(sessionStorage.getItem('fullInf')),
+         current:'',
+         switcher:0,
+        };
+       
+    }
+ 
+   componentDidMount(){
+     this.setState({current: this.bestRatings()});
+     
+   }
+
+    switch(){
+      let sw = this.state.switcher;
+      if(sw===0)this.setState({current:this.bestRatings()});
+      else this.setState({current:this.mostOftenSeen()});
+    }
+    bestRatings() {
+      let all = this.state.data;
+      all.sort((a,b)=>parseFloat(b.vote_average)-parseFloat(a.vote_average));
+      all = all.slice(0,5);
+      all = all.map(el=>[el.original_title,parseFloat(el.vote_average)]);
+      all.unshift(['Film','Rating']);
+      return all;
+    }
+    mostOftenSeen() {
+      let all = this.state.data;
+      all.sort((a,b)=>parseFloat(b.popularity)-parseFloat(a.popularity));
+      all = all.slice(0,5);
+      all = all.map(el=>[el.original_title,parseFloat(el.popularity)]);
+      all.unshift(['Film','Popularity']);
+      return all;
     }
         render () {
             return (
+
              <div id = 'st' className = 'container-fluid'>
                <div className='row' style={{margin: '1%'}}>
-              <button id = 'bestRatings' >bestRatings</button>
-              <button id = 'mostOftenSeen' >mostOftenSeen</button>
-              <button id = 'mostRecent' >mostRecent</button>
-              <button id = 'youWereInterested' >youWereInterested</button>
+              <button id = 'bestRatings' onClick={()=>this.setState({switcher:0}),()=> this.switch()}>Best Ratings</button>
+              <button id = 'mostOftenSeen' onMouseUp={()=>this.setState({switcher:1}), ()=>this.switch()}>Most Often Seen</button>
+              <button id = 'mostRecent' >Most Recent</button>
+              <button id = 'youWereInterested' >You Were Interested</button>
               </div>
-              <div id = 'columnchart_values' style={{height:'60vh', backgroundColor: 'white', padding: '2%'}}>
+              <div id = 'columnchart_values' style={{height:'90vh', backgroundColor: 'white', padding: '2%'}}>
               
   <Chart
               
@@ -22,14 +56,7 @@ class Statistics extends React.Component {
   height={'95%'}
   chartType="Bar"
   loader={<div>Loading Chart</div>}
-  data={[
-    ['City', '2010 Population', '2000 Population'],
-    ['New York City, NY', 8175000, 8008000],
-    ['Los Angeles, CA', 3792000, 3694000],
-    ['Chicago, IL', 2695000, 2896000],
-    ['Houston, TX', 2099000, 1953000],
-    ['Philadelphia, PA', 1526000, 1517000],
-  ]}
+  data={this.state.current}
 
   options={{
   
@@ -51,3 +78,14 @@ class Statistics extends React.Component {
          
     }
     export default Statistics;
+
+
+    /*[
+    ['Film', '2010 Population', '2000 Population'],
+    ['New York City, NY', 8175000, 8008000],
+    ['Los Angeles, CA', 3792000, 3694000],
+    ['Chicago, IL', 2695000, 2896000],
+    ['Houston, TX', 2099000, 1953000],
+    ['Philadelphia, PA', 1526000, 1517000],
+  ]
+  */
