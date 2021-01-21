@@ -13,43 +13,43 @@ import $ from "jquery";
 import Watchlist from "./components/WatchList";
 import Statistics from "./components/Statistics";
 import GoogleAuth from "./components/GoogleAuth";
+import { Helmet } from "react-helmet";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.incrementWatchListNumber = this.incrementWatchListNumber.bind(this);
     this.decrementWatchListNumber = this.decrementWatchListNumber(this);
-    this.state = {watchlist: 0};
+    this.state = { watchlist: 0 };
     this.performSearch("");
-    
   }
 
   incrementWatchListNumber(filmid) {
-    
-    let arr = JSON.parse(localStorage.getItem('films'));
+    let arr = JSON.parse(localStorage.getItem("films"));
     if (arr) {
-      if (! arr.includes(filmid)) {
-        this.setState({watchlist: this.state.watchlist + 1});
+      if (!arr.includes(filmid)) {
+        this.setState({ watchlist: this.state.watchlist + 1 });
       }
     } else {
-      this.setState({watchlist: this.state.watchlist + 1});
-    }   
+      this.setState({ watchlist: this.state.watchlist + 1 });
+    }
   }
 
   decrementWatchListNumber() {
     //without it nothing worked
-    localStorage.setItem('films',JSON.stringify([]));
-    let currentNum =  JSON.parse(localStorage.getItem('films')).length/2;
+    localStorage.setItem("films", JSON.stringify([]));
+    let currentNum = JSON.parse(localStorage.getItem("films")).length / 2;
     if (currentNum > 1) {
       currentNum -= 1;
-      this.setState({watchlist: currentNum});
+      this.setState({ watchlist: currentNum });
     }
-    
   }
 
   defineNumberWatchList() {
-    if (localStorage.getItem('films')) {
-      this.setState({watchlist: JSON.parse(localStorage.getItem('films')).length/2});
+    if (localStorage.getItem("films")) {
+      this.setState({
+        watchlist: JSON.parse(localStorage.getItem("films")).length / 2,
+      });
     }
   }
 
@@ -125,83 +125,88 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <nav
-          className="navbar navbar-expand-lg navbar-dark bg-dark"
-          style={{ margin: "3px 0" }}
-        >
+        <Helmet>
+          <title>IMDB-clone</title>
+        </Helmet>
 
-          <div className="header-wrapper">
-            <div className="collapse navbar-collapse" id="navb">
-              <div className="navb-wrapper-wrapper">
-                <div className="navb-wrapper">
-                  <a className="navbar-brand">
-                    <Link to='/'>
-                      <div className="main-img-wrapper"><img className="navbar-mainlogo" src={mainLogo}></img></div>
-                    </Link>
-                  </a>
-                  <form className="container-fluid my-2 my-lg-0">
-                    <Link to="/FilmPage">
-                      <input
-                        className="form-control mr-sm-2"
-                        onChange={this.searchCnangeHandler.bind(this)}
-                        type="text"
-                        list="datalistOptions"
-                        id="exampleDataList"
-                        placeholder="Search"
-                        style={{ cursor: "pointer" }}
-                        onClick={(event) => {
-                          if (this.changeLinkState()) event.preventDefault();
-                        }}
-                      />
-                    </Link>
-                    <datalist id="datalistOptions">{this.state.rows}</datalist>
-                  </form>
-                  <ul className="navbar-nav mr-auto">
-                    <li className="nav-item">
-                      <Link style={{ textDecoration: 'none' }} to= "/WatchList">
-                        <a className="nav-link"><div className="wl">WatchList <div className="watchlist-num">{this.state.watchlist}</div></div></a>
-                      </Link>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link">Settings</a>
-                    </li>
-                    <li className="nav-item">
-                      <Link to = "/Statistics">
-                        <a className="nav-link">Statistics</a>
-                      </Link>
-                    </li>
-                    <li className="nav-item">
-                      
-                        <GoogleAuth />
-                    
-                    </li>
-                  </ul>
-                </div>
-              </div>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div className="container">
+            <div
+              className="collapse navbar-collapse"
+              id="navbarSupportedContent"
+            >
+              <a className="navbar-brand">
+                <Link to="/">
+                  <div className="main-img-wrapper">
+                    <img className="navbar-mainlogo" src={mainLogo}></img>
+                  </div>
+                </Link>
+              </a>
+
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <Link style={{ textDecoration: "none" }} to="/WatchList">
+                    <a className="nav-link">
+                      WatchList{" "}
+                      <span className="badge badge-pill text-dark bg-warning">
+                        {this.state.watchlist}
+                      </span>
+                    </a>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link">Settings</a>
+                </li>
+                <li className="nav-item">
+                  <Link to="/Statistics">
+                    <a className="nav-link">Statistics</a>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <GoogleAuth />
+                </li>
+              </ul>
+
+              <form className="d-flex input-group w-auto">
+                <Link to="/FilmPage">
+                  <input
+                    className="form-control mr-sm-2"
+                    onChange={this.searchCnangeHandler.bind(this)}
+                    type="text"
+                    list="datalistOptions"
+                    id="exampleDataList"
+                    placeholder="Search"
+                    onClick={(event) => {
+                      if (this.changeLinkState()) event.preventDefault();
+                    }}
+                  />
+                </Link>
+                <datalist id="datalistOptions">{this.state.rows}</datalist>
+              </form>
             </div>
           </div>
         </nav>
 
         <div id="ourRoot" className="d-flex justify-content-around">
           <div id="fl" className="films-list">
-          <Route exact path="/">
-              <FilmList watchListincrement = {this.incrementWatchListNumber} />
+            <Route exact path="/">
+              <FilmList watchListincrement={this.incrementWatchListNumber} />
             </Route>
-            
+
             <Route path="/FilmPage">
               <FilmPage />
             </Route>
 
             <Route path="/WatchList">
-             <Watchlist watchListdecrement = {this.decrementWatchListNumber}/>
+              <Watchlist watchListdecrement={this.decrementWatchListNumber} />
             </Route>
 
             <Route path="/Statistics">
-             <Statistics />
+              <Statistics />
             </Route>
             <Route path="/Trailer">
               <Trailer />
-           </Route>
+            </Route>
           </div>
         </div>
 
@@ -209,8 +214,11 @@ class App extends Component {
           <div className="container p-4">
             <div className="row">
               <div className="col-lg-6 col-md-12 mb-4 mb-md-0">
-                <h5 className="text-uppercase yellow-text"> The Rolling Scopes School</h5>
-                <p>
+                <h5 className="text-uppercase yellow-text">
+                  {" "}
+                  The Rolling Scopes School
+                </h5>
+                <p className="text-white">
                   Бесплатный курс «JavaScript/Front-end» от сообщества The
                   Rolling Scopes -{" "}
                   <a
@@ -231,7 +239,9 @@ class App extends Component {
               </div>
 
               <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
-                <h5 className="text-uppercase mb-0 yellow-text">Developed by:</h5>
+                <h5 className="text-uppercase mb-0 yellow-text">
+                  Developed by:
+                </h5>
 
                 <ul className="list-unstyled">
                   <li>
@@ -254,12 +264,9 @@ class App extends Component {
             </div>
           </div>
 
-          <div className="text-center p-3">
+          <div className="text-center text-white p-3">
             {" "}
-            &copy; 2021 Copyright{" "}
-            <a className="text-dark" href="#">
-              IMDb-clone
-            </a>
+            &copy; 2021 Copyright <a href="#">IMDb-clone</a>
           </div>
         </footer>
       </div>
