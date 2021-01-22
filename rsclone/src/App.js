@@ -9,16 +9,18 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import $ from "jquery";
+import $, { contains } from "jquery";
 import Watchlist from "./components/WatchList";
 import Statistics from "./components/Statistics";
 import GoogleAuth from "./components/GoogleAuth";
+import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.incrementWatchListNumber = this.incrementWatchListNumber.bind(this);
-    this.decrementWatchListNumber = this.decrementWatchListNumber(this);
+    this.decrementWatchListNumber = this.decrementWatchListNumber.bind(this);
+    this.clearWatchList = this.clearWatchList.bind(this);
     this.state = {watchlist: 0};
     this.performSearch("");
     
@@ -45,6 +47,12 @@ class App extends Component {
       this.setState({watchlist: currentNum});
     }
     
+  }
+
+  clearWatchList(e, data) {
+    e.preventDefault();
+    localStorage.setItem('films',JSON.stringify([]));
+    this.setState({watchlist: 0});
   }
 
   defineNumberWatchList() {
@@ -159,7 +167,28 @@ class App extends Component {
                   <ul className="navbar-nav mr-auto">
                     <li className="nav-item">
                       <Link style={{ textDecoration: 'none' }} to= "/WatchList">
-                        <a className="nav-link"><div className="wl">WatchList <div className="watchlist-num">{this.state.watchlist}</div></div></a>
+                        <a className="nav-link">
+                        <ContextMenuTrigger id="add_same_id" className="context-menu-item">
+                          <div className="wl">WatchList <div className="watchlist-num">{this.state.watchlist}</div></div>
+                        </ContextMenuTrigger>
+                        <ContextMenu className="menu" id="add_same_id">
+                          <MenuItem
+                              onClick={e => this.clearWatchList(e)}
+                              data={{item: "Home"}}
+                              className="menuItem"
+                          >
+                              Clear WatchList
+                          </MenuItem>
+                            <MenuItem
+                              
+                              data={{item: "Home"}}
+                              className="menuItem"
+                            >
+                              Go to WatchList
+                          </MenuItem>
+                          
+                      </ContextMenu>
+                        </a>
                       </Link>
                     </li>
                     <li className="nav-item">

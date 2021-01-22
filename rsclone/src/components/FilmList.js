@@ -7,6 +7,7 @@ import star from './assets/star.png'
 import play from './assets/play.png'
 import info from './assets/info-grey.png';
 import { Helmet } from "react-helmet";
+import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 
 
 import {
@@ -76,6 +77,7 @@ class FilmList extends React.Component {
             return (
                 <div>
                 <CaurouselMain type={"films"} />
+
                 <div className="head-text">
                     What to watch
                 </div>
@@ -102,10 +104,14 @@ class FilmList extends React.Component {
             {this.state.data.results.map(el => (
                 
                 <div element={el.id} key ={el.id}>
+                
+           
+           
                     <div className="films-list-img App-link" >
-                      <Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage" > 
+                    
+                        <Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage" > 
                             <img className="poster-img" onMouseOver={()=> {sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}}  src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} alt={el.title}/>
-                            </Link>    
+                        </Link>    
                        
                         <div className="bottom-content-wrapper">
                             <div className="rating">
@@ -133,7 +139,8 @@ class FilmList extends React.Component {
                         </div>
 
                     </div>
-                   
+
+                    
                 </div>
             ))};
                 
