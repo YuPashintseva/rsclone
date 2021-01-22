@@ -39,14 +39,21 @@ class CarouselMain extends React.Component {
   interestedCount(title) {
     if(localStorage.getItem('count')){
         let obj = JSON.parse(localStorage.getItem('count'));
-        if(obj.title) {
-            obj.title = parseInt(obj.title)+1;
+        if(obj[title]) {
+            obj[title] = parseInt(obj[title])+1;
         }else {
-            obj.title = 1;
+            obj[title] = 1;
         }
+        //localStorage.clear();
         localStorage.setItem('count', JSON.stringify(obj));
     }
-  }
+    else {
+        let obj ={};
+        obj[title] = 1;
+        localStorage.clear();
+        localStorage.setItem('count', JSON.stringify(obj));
+    }
+}
     render() {
 
        if (this.state.dataMain.results){
@@ -93,7 +100,7 @@ class CarouselMain extends React.Component {
                     el.backdrop_path ?
                     <div className="main-carousel-img">
                       <Link to='/FilmPage'>
-                      <img className="poster-img-main" onMouseOver={()=> {sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}}  src={`https://image.tmdb.org/t/p/original/${el.backdrop_path}`} alt={el.title}/>
+                      <img className="poster-img-main" onClick={()=>this.interestedCount(el.original_title)} onMouseOver={()=> {sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}}  src={`https://image.tmdb.org/t/p/original/${el.backdrop_path}`} alt={el.title}/>
                       </Link>
                       <h2><span>{el.title}</span></h2>
                     </div> : null
@@ -144,7 +151,7 @@ class CarouselMain extends React.Component {
                     el.profile_path ?
                     <div className="main-carousel-img">
                       <Link to='/FilmPage'>
-                      <img className="poster-img-main rounded-img" onMouseOver={()=> {sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}} src={`https://image.tmdb.org/t/p/original/${el.profile_path}`} alt={el.profile_path}/>
+                      <img className="poster-img-main rounded-img"  onMouseOver={()=> {sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}} src={`https://image.tmdb.org/t/p/original/${el.profile_path}`} alt={el.profile_path}/>
                       </Link>
                       <h2 className="star-name-carousel"><div>{el.name}</div></h2>
                     </div> : null
@@ -198,7 +205,7 @@ class CarouselMain extends React.Component {
                 el.profile_path ?
                 <div>
                   <div className="main-carousel-img">
-                    {el.profile_path && <Link to='/FilmPage'><img className="poster-img-main rounded-img" onClick={this.interestedCount(el.orinal_title)} onMouseOver={()=> {sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}} src={`https://image.tmdb.org/t/p/original/${el.profile_path}`} alt={el.profile_path}/></Link>}
+                    {el.profile_path && <Link to='/FilmPage'><img className="poster-img-main rounded-img"  onMouseOver={()=> {sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}} src={`https://image.tmdb.org/t/p/original/${el.profile_path}`} alt={el.profile_path}/></Link>}
                     <div><h2 className="star-name-carousel"><div>{el.name}</div></h2></div>
                   </div>
                 </div> : null

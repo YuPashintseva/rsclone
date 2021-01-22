@@ -11,11 +11,12 @@ class Statistics extends React.Component {
        
     }
     interested() {
-      let all = JSON.parse(localStorage.getItem('count'));
-      all.sort((a,b)=>parseInt(Object.values(b)[0])-parseInt(Object.values(a)[0]));
+      let all = Object.entries(JSON.parse(localStorage.getItem('count')));
+      
+      all.sort((a,b)=>b[1]-a[1]);
       all = all.slice(0,5);
-      all = all.map(el=>[Object.keys(el)[0],parseInt(Object.values(el)[0])]);
-      all.unshift(['Film','Recent']);
+     
+      all.unshift(['Film','Number of Clicks']);
       return all;
     }
     mostRecent() {
