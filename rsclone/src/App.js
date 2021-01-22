@@ -144,7 +144,7 @@ class App extends Component {
                 <div className="navb-wrapper">
                   <a className="navbar-brand">
                     <Link to='/'>
-                      <div className="main-img-wrapper"><img className="navbar-mainlogo" src={mainLogo}></img></div>
+                      <div className="main-img-wrapper"><img className="navbar-mainlogo" src={mainLogo} ></img></div>
                     </Link>
                   </a>
                   <form className="container-fluid my-2 my-lg-0">

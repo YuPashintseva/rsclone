@@ -36,6 +36,17 @@ class CarouselMain extends React.Component {
       this.setState({ dataMain: jsonMain});
       console.log("test111:",this.state.dataMain.cast)
   }
+  interestedCount(title) {
+    if(localStorage.getItem('count')){
+        let obj = JSON.parse(localStorage.getItem('count'));
+        if(obj.title) {
+            obj.title = parseInt(obj.title)+1;
+        }else {
+            obj.title = 1;
+        }
+        localStorage.setItem('count', JSON.stringify(obj));
+    }
+  }
     render() {
 
        if (this.state.dataMain.results){
@@ -162,6 +173,7 @@ class CarouselMain extends React.Component {
               items: 2
             }
           };
+      
           return(
             <div className="main-carousel-wrapper">
               <Carousel                 
@@ -186,7 +198,7 @@ class CarouselMain extends React.Component {
                 el.profile_path ?
                 <div>
                   <div className="main-carousel-img">
-                    {el.profile_path && <Link to='/FilmPage'><img className="poster-img-main rounded-img" onMouseOver={()=> {sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}} src={`https://image.tmdb.org/t/p/original/${el.profile_path}`} alt={el.profile_path}/></Link>}
+                    {el.profile_path && <Link to='/FilmPage'><img className="poster-img-main rounded-img" onClick={this.interestedCount(el.orinal_title)} onMouseOver={()=> {sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}} src={`https://image.tmdb.org/t/p/original/${el.profile_path}`} alt={el.profile_path}/></Link>}
                     <div><h2 className="star-name-carousel"><div>{el.name}</div></h2></div>
                   </div>
                 </div> : null

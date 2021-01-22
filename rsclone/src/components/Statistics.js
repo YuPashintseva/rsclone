@@ -11,7 +11,12 @@ class Statistics extends React.Component {
        
     }
     interested() {
-      
+      let all = JSON.parse(localStorage.getItem('count'));
+      all.sort((a,b)=>parseInt(Object.values(b)[0])-parseInt(Object.values(a)[0]));
+      all = all.slice(0,5);
+      all = all.map(el=>[Object.keys(el)[0],parseInt(Object.values(el)[0])]);
+      all.unshift(['Film','Recent']);
+      return all;
     }
     mostRecent() {
       let all = this.state.data;
@@ -46,7 +51,7 @@ class Statistics extends React.Component {
               <button id = 'bestRatings' onClick={()=>this.setState({switcher:0})}>Best Ratings</button>
               <button id = 'mostOftenSeen' onMouseUp={()=>this.setState({switcher:1})}>Most Often Seen</button>
               <button id = 'mostRecent' onClick={()=>this.setState({switcher:2})}>Most Recent</button>
-              <button id = 'youWereInterested' >You Were Interested</button>
+              <button id = 'youWereInterested' onClick={()=>this.setState({switcher:3})}>You Were Interested</button>
               </div>
               <div id = 'columnchart_values' style={{height:'90vh', backgroundColor: 'white', padding: '2%'}}>
               
@@ -56,12 +61,12 @@ class Statistics extends React.Component {
   height={'95%'}
   chartType="Bar"
   loader={<div>Loading Chart</div>}
-  data={this.state.switcher===0?this.bestRatings():this.state.switcher===1?this.mostOftenSeen():this.mostRecent()}
+  data={this.state.switcher===0?this.bestRatings():this.state.switcher===1?this.mostOftenSeen():this.state.switcher===2?this.mostRecent():this.interested()}
 
   options={{
   
     chart:{
-    title: `${this.state.switcher===0?'Best Rated Movies':this.state.switcher===1?'Movies Seen by the Largest Number of People':'Most Recently Released Movies'}`,
+    title: `${this.state.switcher===0?'Best Rated Movies':this.state.switcher===1?'Movies Seen by the Largest Number of People':this.state.switcher===2?'Most Recently Released Movies':'Movies you were interested in'}`,
     subtitle: '',
     
   
