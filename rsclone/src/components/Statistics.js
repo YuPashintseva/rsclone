@@ -10,6 +10,9 @@ class Statistics extends React.Component {
         };
        
     }
+    interested() {
+      
+    }
     mostRecent() {
       let all = this.state.data;
       all.sort((a,b)=>Date.parse(b.release_date)-Date.parse(a.release_date));

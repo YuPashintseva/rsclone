@@ -65,7 +65,15 @@ class FilmList extends React.Component {
     handleModalShowHide2() {
         this.setState({ showHide: !this.state.showHide });
     }
-
+    interestedCount(title) {
+        if(localStorage.getItem('count')){
+            let curr = parseInt(localStorage.getItem('count'),10);
+            localStorage.setItem('count', `${curr+=1} ${title}`);
+        }
+        else {
+            localStorage.setItem('count', 1);
+        }
+    }
 
     render() {
         let mod = '';
