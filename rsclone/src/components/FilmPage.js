@@ -34,7 +34,7 @@ import CarouselMain from './CaurouselMain';
                     
                      
                      <h4 className="col-auto">Average Vote: {this.state.dat.vote_average}
-                     <img src={star} ></img>
+                     <img className = "star"src={star} ></img>
                      </h4>
                      
                      

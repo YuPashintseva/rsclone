@@ -50,6 +50,7 @@ class FilmList extends React.Component {
         const response = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=en-US&page=1');
         const json = await response.json();
         this.setState({ data: json});
+      
         sessionStorage.setItem('fullInf',JSON.stringify(json.results))
     }
 
@@ -104,7 +105,7 @@ class FilmList extends React.Component {
                 showDots={false}
                 responsive={responsive}
                 ssr={true}
-                infinite={false}
+                infinite={true}
                 autoPlaySpeed={1000}
                 keyBoardControl={true}
                 customTransition="all .5"
@@ -132,7 +133,8 @@ class FilmList extends React.Component {
                         <div className="bottom-content-wrapper">
                             <div className="rating">
                                 <div className="vote">
-                                    <img src={star} alt="star icon" />
+       
+                                  <img className = "star" src={star} alt="star icon" />
                                     <div className="vote_average">{el.vote_average}</div>
                                 </div>
                                 <div className="like-film">Like this film</div>
@@ -155,8 +157,6 @@ class FilmList extends React.Component {
                         </div>
 
                     </div>
-
-                    
                 </div>
             ))};
                 

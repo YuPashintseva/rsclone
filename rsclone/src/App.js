@@ -233,7 +233,6 @@ class App extends Component {
            </Route>
           </div>
         </div>
-
         <footer className="bg-dark text-center text-lg-start">
           <div className="container p-4">
             <div className="row">

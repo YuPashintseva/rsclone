@@ -157,3 +157,9 @@ html,
 .footer {
   background-color: #fff;
 }
+.star{
+  transition-duration: 2s;
+}
+.star:hover{
+  transform:translate(1px, 6px) rotate(290deg) scale(1.3) ;
+}
