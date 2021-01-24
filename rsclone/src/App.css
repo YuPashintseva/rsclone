@@ -163,3 +163,29 @@ html,
 .star:hover{
   transform:translate(1px, 6px) rotate(290deg) scale(1.3) ;
 }
+#cloneWars{
+ border:5px solid black;
+ height:100px;
+ width:400px;
+ display:block;
+ text-align: center;
+ margin:auto;
+
+ font-size: 2rem;
+ font-weight: bolder;
+ color:red;
+ animation-name: size;
+ animation-duration: 10s;
+}
+@keyframes size{
+from{
+  height: 10px;
+  width: 40px;
+  font-size: 0.2rem;
+}
+to{
+  height: 100px;
+  width: 400px;
+  font-size: 3rem;
+}
+}

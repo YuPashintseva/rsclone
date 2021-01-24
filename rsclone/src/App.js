@@ -14,6 +14,7 @@ import Watchlist from "./components/WatchList";
 import Statistics from "./components/Statistics";
 import GoogleAuth from "./components/GoogleAuth";
 import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
+import Cover from "./components/Cover";
 
 class App extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class App extends Component {
     this.incrementWatchListNumber = this.incrementWatchListNumber.bind(this);
     this.decrementWatchListNumber = this.decrementWatchListNumber.bind(this);
     this.clearWatchList = this.clearWatchList.bind(this);
-    this.state = {watchlist: 0};
+    this.state = {watchlist: 0,flag: false};
     this.performSearch("");
     
   }
@@ -63,6 +64,7 @@ class App extends Component {
 
   componentDidMount() {
     this.defineNumberWatchList();
+    
   }
 
   performSearch(searchTerm) {
@@ -132,7 +134,10 @@ class App extends Component {
 
   render() {
     return (
+      setTimeout(()=>this.setState({flag:true}),10000),
+      this.state.flag?( 
       <div className="App">
+       
         <nav
           className="navbar navbar-expand-lg navbar-dark bg-dark"
           style={{ margin: "3px 0" }}
@@ -214,8 +219,9 @@ class App extends Component {
         <div id="ourRoot" className="d-flex justify-content-around">
           <div id="fl" className="films-list">
           <Route exact path="/">
-              <FilmList watchListincrement = {this.incrementWatchListNumber} />
-            </Route>
+            
+           <FilmList watchListincrement = {this.incrementWatchListNumber} />
+          </Route>
             
             <Route path="/FilmPage">
               <FilmPage />
@@ -290,7 +296,9 @@ class App extends Component {
             </a>
           </div>
         </footer>
+       
       </div>
+      ):(<Cover/>)
     );
   }
 }
