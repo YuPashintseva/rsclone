@@ -5,6 +5,15 @@ import Trailer from "./components/Trailer";
 import MovieRow from "./components/MovieRow";
 import mainLogo from "./logo-imdb.png";
 import rsschool from "./components/assets/rs_school_js.svg";
+
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import Form from "react-bootstrap/Form";
+import FormControl from "react-bootstrap/FormControl";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+
+import NavDropdown from "react-bootstrap/NavDropdown";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
@@ -133,83 +142,56 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <nav
-          className="navbar navbar-expand-lg navbar-dark bg-dark"
-          style={{ margin: "3px 0" }}
+        
+        <Navbar
+          collapseOnSelect
+          expand="lg"
+          bg="dark"
+          variant="dark"
         >
+          <Container>
+            <Navbar.Brand>
+              <Link to="/">
+                <img className="navbar-mainlogo" src={mainLogo}></img>
+              </Link>
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="mr-auto">
+                <Nav.Link href="#features">
+                  <Link style={{ textDecoration: "none" }} to="/WatchList">
+                    <a className="nav-link">
+                      WatchList{" "}
+                      <span className="badge badge-pill text-dark bg-warning">
+                        {this.state.watchlist}
+                      </span>
+                    </a>
+                  </Link>
+                </Nav.Link>
+                <Nav.Link>
+                  <a className="nav-link">Settings</a>
+                </Nav.Link>
+                <Nav.Link>
+                  <Link to="/Statistics">
+                    <a className="nav-link">Statistics</a>
+                  </Link>
+                </Nav.Link>
 
-          <div className="header-wrapper">
-            <div className="collapse navbar-collapse" id="navb">
-              <div className="navb-wrapper-wrapper">
-                <div className="navb-wrapper">
-                  <a className="navbar-brand">
-                    <Link to='/'>
-                      <div className="main-img-wrapper"><img className="navbar-mainlogo" src={mainLogo} ></img></div>
-                    </Link>
-                  </a>
-                  <form className="container-fluid my-2 my-lg-0">
-                    <Link to="/FilmPage">
-                      <input
-                        className="form-control mr-sm-2"
-                        onChange={this.searchCnangeHandler.bind(this)}
-                        type="text"
-                        list="datalistOptions"
-                        id="exampleDataList"
-                        placeholder="Search"
-                        style={{ cursor: "pointer" }}
-                        onClick={(event) => {
-                          if (this.changeLinkState()) event.preventDefault();
-                        }}
-                      />
-                    </Link>
-                    <datalist id="datalistOptions">{this.state.rows}</datalist>
-                  </form>
-                  <ul className="navbar-nav mr-auto">
-                    <li className="nav-item">
-                      <Link style={{ textDecoration: 'none' }} to= "/WatchList">
-                        <a className="nav-link">
-                        <ContextMenuTrigger id="add_same_id" className="context-menu-item">
-                          <div className="wl">WatchList <div className="watchlist-num">{this.state.watchlist}</div></div>
-                        </ContextMenuTrigger>
-                        <ContextMenu className="menu" id="add_same_id">
-                          <MenuItem
-                              onClick={e => this.clearWatchList(e)}
-                              data={{item: "Home"}}
-                              className="menuItem"
-                          >
-                              Clear WatchList
-                          </MenuItem>
-                            <MenuItem
-                              
-                              data={{item: "Home"}}
-                              className="menuItem"
-                            >
-                              Go to WatchList
-                          </MenuItem>
-                          
-                      </ContextMenu>
-                        </a>
-                      </Link>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link">Settings</a>
-                    </li>
-                    <li className="nav-item">
-                      <Link to = "/Statistics">
-                        <a className="nav-link">Statistics</a>
-                      </Link>
-                    </li>
-                    <li className="nav-item">
-                      
-                        <GoogleAuth />
-                    
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </nav>
+                <Nav.Link>
+                  <GoogleAuth />
+                </Nav.Link>
+              </Nav>
+              <Form inline>
+                <FormControl
+                  type="text"
+                  placeholder="Search"
+                  className="mr-sm-2"
+                />
+                <Button variant="outline-light">Search</Button>
+              </Form>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
 
         <div id="ourRoot" className="d-flex justify-content-around">
           <div id="fl" className="films-list">
