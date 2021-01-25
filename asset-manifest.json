@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/CloneWars/static/css/main.a1d175dc.chunk.css",
-    "main.js": "/CloneWars/static/js/main.959a099a.chunk.js",
-    "main.js.map": "/CloneWars/static/js/main.959a099a.chunk.js.map",
+    "main.js": "/CloneWars/static/js/main.bd77e663.chunk.js",
+    "main.js.map": "/CloneWars/static/js/main.bd77e663.chunk.js.map",
     "runtime-main.js": "/CloneWars/static/js/runtime-main.0a40924b.js",
     "runtime-main.js.map": "/CloneWars/static/js/runtime-main.0a40924b.js.map",
     "static/css/2.9d9cbd05.chunk.css": "/CloneWars/static/css/2.9d9cbd05.chunk.css",
@@ -22,6 +22,6 @@
     "static/css/2.9d9cbd05.chunk.css",
     "static/js/2.fa24dbe1.chunk.js",
     "static/css/main.a1d175dc.chunk.css",
-    "static/js/main.959a099a.chunk.js"
+    "static/js/main.bd77e663.chunk.js"
   ]
 }
