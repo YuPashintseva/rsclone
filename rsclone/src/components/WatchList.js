@@ -36,21 +36,22 @@ class Watchlist extends React.Component{
                     </div>
                     <div>
                     {this.state.data.map(el => (
-                        <Row className="row-bottom-padding">
-                            <Col xs={6} md={4}>
-                                {el[1] ? <Image className="poster-img-modal img-watchlist" src={`https://image.tmdb.org/t/p/original/${el[1]}`} alt={el[0]} thumbnail />: null}
-                            </Col>
-                            <Col xs={11} md={7}>
-                                {el[4] ? <div><strong>Title: </strong> {el[4]}</div> : null}
-                                {el[2] ? <div><strong>Release date: </strong>  {el[2]}</div> : null}
-                                {el[3] ? <div><strong>Stars: </strong> {el[3]}</div> : null}
-                                {el[5] ? <div><strong>Overview: </strong> {el[5]}</div> : null}
-                            </Col>
-                            <Col xs={1} md={1}>
-                                {el[0] ? <div className="background-close-btn"><Image className="close-btn-img" src={close} alt="close button" onClick = {() => {this.updateWatchList(el[0]); }}/></div> : null}
-                            </Col>
-                        </Row>
-                        
+                        <div key={el.id}>
+                            <Row className="row-bottom-padding">
+                                <Col xs={6} md={4}>
+                                    {el[1] ? <Image className="poster-img-modal img-watchlist" src={`https://image.tmdb.org/t/p/original/${el[1]}`} alt={el[0]} thumbnail />: null}
+                                </Col>
+                                <Col xs={11} md={7}>
+                                    {el[4] ? <div><strong>Title: </strong> {el[4]}</div> : null}
+                                    {el[2] ? <div><strong>Release date: </strong>  {el[2]}</div> : null}
+                                    {el[3] ? <div><strong>Stars: </strong> {el[3]}</div> : null}
+                                    {el[5] ? <div><strong>Overview: </strong> {el[5]}</div> : null}
+                                </Col>
+                                <Col xs={1} md={1}>
+                                    {el[0] ? <div className="background-close-btn"><Image className="close-btn-img" src={close} alt="close button" onClick = {() => {this.updateWatchList(el[0]); }}/></div> : null}
+                                </Col>
+                            </Row>
+                        </div>
                     ))}
                     </div>
                 </div>
