@@ -13,8 +13,6 @@ class CarouselMain extends React.Component {
     constructor() {
         super();
         this.state = {dataMain: [], type: "films"}
-        console.log("herehere", this.props);
-
     }
 
     async componentDidMount() {
@@ -34,7 +32,6 @@ class CarouselMain extends React.Component {
        }
       const jsonMain = await responseMain.json();
       this.setState({ dataMain: jsonMain});
-      console.log("test111:",this.state.dataMain.cast)
   }
   interestedCount(title) {
     if(localStorage.getItem('count')){

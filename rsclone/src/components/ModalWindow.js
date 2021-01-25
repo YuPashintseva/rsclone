@@ -23,7 +23,6 @@ class ModalWindow extends React.Component{
                 }
                 localStorage.setItem('films', JSON.stringify(arr));
             } else { 
-                console.log("filmInfo",this.props.filmInfo);
                 localStorage.setItem('films', JSON.stringify([this.props.filmInfo.id, [this.props.filmInfo.id, this.props.filmInfo.poster_path,this.props.filmInfo.release_date, this.props.filmInfo.vote_average, this.props.filmInfo.title, this.props.filmInfo.overview]]));
             }
             return(

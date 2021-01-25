@@ -2,8 +2,14 @@ import React from 'react';
 
 
 class GoogleAuth extends React.Component {
-    state = {isSignedIn: null};
 
+    constructor(){
+        super();
+        this.state={
+            isSignedIn: null, userInfo: null
+        };
+       
+    }
     componentDidMount() {
         window.gapi.load('client:auth2', () => {
             window.gapi.client.init({
@@ -12,19 +18,21 @@ class GoogleAuth extends React.Component {
             }).then(() => {
                 this.auth = window.gapi.auth2.getAuthInstance();
                 this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+                this.setState({ userInfo: this.auth.currentUser.get() });
                 this.auth.isSignedIn.listen(this.onAuthChange);
             });
         });
     }
     
-     showCurrentUserInfo() {
-        var googleUser = this.auth.currentUser.get();
+    showCurrentUserInfo() {
+        var googleUser = this.auth.currentUser.get().Mt;
         console.log('users info ', googleUser.Mt);
         return googleUser.Mt;
       }
     
     onAuthChange = () => {
         this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+        this.setState({ userInfo: this.auth.currentUser.get() });
     };
 
     onSignIn = () => {
@@ -39,11 +47,13 @@ class GoogleAuth extends React.Component {
         if (this.state.isSignedIn === null) {
             return null;
         } else if (this.state.isSignedIn) {
-            let user =this.showCurrentUserInfo();
+
             return (
+                
                 <a onClick={this.onSignOut} className="log-in-button">
-                    {user.Ed}
-                    <img className="user-img" src={user.PK} alt="user image" />
+                { this.state.userInfo ? <img className="user-img" src={this.state.userInfo.Ds.fI} alt="user image" /> : null}
+                { this.state.userInfo  ? this.state.userInfo.Ds.sd : null}
+                
                 </a>
             );
         } else {

@@ -23,14 +23,11 @@ class Watchlist extends React.Component{
         currentArray.splice(idx, 1);
         localStorage.setItem('films', JSON.stringify(currentArray));
         this.setState({data: currentArray});
-        console.log('this is it'+ currentArray)
     }
     
     render() {
         
-        if (this.state.data.length > 0) {
-            console.log("State",this.state.data)
-          
+        if (this.state.data.length > 0) {         
             return (
                 <div id = "fp" className="container-fluid wrapperStyle">
                     <div className="top-menu-wrapper">

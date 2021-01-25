@@ -15,6 +15,7 @@ import Statistics from "./components/Statistics";
 import GoogleAuth from "./components/GoogleAuth";
 import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 import Cover from "./components/Cover";
+import { GoogleLogin } from 'react-google-login'
 
 class App extends Component {
   constructor(props) {
