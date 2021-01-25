@@ -63,13 +63,14 @@ class Statistics extends React.Component {
   chartType="Bar"
   loader={<div>Loading Chart</div>}
   data={this.state.switcher===0?this.bestRatings():this.state.switcher===1?this.mostOftenSeen():this.state.switcher===2?this.mostRecent():this.interested()}
-
-  options={{
   
+  options={{
+    colors: ['rgb(245, 197, 24)'],
+    
     chart:{
     title: `${this.state.switcher===0?'Best Rated Movies':this.state.switcher===1?'Movies Seen by the Largest Number of People':this.state.switcher===2?'Most Recently Released Movies':'Movies you were interested in'}`,
     subtitle: '',
-    
+    backgroundColor: ['rgb(255, 255, 255)'],
   
     },
     
