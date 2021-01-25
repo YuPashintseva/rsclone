@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/CloneWars/static/css/main.a1d175dc.chunk.css",
+    "main.js": "/CloneWars/static/js/main.959a099a.chunk.js",
+    "main.js.map": "/CloneWars/static/js/main.959a099a.chunk.js.map",
+    "runtime-main.js": "/CloneWars/static/js/runtime-main.0a40924b.js",
+    "runtime-main.js.map": "/CloneWars/static/js/runtime-main.0a40924b.js.map",
+    "static/css/2.9d9cbd05.chunk.css": "/CloneWars/static/css/2.9d9cbd05.chunk.css",
+    "static/js/2.fa24dbe1.chunk.js": "/CloneWars/static/js/2.fa24dbe1.chunk.js",
+    "static/js/2.fa24dbe1.chunk.js.map": "/CloneWars/static/js/2.fa24dbe1.chunk.js.map",
+    "index.html": "/CloneWars/index.html",
+    "static/css/2.9d9cbd05.chunk.css.map": "/CloneWars/static/css/2.9d9cbd05.chunk.css.map",
+    "static/css/main.a1d175dc.chunk.css.map": "/CloneWars/static/css/main.a1d175dc.chunk.css.map",
+    "static/js/2.fa24dbe1.chunk.js.LICENSE.txt": "/CloneWars/static/js/2.fa24dbe1.chunk.js.LICENSE.txt",
+    "static/media/info-grey.013f9369.png": "/CloneWars/static/media/info-grey.013f9369.png",
+    "static/media/styles.css": "/CloneWars/static/media/revicons.e8746a62.woff",
+    "static/media/rs_school_js.ad178c0d.svg": "/CloneWars/static/media/rs_school_js.ad178c0d.svg",
+    "static/media/st.ffa65942.svg": "/CloneWars/static/media/st.ffa65942.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0a40924b.js",
+    "static/css/2.9d9cbd05.chunk.css",
+    "static/js/2.fa24dbe1.chunk.js",
+    "static/css/main.a1d175dc.chunk.css",
+    "static/js/main.959a099a.chunk.js"
+  ]
+}
