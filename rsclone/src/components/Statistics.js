@@ -51,10 +51,10 @@ class Statistics extends React.Component {
 
              <div id = 'st' className = 'container-fluid'>
                <div className='row' style={{margin: '1%'}}>
-              <button id = 'bestRatings' onClick={()=>this.setState({switcher:0})}>Best Ratings</button>
-              <button id = 'mostOftenSeen' onMouseUp={()=>this.setState({switcher:1})}>Most Often Seen</button>
-              <button id = 'mostRecent' onClick={()=>this.setState({switcher:2})}>Most Recent</button>
-              <button id = 'youWereInterested' onClick={()=>this.setState({switcher:3})}>You Were Interested</button>
+              <button id = 'bestRatings'  className="btn btn-secondary" onClick={()=>this.setState({switcher:0})}>Best Ratings</button>
+              <button id = 'mostOftenSeen' className="btn btn-secondary" onMouseUp={()=>this.setState({switcher:1})}>Most Often Seen</button>
+              <button id = 'mostRecent' className="btn btn-secondary" onClick={()=>this.setState({switcher:2})}>Most Recent</button>
+              <button id = 'youWereInterested' className="btn btn-secondary" onClick={()=>this.setState({switcher:3})}>You Were Interested</button>
               </div>
               <div id = 'columnchart_values' style={{height:'90vh',backgroundColor:'white', padding: '2%'}}>
               

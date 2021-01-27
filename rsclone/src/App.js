@@ -173,6 +173,7 @@ class App extends Component {
                     <datalist id="datalistOptions">{this.state.rows}</datalist>
                   </form>
                   <ul className="navbar-nav mr-auto">
+                    <Link to='/'></Link>
                     <li className="nav-item">
                       <Link style={{ textDecoration: 'none' }} to= "/WatchList">
                         <a className="nav-link">
