@@ -11,8 +11,10 @@ class Statistics extends React.Component {
        
     }
     interested() {
-      let all = Object.entries(JSON.parse(localStorage.getItem('count')));
-      
+      let all;
+      if(localStorage.getItem('count')) {
+      all = Object.entries(JSON.parse(localStorage.getItem('count')));
+      }else all = [['no movies yet','no movies yet']];
       all.sort((a,b)=>b[1]-a[1]);
       all = all.slice(0,5);
      
@@ -54,26 +56,28 @@ class Statistics extends React.Component {
               <button id = 'mostRecent' onClick={()=>this.setState({switcher:2})}>Most Recent</button>
               <button id = 'youWereInterested' onClick={()=>this.setState({switcher:3})}>You Were Interested</button>
               </div>
-              <div id = 'columnchart_values' style={{height:'90vh', backgroundColor: 'white', padding: '2%'}}>
+              <div id = 'columnchart_values' style={{height:'90vh',backgroundColor:'white', padding: '2%'}}>
               
   <Chart 
-              
+ 
+ 
   width={'100%'}
   height={'95%'}
   chartType="Bar"
-  loader={<div>Loading Chart</div>}
+  loader={<div >Loading Chart</div>}
   data={this.state.switcher===0?this.bestRatings():this.state.switcher===1?this.mostOftenSeen():this.state.switcher===2?this.mostRecent():this.interested()}
-  
+
   options={{
-    colors: ['rgb(245, 197, 24)'],
-    
+    colors: 'rgb(245, 197, 24)',
+   
     chart:{
     title: `${this.state.switcher===0?'Best Rated Movies':this.state.switcher===1?'Movies Seen by the Largest Number of People':this.state.switcher===2?'Most Recently Released Movies':'Movies you were interested in'}`,
     subtitle: '',
-    backgroundColor: ['rgb(255, 255, 255)'],
   
     },
     
+  
+  
   }}
   // For tests
   rootProps={{ 'data-testid': '1' }}

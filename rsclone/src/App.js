@@ -135,8 +135,10 @@ class App extends Component {
 
   render() {
     return (
+      
       setTimeout(()=>this.setState({flag:true}),10000),
       this.state.flag?( 
+      
       <div className="App">
        
         <nav
@@ -206,9 +208,7 @@ class App extends Component {
                       </Link>
                     </li>
                     <li className="nav-item">
-                      
-                        <GoogleAuth />
-                    
+                     <GoogleAuth />
                     </li>
                   </ul>
                 </div>

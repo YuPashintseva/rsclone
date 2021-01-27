@@ -27,7 +27,7 @@ class Watchlist extends React.Component{
     
     render() {
         
-        if (this.state.data.length > 0) {         
+        if (this.state.data) {         
             return (
                 <div id = "fp" className="container-fluid wrapperStyle">
                     <div className="top-menu-wrapper">
