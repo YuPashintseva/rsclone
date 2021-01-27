@@ -8,7 +8,7 @@ import rsschool from "./components/assets/rs_school_js.svg";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect, Link } from "react-router-dom";
 import $, { contains } from "jquery";
 import Watchlist from "./components/WatchList";
 import Statistics from "./components/Statistics";
@@ -65,7 +65,8 @@ class App extends Component {
 
   componentDidMount() {
     this.defineNumberWatchList();
-    
+   
+        
   }
 
   performSearch(searchTerm) {
@@ -134,13 +135,14 @@ class App extends Component {
   }
 
   render() {
+    setTimeout(()=>{this.setState({flag:true})},7000);
+   if(this.state.flag){
     return (
       
-      setTimeout(()=>this.setState({flag:true}),10000),
-      this.state.flag?( 
-      
+    
+    
       <div className="App">
-       
+         
         <nav
           className="navbar navbar-expand-lg navbar-dark bg-dark"
           style={{ margin: "3px 0" }}
@@ -173,7 +175,7 @@ class App extends Component {
                     <datalist id="datalistOptions">{this.state.rows}</datalist>
                   </form>
                   <ul className="navbar-nav mr-auto">
-                    <Link to='/'></Link>
+                   
                     <li className="nav-item">
                       <Link style={{ textDecoration: 'none' }} to= "/WatchList">
                         <a className="nav-link">
@@ -220,8 +222,9 @@ class App extends Component {
 
         <div id="ourRoot" className="d-flex justify-content-around">
           <div id="fl" className="films-list">
+         
           <Route exact path="/">
-            
+          
            <FilmList watchListincrement = {this.incrementWatchListNumber} />
           </Route>
             
@@ -239,6 +242,7 @@ class App extends Component {
             <Route path="/Trailer">
               <Trailer />
            </Route>
+           
           </div>
         </div>
         <footer className="bg-dark text-center text-lg-start">
@@ -300,8 +304,8 @@ class App extends Component {
         </footer>
        
       </div>
-      ):(<Cover/>)
-    );
+      
+    )} else return <Cover/>;
   }
 }
 
