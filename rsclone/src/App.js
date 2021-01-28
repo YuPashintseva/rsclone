@@ -160,7 +160,7 @@ class App extends Component {
     if (this.state.flag) {
       return (
         <div className="App">
-                    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+          <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
               <Navbar.Brand>
                 <Link to="/">
@@ -180,17 +180,11 @@ class App extends Component {
                           className="context-menu-item"
                         >
                           <div className="wl">
-                            {i18next.t("WatchList")}{" "}
                             <ContextMenuTrigger
                               id="add_same_id"
                               className="context-menu-item"
                             >
-                              <div className="wl">
-                                WatchList{" "}
-                                <div className="watchlist-num">
-                                  {this.state.watchlist}
-                                </div>
-                              </div>
+                              <div className="wl">{i18next.t("WatchList")}</div>
                             </ContextMenuTrigger>
                             <ContextMenu className="menu" id="add_same_id">
                               <MenuItem
@@ -207,9 +201,13 @@ class App extends Component {
                                 Go to WatchList
                               </MenuItem>
                             </ContextMenu>
-                            <div className="watchlist-num">
+                            <span class="badge rounded-pill badge-notification bg-warning text-dark">
                               {this.state.watchlist}
-                            </div>
+                            </span>
+
+                            {/* <div className="watchlist-num">
+                              {this.state.watchlist}
+                            </div> */}
                           </div>
                         </ContextMenuTrigger>
                         <ContextMenu className="menu" id="add_same_id">
