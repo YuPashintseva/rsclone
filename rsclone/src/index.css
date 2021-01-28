@@ -1,0 +1,233 @@
+
+body {
+    background-color: black;
+}
+.main-modal .modal-content {
+    background-color: #2e2e2e;
+    color: white;
+}
+
+.poster-img-modal {
+    width: 100%;
+}
+
+.poster-img-main {
+    width: 100%;
+    position: relative;
+}
+
+.poster-img-main img {
+    width: 100%;
+}
+
+.main-carousel-wrapper {
+   width: 100%;
+}
+
+.main-carousel-img {
+    display: flex;
+    justify-content: center;
+}
+
+.main-carousel-wrapper {
+    align-items: center;
+}
+h2 {
+    position: absolute;
+    top: 85%;
+    left: 0;
+    width: 100%;
+}
+
+h2 span {
+    color: #fff;
+    font-size: 30px;
+    line-height: 55px;
+    background: rgba(0, 0, 0, 0.7);
+    background: #000;
+    opacity: 0.6;
+    padding: 10px;
+}
+.head-text {
+    color: #f5c518;
+    font-size: 45px;
+    padding-left: 10px;
+    padding-top: 5%;
+}
+
+.rounded-img {
+    border-radius: 10%;
+}
+
+
+.yellow-text {
+    color: #f5c518;
+}
+
+.bg-dark {
+    color:  black;
+}
+
+footer {
+    margin-top: 5%;
+}
+
+.nav-link {
+    width: 7.5em;
+    text-decoration: none;
+}
+
+.wl {
+    display: flex;
+}
+
+.watchlist-num {
+    background-color: #f5c518;
+    display: flex;
+    justify-content: center;
+    width: 50px;
+    height: 30px;
+    padding: 3px 6px;
+    border-radius: 50%;
+    color: black;
+    margin-left: 7px;
+}
+
+.star-name-carousel {
+    justify-content: center;
+    display: flex;
+    background: rgba(0, 0, 0, 0.7);
+    background: #000;
+    opacity: 0.6;
+    width: calc(100% - 20px);
+    margin-left: 10px;
+
+}
+
+.star-name-carousel div {
+    color: #fff;
+    font-size: 20px;
+    line-height: 55px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.img-watchlist {
+    width: 70%;
+}
+
+.row-bottom-padding {
+    padding-bottom: 4%;
+}
+
+.top-menu-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.back-button {
+    margin-top: 5%;
+    padding: 0% 10%;
+    color: #4da6ff;
+    font-weight: 600;
+    background-color: #2e2e2e;
+    border: none;
+    border-radius: 5px;
+
+}
+
+.back-button:hover {
+    background-color: #3b3b3b;
+    border: none;
+}
+
+.background-close-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.close-btn-img {
+    padding: 20%;
+}
+
+.close-btn-img:hover {
+    border-radius: 50%;
+    background-color: #f5c518;
+    cursor: pointer;
+}
+
+.main-img-wrapper:hover {
+    background-color: #2e2e2e;
+}
+
+.header-wrapper {
+    width: 65%;
+    margin-left: 16%;
+}
+.navb-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.navb-wrapper-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-collapse {
+    justify-content: center;
+}
+
+.navbar-expand-lg {
+    justify-content: center;
+}
+
+.log-in-button {
+    width: 7rem;
+    display: flex;
+    color: #f5c518;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+.log-in-button:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.log-in-button-wrapper {
+    padding-top: 1%;
+}
+
+.user-img {
+    border-radius: 50%;
+    width: 40%;
+}
+
+.like-film {
+    padding-top: 2px;
+    cursor: pointer;
+}
+.like-film:hover {
+    color: #f5c518;
+}
+
+.react-contextmenu-item {
+    background-color: #f5c518;
+    color: black;
+    opacity: 0.5;
+    width: 10rem;
+    text-align: right;
+    padding-right: 1rem;
+}
+
+.react-contextmenu {
+    margin-top: 2rem;
+}
+
+.react-contextmenu-item:hover {
+    opacity: 1;
+}
