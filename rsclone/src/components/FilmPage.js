@@ -1,8 +1,5 @@
 import React from 'react';
-
 import star from './assets/megastar.png';
-import FilmList from './FilmList';
-import { Helmet } from "react-helmet";
 import CarouselMain from './CaurouselMain';
 
 

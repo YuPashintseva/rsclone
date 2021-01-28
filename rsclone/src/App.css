@@ -190,7 +190,7 @@ to{
 }
 }
 .react-multiple-carousel__arrow{
-  transition-duration: 2s;
+  transition-duration: 1s;
 }
 .react-multiple-carousel__arrow:hover{
   transform: rotate(360deg) scale(1.5);

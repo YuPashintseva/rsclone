@@ -152,11 +152,12 @@ class App extends Component {
             <div className="collapse navbar-collapse" id="navb">
               <div className="navb-wrapper-wrapper">
                 <div className="navb-wrapper">
-                  <a className="navbar-brand">
-                    <Link to='/'>
-                      <div className="main-img-wrapper"><img className="navbar-mainlogo" src={mainLogo} ></img></div>
-                    </Link>
-                  </a>
+                
+                      <a>
+                      <div className="main-img-wrapper"><Link to='/'> <img className="navbar-mainlogo" src={mainLogo} /> </Link></div>
+                  
+                      </a>
+                     
                   <form className="container-fluid my-2 my-lg-0">
                     <Link to="/FilmPage">
                       <input
@@ -178,7 +179,7 @@ class App extends Component {
                    
                     <li className="nav-item">
                       <Link style={{ textDecoration: 'none' }} to= "/WatchList">
-                        <a className="nav-link">
+                      <a className="nav-link">
                         <ContextMenuTrigger id="add_same_id" className="context-menu-item">
                           <div className="wl">WatchList <div className="watchlist-num">{this.state.watchlist}</div></div>
                         </ContextMenuTrigger>
@@ -211,7 +212,9 @@ class App extends Component {
                       </Link>
                     </li>
                     <li className="nav-item">
+                     
                      <GoogleAuth />
+                      
                     </li>
                   </ul>
                 </div>
