@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/CloneWars/static/css/main.5eb64345.chunk.css",
+    "main.js": "/CloneWars/static/js/main.7797c1b1.chunk.js",
+    "main.js.map": "/CloneWars/static/js/main.7797c1b1.chunk.js.map",
+    "runtime-main.js": "/CloneWars/static/js/runtime-main.0a40924b.js",
+    "runtime-main.js.map": "/CloneWars/static/js/runtime-main.0a40924b.js.map",
+    "static/css/2.9d9cbd05.chunk.css": "/CloneWars/static/css/2.9d9cbd05.chunk.css",
+    "static/js/2.4b67e137.chunk.js": "/CloneWars/static/js/2.4b67e137.chunk.js",
+    "static/js/2.4b67e137.chunk.js.map": "/CloneWars/static/js/2.4b67e137.chunk.js.map",
+    "index.html": "/CloneWars/index.html",
+    "static/css/2.9d9cbd05.chunk.css.map": "/CloneWars/static/css/2.9d9cbd05.chunk.css.map",
+    "static/css/main.5eb64345.chunk.css.map": "/CloneWars/static/css/main.5eb64345.chunk.css.map",
+    "static/js/2.4b67e137.chunk.js.LICENSE.txt": "/CloneWars/static/js/2.4b67e137.chunk.js.LICENSE.txt",
+    "static/media/Star Wars Theme  John Williams.2215b067.mp3": "/CloneWars/static/media/Star Wars Theme  John Williams.2215b067.mp3",
+    "static/media/getFetch.cjs": "/CloneWars/static/media/getFetch.d7d6010d.cjs",
+    "static/media/info-grey.013f9369.png": "/CloneWars/static/media/info-grey.013f9369.png",
+    "static/media/styles.css": "/CloneWars/static/media/revicons.e8746a62.woff",
+    "static/media/rs_school_js.ad178c0d.svg": "/CloneWars/static/media/rs_school_js.ad178c0d.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0a40924b.js",
+    "static/css/2.9d9cbd05.chunk.css",
+    "static/js/2.4b67e137.chunk.js",
+    "static/css/main.5eb64345.chunk.css",
+    "static/js/main.7797c1b1.chunk.js"
+  ]
+}
