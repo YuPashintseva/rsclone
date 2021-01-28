@@ -14,9 +14,8 @@ import CarouselMain from './CaurouselMain';
      this.setState({ video: res.results[0]?res.results[0].key:''});
      let val = JSON.parse(sessionStorage.getItem("val"));
      this.setState({dat: val});
-     
     }
-
+  
     render(){
        
         return(
