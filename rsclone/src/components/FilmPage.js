@@ -1,6 +1,7 @@
 import React from 'react';
 import star from './assets/megastar.png';
 import CarouselMain from './CaurouselMain';
+import i18next from "i18next";
 
 
  class FilmPage extends React.Component{
