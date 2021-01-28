@@ -4,14 +4,17 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
+import "./components/i18next";
+import i18next from "i18next";
 
-
+const lang = localStorage.getItem("lang") || "en";
+i18next.changeLanguage(lang);
 
 ReactDOM.render(
   <React.StrictMode>
-           <Router>
-       <App />
-       </Router>
+    <Router>
+      <App />
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );
