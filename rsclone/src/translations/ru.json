@@ -1,8 +1,9 @@
 {
+  "language":"ru",
   "WatchList": "БудуCмотреть",
   "Setting": "Настройки",
   "Statistics": "Статистика",
-  "Sign In": "Войти",
+  "SignIn": "Войти",
   "Search": "Поиск",
   "SearchBtn": "Поиск",
   "FreeCourse": "Бесплатный курс «JavaScript/Front-end» от сообщества The Rolling Scopes -",

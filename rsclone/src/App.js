@@ -2,6 +2,9 @@ import ReactDOM from "react-dom";
 import FilmList from "./components/FilmList";
 import FilmPage from "./components/FilmPage";
 import Trailer from "./components/Trailer";
+import SearchArea from "./components/SearchArea";
+import MovieList from "./components/MovieList";
+
 import MovieRow from "./components/MovieRow";
 import Footer from "./components/Footer";
 import mainLogo from "./logo-imdb.png";
@@ -19,7 +22,6 @@ import Watchlist from "./components/WatchList";
 import Statistics from "./components/Statistics";
 import GoogleAuth from "./components/GoogleAuth";
 import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
-import Cover from "./components/Cover";
 import { GoogleLogin } from "react-google-login";
 
 import { useTranslation } from "react-i18next";
@@ -27,9 +29,6 @@ import i18next from "i18next";
 
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Form from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/FormControl";
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 
 class App extends Component {
@@ -38,13 +37,14 @@ class App extends Component {
     this.incrementWatchListNumber = this.incrementWatchListNumber.bind(this);
     this.decrementWatchListNumber = this.decrementWatchListNumber.bind(this);
     this.clearWatchList = this.clearWatchList.bind(this);
-    this.state = { watchlist: 0, flag: false };
-    this.performSearch("");
+    this.state = { watchlist: 0, movies: [], searchTerm: "" };
+    this.apiKey = "c9ebd652172bbcdaa5b3746fa2e60207";
   }
-
+  // flag: false,
   change(option) {
     localStorage.setItem("lang", option.target.value);
     window.location.reload();
+    // this.setState({ language: option });
   }
 
   incrementWatchListNumber(filmid) {
@@ -85,50 +85,24 @@ class App extends Component {
   componentDidMount() {
     this.defineNumberWatchList();
   }
+  // search
+  handleSubmit = (e) => {
+    e.preventDefault();
 
-  performSearch(searchTerm) {
-    const urlString =
-      "https://api.themoviedb.org/3/search/movie?api_key=c9ebd652172bbcdaa5b3746fa2e60207&query=" +
-      searchTerm;
-    $.ajax({
-      url: urlString,
-      success: (searchResults) => {
-        console.log("Fetched data successfully");
-        console.log(searchResults);
-        const results = searchResults.results;
+    fetch(
+      `https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${this.state.searchTerm}`
+    )
+      .then((data) => data.json())
+      .then((data) => {
+        console.log(data);
+        this.setState({ movies: [...data.results] });
+      });
+  };
+  // search
+  handleChange = (e) => {
+    this.setState({ searchTerm: e.target.value });
+  };
 
-        var movieRows = [];
-
-        results.forEach((movie) => {
-          movie.poster_path =
-            "https://image.tmdb.org/t/p/w600_and_h900_bestv2" +
-            movie.poster_path;
-          console.log(movie.poster_path);
-          const filmDATA = JSON.parse(sessionStorage.getItem("fullInf"));
-          const currFilm = filmDATA.filter(
-            (el) => el.original_title === movie.title
-          );
-          let movieRow;
-          if (currFilm[0]) {
-            movieRow = <MovieRow key={movie.id} movie={movie} />;
-          }
-          movieRows.push(movieRow);
-        });
-
-        this.setState({ rows: movieRows });
-      },
-      error: (xhr, status, err) => {
-        console.log("failed to fetch data");
-      },
-    });
-  }
-
-  searchCnangeHandler(event) {
-    console.log(event.target.value);
-    const boundObject = this;
-    const searchTerm = event.target.value;
-    boundObject.performSearch(searchTerm);
-  }
   changeLinkState() {
     const inp = document.querySelector("input");
     const datl = document.querySelector("#datalistOptions").childNodes;
@@ -154,148 +128,145 @@ class App extends Component {
   render() {
     const lang = localStorage.getItem("lang") || "en";
 
-    setTimeout(() => {
-      this.setState({ flag: true });
-    }, 7000);
-    if (this.state.flag) {
-      return (
-        <div className="App">
-          <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <Container>
-              <Navbar.Brand>
-                <Link to="/">
-                  <img className="navbar-mainlogo" src={mainLogo}></img>
-                </Link>
-              </Navbar.Brand>
+    // setTimeout(() => {
+    //   this.setState({ flag: true });
+    // }, 7000);
+    // if (this.state.flag) {
+    return (
+      <div className="App">
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+          <Container>
+            <Navbar.Brand>
+              <Link to="/">
+                <img className="navbar-mainlogo" src={mainLogo}></img>
+              </Link>
+            </Navbar.Brand>
 
-              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
-              <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="mr-auto">
-                  <Nav.Link href="#features">
-                    <Link style={{ textDecoration: "none" }} to="/WatchList">
-                      <a className="nav-link">
-                        <ContextMenuTrigger
-                          id="add_same_id"
-                          className="context-menu-item"
-                        >
-                          <div className="wl">
-                            <ContextMenuTrigger
-                              id="add_same_id"
-                              className="context-menu-item"
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="mr-auto">
+                <Nav.Link href="#features">
+                  <Link style={{ textDecoration: "none" }} to="/WatchList">
+                    <a className="nav-link">
+                      <ContextMenuTrigger
+                        id="add_same_id"
+                        className="context-menu-item"
+                      >
+                        <div className="wl">
+                          <ContextMenuTrigger
+                            id="add_same_id"
+                            className="context-menu-item"
+                          >
+                            <div className="wl">{i18next.t("WatchList")}</div>
+                          </ContextMenuTrigger>
+                          <ContextMenu className="menu" id="add_same_id">
+                            <MenuItem
+                              onClick={(e) => this.clearWatchList(e)}
+                              data={{ item: "Home" }}
+                              className="menuItem"
                             >
-                              <div className="wl">{i18next.t("WatchList")}</div>
-                            </ContextMenuTrigger>
-                            <ContextMenu className="menu" id="add_same_id">
-                              <MenuItem
-                                onClick={(e) => this.clearWatchList(e)}
-                                data={{ item: "Home" }}
-                                className="menuItem"
-                              >
-                                Clear WatchList
-                              </MenuItem>
-                              <MenuItem
-                                data={{ item: "Home" }}
-                                className="menuItem"
-                              >
-                                Go to WatchList
-                              </MenuItem>
-                            </ContextMenu>
-                            <span class="badge rounded-pill badge-notification bg-warning text-dark">
-                              {this.state.watchlist}
-                            </span>
+                              Clear WatchList
+                            </MenuItem>
+                            <MenuItem
+                              data={{ item: "Home" }}
+                              className="menuItem"
+                            >
+                              Go to WatchList
+                            </MenuItem>
+                          </ContextMenu>
+                          <span class="badge rounded-pill badge-notification bg-warning text-dark">
+                            {this.state.watchlist}
+                          </span>
 
-                            {/* <div className="watchlist-num">
+                          {/* <div className="watchlist-num">
                               {this.state.watchlist}
                             </div> */}
-                          </div>
-                        </ContextMenuTrigger>
-                        <ContextMenu className="menu" id="add_same_id">
-                          <MenuItem
-                            onClick={(e) => this.clearWatchList(e)}
-                            data={{ item: "Home" }}
-                            className="menuItem"
-                          >
-                            Clear WatchList
-                          </MenuItem>
-                          <MenuItem
-                            data={{ item: "Home" }}
-                            className="menuItem"
-                          >
-                            Go to WatchList
-                          </MenuItem>
-                        </ContextMenu>
-                      </a>
-                    </Link>
-                  </Nav.Link>
-                  <Nav.Link>
-                    <a className="nav-link">{i18next.t("Setting")}</a>
-                  </Nav.Link>
-                  <Nav.Link>
-                    <Link to="/Statistics">
-                      <a className="nav-link">{i18next.t("Statistics")}</a>
-                    </Link>
-                  </Nav.Link>
+                        </div>
+                      </ContextMenuTrigger>
+                      <ContextMenu className="menu" id="add_same_id">
+                        <MenuItem
+                          onClick={(e) => this.clearWatchList(e)}
+                          data={{ item: "Home" }}
+                          className="menuItem"
+                        >
+                          Clear WatchList
+                        </MenuItem>
+                        <MenuItem data={{ item: "Home" }} className="menuItem">
+                          Go to WatchList
+                        </MenuItem>
+                      </ContextMenu>
+                    </a>
+                  </Link>
+                </Nav.Link>
+                <Nav.Link>
+                  <a className="nav-link">{i18next.t("Setting")}</a>
+                </Nav.Link>
+                <Nav.Link>
+                  <Link to="/Statistics">
+                    <a className="nav-link">{i18next.t("Statistics")}</a>
+                  </Link>
+                </Nav.Link>
 
-                  <Nav.Link>
-                    <GoogleAuth />
-                  </Nav.Link>
+                <Nav.Link>
+                  <GoogleAuth />
+                </Nav.Link>
 
-                  <Nav.Link>
-                    <select
-                      name=""
-                      id=""
-                      className="custom-select pull-right"
-                      onChange={this.change}
-                      value={lang}
-                    >
-                      <option value="en">English</option>
-                      <option value="ru">Русский</option>
-                    </select>
-                  </Nav.Link>
-                </Nav>
-                <Form inline>
-                  <FormControl
-                    type="text"
-                    placeholder={i18next.t("Search")}
-                    className="mr-sm-2"
-                  />
-                  <Button variant="outline-light">
-                    {i18next.t("SearchBtn")}
-                  </Button>
-                </Form>
-              </Navbar.Collapse>
-            </Container>
-          </Navbar>
+                <Nav.Link>
+                  <select
+                    name=""
+                    id=""
+                    className="custom-select pull-right"
+                    onChange={this.change}
+                    value={lang}
+                  >
+                    <option value="en">English</option>
+                    <option value="ru">Русский</option>
+                  </select>
+                </Nav.Link>
+              </Nav>
 
-          <div id="ourRoot" className="d-flex justify-content-around">
-            <div id="fl" className="films-list">
-              <Route exact path="/">
-                <FilmList watchListincrement={this.incrementWatchListNumber} />
-              </Route>
+              <SearchArea
+                handleSubmit={this.handleSubmit}
+                handleChange={this.handleChange}
+              />
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
 
-              <Route path="/FilmPage">
-                <FilmPage />
-              </Route>
+        <div id="ourRoot" className="d-flex justify-content-around">
+          <div id="fl" className="films-list">
+            <Route exact path="/">
+              <FilmList watchListincrement={this.incrementWatchListNumber} />
+            </Route>
 
-              <Route path="/WatchList">
-                <Watchlist watchListdecrement={this.decrementWatchListNumber} />
-              </Route>
+            <Route path="/">
+              <MovieList movies={this.state.movies} />
+            </Route>
 
-              <Route path="/Statistics">
-                <Statistics />
-              </Route>
-              <Route path="/Trailer">
-                <Trailer />
-              </Route>
-            </div>
+            <Route path="/FilmPage">
+              <FilmPage />
+            </Route>
+
+            <Route path="/WatchList">
+              <Watchlist watchListdecrement={this.decrementWatchListNumber} />
+            </Route>
+
+            <Route path="/Statistics">
+              <Statistics />
+            </Route>
+            <Route path="/Trailer">
+              <Trailer />
+            </Route>
           </div>
-          {/* footer isert here */}
-          <Footer />
         </div>
-      );
-    } else return <Cover />;
+        {/* footer isert here */}
+        <Footer />
+      </div>
+    );
   }
+  // else return <Cover />;
+  //}
 }
 
 export default App;
