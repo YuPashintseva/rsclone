@@ -43,15 +43,25 @@ class FilmList extends React.Component {
         this.state = {data: [], dataMain: [], value: "", showHide: false, currFilmInfo: {}, showAlert: false};
         this.handleModalShowHide = this.handleModalShowHide.bind(this);
         this.handleModalShowHide2 = this.handleModalShowHide2.bind(this);
+        this.escFunction = this.escFunction.bind(this);
+    }
 
+    escFunction(event){
+        if(event.keyCode === 27) {
+            this.setState({showHide: false});
+        }
     }
 
     async componentDidMount() {
         const response = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=en-US&page=1');
         const json = await response.json();
         this.setState({ data: json});
-      
-        sessionStorage.setItem('fullInf',JSON.stringify(json.results))
+        sessionStorage.setItem('fullInf',JSON.stringify(json.results));
+        document.addEventListener("keydown", this.escFunction, false);
+    }
+
+    componentWillUnmount(){
+        document.removeEventListener("keydown", this.escFunction, false);
     }
 
     returnState(){
