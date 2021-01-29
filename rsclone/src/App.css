@@ -201,6 +201,7 @@ html,
   background-color: red;
 }
 .cursor{
+  color:white;
   cursor: pointer;
 }
 .wl-wrap {

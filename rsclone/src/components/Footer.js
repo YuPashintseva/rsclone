@@ -3,16 +3,22 @@ import rsschool from "./assets/rs_school_js.svg";
 import i18next from "i18next";
 
 class Footer extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+ 
+    this.state={font:''};
+  
   }
-
+componentWillReceiveProps(props) {
+  this.setState({font:props})
+  
+}
   render() {
     return (
-      <footer className="bg-dark text-center text-lg-start">
-        <div className="container p-4">
+      <footer className="bg-dark text-center text-lg-start" >
+        <div className="container p-4" style={{fontFamily:`${this.state.font.value}`}}>
           <div className="row">
-            <div className="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <div className="col-lg-6 col-md-12 mb-4 mb-md-0" >
               <h5 className="text-uppercase yellow-text">
                 {" "}
                 The Rolling Scopes School

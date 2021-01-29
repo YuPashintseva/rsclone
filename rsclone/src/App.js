@@ -26,7 +26,19 @@ class App extends Component {
     this.decrementWatchListNumber = this.decrementWatchListNumber.bind(this);
     this.clearWatchList = this.clearWatchList.bind(this);
     this.change = this.change.bind(this);
-    this.state = { watchlist: 0, movies: [], searchTerm: "",color:'',count:0, colors:['blue','yellow','white'],flag: false, language: "en" };
+    this.state = { 
+      watchlist: 0,
+       movies: [], 
+       searchTerm: "",
+       color:'',
+       count:0, 
+       colors:['blue','yellow','white','brown','purple','red','green'],
+       font:'',
+       fonts:['Times New Roman','Arial','Courier New','Brush Spirit MT','Copperplate','Lucida Console','Helvetica'],
+       flag: false, 
+       language: "en"
+       };
+    
     this.apiKey = "c9ebd652172bbcdaa5b3746fa2e60207";
   }
   // flag: false,
@@ -72,6 +84,10 @@ class App extends Component {
 
   componentDidMount() {
     this.defineNumberWatchList();
+    
+  }
+  componentDidUpdate() {
+   
   }
   // search
   handleSubmit = (e) => {
@@ -115,20 +131,27 @@ class App extends Component {
   secondNav() {
     return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-    <Container style={{display:"flex",}}>
+    <Container style={{display:"flex",fontFamily:`${this.state.font}`}}>
     
-      <a className="nav-link col-2 cursor" onClick={()=>this.backgroundChange()}>Change Background</a>
-      <a className="nav-link col-2 cursor">Change Font</a>
+      <a className="cursor" onClick={()=>this.backgroundChange()}>Change Background</a>
+      <a className="cursor" onClick={()=>this.setState({color:''})}>Default Background</a>
+      <a className="cursor" onClick={()=>this.fontChange()}>Change Font</a>
+      <a className="cursor" onClick={()=>this.setState({font:''})}>Default Font</a>
       
       </Container>
     </Navbar>)
   }
   backgroundChange() {
    this.setState({color:this.state.colors[this.state.count]});
-   this.setState({count:this.state.count + 1})
+   
+   if(this.state.count>=this.state.colors.length-1)this.setState({count:0})
+   else this.setState({count:this.state.count + 1})
   }
   fontChange() {
-
+    this.setState({font:this.state.fonts[this.state.count]});
+   
+    if(this.state.count>=this.state.fonts.length-1)this.setState({count:0})
+    else this.setState({count:this.state.count + 1})
   }
   render() {
     const lang = localStorage.getItem("lang") || "en";
@@ -140,7 +163,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-          <Container>
+          <Container style={{fontFamily:`${this.state.font}`}}>
             <Navbar.Brand>
               <Link to="/">
                 <img className="navbar-mainlogo" src={mainLogo}></img>
@@ -255,7 +278,7 @@ class App extends Component {
           </div>
         </div>
         {/* footer isert here */}
-        <Footer />
+        <Footer value={this.state.font}/>
       </div>
     );
   }
