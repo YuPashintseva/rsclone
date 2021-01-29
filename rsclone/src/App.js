@@ -37,7 +37,7 @@ class App extends Component {
     this.incrementWatchListNumber = this.incrementWatchListNumber.bind(this);
     this.decrementWatchListNumber = this.decrementWatchListNumber.bind(this);
     this.clearWatchList = this.clearWatchList.bind(this);
-    this.state = { watchlist: 0, movies: [], searchTerm: "",color:'',flag: false };
+    this.state = { watchlist: 0, movies: [], searchTerm: "",color:'',count:0, colors:['blue','yellow','white'],flag: false };
     this.apiKey = "c9ebd652172bbcdaa5b3746fa2e60207";
   }
   // flag: false,
@@ -130,15 +130,15 @@ class App extends Component {
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
     <Container style={{display:"flex",}}>
     
-      <a className="nav-link col-2" onClick={()=>this.backgroundChange()}>Change Background</a>
-      <a className="nav-link col-2">Change Font</a>
+      <a className="nav-link col-2 cursor" onClick={()=>this.backgroundChange()}>Change Background</a>
+      <a className="nav-link col-2 cursor">Change Font</a>
       
       </Container>
     </Navbar>)
   }
   backgroundChange() {
-   this.setState({color:'blue'})
-  
+   this.setState({color:this.state.colors[this.state.count]});
+   this.setState({count:this.state.count + 1})
   }
   fontChange() {
 

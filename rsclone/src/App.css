@@ -200,3 +200,6 @@ html,
   transform: rotate(360deg) scale(1.5);
   background-color: red;
 }
+.cursor{
+  cursor: pointer;
+}
