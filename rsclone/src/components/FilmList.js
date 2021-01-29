@@ -111,11 +111,11 @@ class FilmList extends React.Component {
                 {mod}
                 <Carousel
                 swipeable={false}
-                draggable={false}
+                draggable={true}
                 showDots={false}
                 responsive={responsive}
                 ssr={true}
-                infinite={true}
+                infinite={false}
                 autoPlaySpeed={1000}
                 keyBoardControl={true}
                 customTransition="all .5"
