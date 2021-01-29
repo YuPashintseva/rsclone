@@ -147,7 +147,6 @@ class FilmList extends React.Component {
                                   <img className = "star" src={star} alt="star icon" />
                                     <div className="vote_average">{el.vote_average}</div>
                                 </div>
-                                <div className="like-film">Like this film</div>
                             </div>
                            <Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage">
                                 <div className="film-title" onClick={()=>this.interestedCount(el.original_title)} onMouseOver={()=>{ sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}}>{el.title}</div>
