@@ -37,7 +37,7 @@ class App extends Component {
     this.incrementWatchListNumber = this.incrementWatchListNumber.bind(this);
     this.decrementWatchListNumber = this.decrementWatchListNumber.bind(this);
     this.clearWatchList = this.clearWatchList.bind(this);
-    this.state = { watchlist: 0, movies: [], searchTerm: "" };
+    this.state = { watchlist: 0, movies: [], searchTerm: "",color:'',flag: false };
     this.apiKey = "c9ebd652172bbcdaa5b3746fa2e60207";
   }
   // flag: false,
@@ -125,6 +125,24 @@ class App extends Component {
     return flag;
   }
 
+  secondNav() {
+    return (
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Container style={{display:"flex",}}>
+    
+      <a className="nav-link col-2" onClick={()=>this.backgroundChange()}>Change Background</a>
+      <a className="nav-link col-2">Change Font</a>
+      
+      </Container>
+    </Navbar>)
+  }
+  backgroundChange() {
+   this.setState({color:'blue'})
+  
+  }
+  fontChange() {
+
+  }
   render() {
     const lang = localStorage.getItem("lang") || "en";
 
@@ -200,7 +218,7 @@ class App extends Component {
                   </Link>
                 </Nav.Link>
                 <Nav.Link>
-                  <a className="nav-link">{i18next.t("Setting")}</a>
+                  <a className="nav-link" onClick={()=>{!this.state.flag?this.setState({flag: true}):this.setState({flag:false})}}>{i18next.t("Settings")}</a>
                 </Nav.Link>
                 <Nav.Link>
                   <Link to="/Statistics">
@@ -233,8 +251,8 @@ class App extends Component {
             </Navbar.Collapse>
           </Container>
         </Navbar>
-
-        <div id="ourRoot" className="d-flex justify-content-around">
+         {this.state.flag?this.secondNav():''}
+        <div id="ourRoot" className="d-flex justify-content-around" style={{backgroundColor:`${this.state.color}`}}>
           <div id="fl" className="films-list">
             <Route exact path="/">
               <FilmList watchListincrement={this.incrementWatchListNumber} />
