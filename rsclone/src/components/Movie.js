@@ -3,6 +3,7 @@ import noImage from "./assets/noimage.jpg";
 import star from "./assets/megastar.png";
 
 const Movie = (props) => {
+
   return (
     <div id="fp" className="container-fluid wrapper wrapperStyle">
       <div id="upperBlock" className="wrapper">

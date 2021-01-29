@@ -1,31 +1,20 @@
-import ReactDOM from "react-dom";
+
 import FilmList from "./components/FilmList";
 import FilmPage from "./components/FilmPage";
 import Trailer from "./components/Trailer";
 import SearchArea from "./components/SearchArea";
 import MovieList from "./components/MovieList";
-import MovieRow from "./components/MovieRow";
 import Footer from "./components/Footer";
 import mainLogo from "./logo-imdb.png";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Link,
-} from "react-router-dom";
-import $, { contains } from "jquery";
+import { Route, Link} from "react-router-dom";
 import Watchlist from "./components/WatchList";
 import Statistics from "./components/Statistics";
 import GoogleAuth from "./components/GoogleAuth";
 import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
-import { GoogleLogin } from "react-google-login";
-
-import { useTranslation } from "react-i18next";
 import i18next from "i18next";
-
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";

@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 
 class ModalWindow extends React.Component{
     render(){
+        console.log(this.props)
         let msgText = 'Successfully added to WatchList';
         if (this.props.toWatchList) {
             if (localStorage.getItem('films')) {

@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React from 'react';
 import Carousel from "react-multi-carousel";
 import ModalWindow from './ModalWindow';
 import CaurouselMain from './CaurouselMain';
@@ -6,8 +6,6 @@ import 'react-multi-carousel/lib/styles.css';
 import star from './assets/star.png'
 import play from './assets/play.png'
 import info from './assets/info-grey.png';
-import { Helmet } from "react-helmet";
-import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 
 
 import {
@@ -40,7 +38,7 @@ const responsive = {
 class FilmList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {data: [], dataMain: [], value: "", showHide: false, currFilmInfo: {}, showAlert: false};
+        this.state = {data: [], dataMain: [], value: "", showHide: false, currFilmInfo: {}, showAlert: false, lang: this.props.lang};
         this.handleModalShowHide = this.handleModalShowHide.bind(this);
         this.handleModalShowHide2 = this.handleModalShowHide2.bind(this);
         this.escFunction = this.escFunction.bind(this);
@@ -81,12 +79,11 @@ class FilmList extends React.Component {
     interestedCount(title) {
         if(localStorage.getItem('count')){
             let obj = JSON.parse(localStorage.getItem('count'));
-            if(obj[title]) {
+            if (obj[title]) {
                 obj[title] = parseInt(obj[title])+1;
-            }else {
+            } else {
                 obj[title] = 1;
             }
-            //localStorage.clear();
             localStorage.setItem('count', JSON.stringify(obj));
         }
         else {
@@ -175,7 +172,7 @@ class FilmList extends React.Component {
             <div className="head-text">
                 Popular people
             </div>
-            <CaurouselMain type={"people"} />
+            <CaurouselMain type={"people"} key={this.state.lang} />
             </div>
             );
         } else {

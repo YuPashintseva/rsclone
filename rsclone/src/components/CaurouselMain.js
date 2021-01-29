@@ -10,8 +10,8 @@ import {
 } from "react-router-dom";
 
 class CarouselMain extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {dataMain: [], type: "films"}
     }
 
