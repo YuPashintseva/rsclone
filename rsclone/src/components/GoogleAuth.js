@@ -28,7 +28,6 @@ class GoogleAuth extends React.Component {
 
   showCurrentUserInfo() {
     var googleUser = this.auth.currentUser.get().Mt;
-    console.log("users info ", googleUser.Mt);
     return googleUser.Mt;
   }
 
@@ -51,14 +50,14 @@ class GoogleAuth extends React.Component {
     } else if (this.state.isSignedIn) {
       return (
         <a onClick={this.onSignOut} className="log-in-button">
-          {this.state.userInfo ? (
+          {(this.auth.currentUser.get().getBasicProfile()) ? (
             <img
               className="user-img"
-              src={this.state.userInfo.Ds.fI}
+              src={this.auth.currentUser.get().getBasicProfile().fI}
               alt="user image"
             />
           ) : null}
-          {this.state.userInfo ? this.state.userInfo.Ds.sd : null}
+          {this.state.userInfo ? this.auth.currentUser.get().getBasicProfile().sd : null}
         </a>
       );
     } else {
