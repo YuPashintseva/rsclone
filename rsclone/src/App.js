@@ -36,14 +36,14 @@ class App extends Component {
     this.incrementWatchListNumber = this.incrementWatchListNumber.bind(this);
     this.decrementWatchListNumber = this.decrementWatchListNumber.bind(this);
     this.clearWatchList = this.clearWatchList.bind(this);
-    this.state = { watchlist: 0, movies: [], searchTerm: "",color:'',count:0, colors:['blue','yellow','white'],flag: false };
+    this.change = this.change.bind(this);
+    this.state = { watchlist: 0, movies: [], searchTerm: "",color:'',count:0, colors:['blue','yellow','white'],flag: false, language: "en" };
     this.apiKey = "c9ebd652172bbcdaa5b3746fa2e60207";
   }
   // flag: false,
   change(option) {
     localStorage.setItem("lang", option.target.value);
-    window.location.reload();
-    // this.setState({ language: option });
+    this.setState({ language: option.target.value });
   }
 
   incrementWatchListNumber(filmid) {
@@ -68,11 +68,9 @@ class App extends Component {
   }
 
   clearWatchList(e, data) {
-    console.log(e);
     e.preventDefault();
     localStorage.setItem("films", JSON.stringify([]));
     this.setState({ watchlist: 0 });
-    console.log('here')
   }
 
   defineNumberWatchList() {
@@ -95,7 +93,6 @@ class App extends Component {
     )
       .then((data) => data.json())
       .then((data) => {
-        console.log(data);
         this.setState({ movies: [...data.results] });
       });
   };
@@ -245,7 +242,7 @@ class App extends Component {
         <div id="ourRoot" className="d-flex justify-content-around" style={{backgroundColor:`${this.state.color}`}}>
           <div id="fl" className="films-list">
             <Route exact path="/">
-              <FilmList watchListincrement={this.incrementWatchListNumber} />
+              <FilmList watchListincrement={this.incrementWatchListNumber}  lang={this.state.language} key={this.state.language}/>
             </Route>
 
             <Route path="/">
