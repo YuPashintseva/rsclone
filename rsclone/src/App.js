@@ -4,7 +4,6 @@ import FilmPage from "./components/FilmPage";
 import Trailer from "./components/Trailer";
 import SearchArea from "./components/SearchArea";
 import MovieList from "./components/MovieList";
-
 import MovieRow from "./components/MovieRow";
 import Footer from "./components/Footer";
 import mainLogo from "./logo-imdb.png";
@@ -69,9 +68,11 @@ class App extends Component {
   }
 
   clearWatchList(e, data) {
+    console.log(e);
     e.preventDefault();
     localStorage.setItem("films", JSON.stringify([]));
     this.setState({ watchlist: 0 });
+    console.log('here')
   }
 
   defineNumberWatchList() {
@@ -171,7 +172,7 @@ class App extends Component {
                         id="add_same_id"
                         className="context-menu-item"
                       >
-                        <div className="wl">
+                        <div>
                           <ContextMenuTrigger
                             id="add_same_id"
                             className="context-menu-item"
@@ -202,18 +203,7 @@ class App extends Component {
                             </div> */}
                         </div>
                       </ContextMenuTrigger>
-                      <ContextMenu className="menu" id="add_same_id">
-                        <MenuItem
-                          onClick={(e) => this.clearWatchList(e)}
-                          data={{ item: "Home" }}
-                          className="menuItem"
-                        >
-                          Clear WatchList
-                        </MenuItem>
-                        <MenuItem data={{ item: "Home" }} className="menuItem">
-                          Go to WatchList
-                        </MenuItem>
-                      </ContextMenu>
+                    
                     </a>
                   </Link>
                 </Nav.Link>

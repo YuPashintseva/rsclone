@@ -15,7 +15,7 @@ html,
   width: 100%;
 }
 .films-list {
-  width: 65%;
+  width: 80%;
   margin-top: 4%;
 }
 .carousel-item-padding {
@@ -202,4 +202,7 @@ html,
 }
 .cursor{
   cursor: pointer;
+}
+.wl-wrap {
+  display: flex;
 }
