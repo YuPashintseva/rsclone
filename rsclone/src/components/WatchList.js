@@ -32,7 +32,6 @@ class Watchlist extends React.Component{
                 <div id = "fp" className="container-fluid wrapperStyle">
                     <div className="top-menu-wrapper">
                         <div className="head-text">Your Watchlist</div>
-                        <button className="back-button">Home</button>
                     </div>
                     <div>
                     {this.state.data.map(el => (
