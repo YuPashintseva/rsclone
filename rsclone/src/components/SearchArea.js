@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import ReactHTMLDatalist from "react-html-datalist";
 import MovieList from './MovieList';
 import i18next from "i18next";
-
+import { Route, Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
@@ -15,11 +15,12 @@ class SearchArea extends React.Component{
   }
   render(){
   return (
-    <div>
+   
     <form
       className="container-fluid my-2 my-lg-0"
       onSubmit={this.props.handleSubmit}
     >
+      <Link to="/MovieList">
       <input
         className="form-control mr-sm-2"
         //onChange={this.searchCnangeHandler.bind(this)}
@@ -28,10 +29,12 @@ class SearchArea extends React.Component{
         list="datalistOptions"
         id="exampleDataList"
         placeholder={i18next.t("Search")}
-      />
+   />
+   </Link>
+    
     </form>
-    <MovieList movies={this.props.movies}/>
-    </div>
+    
+   
   );
   }
 };

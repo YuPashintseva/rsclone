@@ -104,12 +104,13 @@ class App extends Component {
     )
       .then((data) => data.json())
       .then((data) => {
-        this.setState({ movies: [...data.results] });
+        this.setState({ movies: [...data.results]});
       });
   };
   // search
   handleChange = (e) => {
     this.setState({ searchTerm: e.target.value });
+    
   };
 
   changeLinkState() {
@@ -281,9 +282,13 @@ class App extends Component {
             
               
               <Nav.Link>
-            <Link to="/SearchArea">
-              <input placeholder={'Search'}></input>
-            </Link>
+              {/*<Link to="/MovieList">*/}
+              <SearchArea
+                handleSubmit={this.handleSubmit}
+                handleChange={this.handleChange}
+                
+              />
+           {/* </Link>*/}
             </Nav.Link>
             </Nav>
             </Navbar.Collapse>
@@ -325,12 +330,8 @@ class App extends Component {
               <Statistics />
             </Route>
 
-            <Route path="/SearchArea">
-            <SearchArea
-                handleSubmit={this.handleSubmit}
-                handleChange={this.handleChange}
-                movies = {this.state.movies}
-              />
+            <Route path="/MovieList">
+           <MovieList movies = {this.state.movies}/>
             </Route>
             <Route path="/Trailer">
               <Trailer />
