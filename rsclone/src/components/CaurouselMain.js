@@ -16,16 +16,17 @@ class CarouselMain extends React.Component {
     }
 
     async componentDidMount() {
-      let responseMain = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=en-US&page=2');
+      console.log('main carousel', this.props.lang);
+      let responseMain = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=${this.props.lang}&page=2`);
       if (this.props.type) {
         if (this.props.type === 'films') {
-          responseMain = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=en-US&page=2');
+          responseMain = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=${this.props.lang}&page=2`);
         } else if (this.props.type === 'people') {
-          responseMain = await fetch('https://api.themoviedb.org/3/person/popular?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=en-US&page=2');
+          responseMain = await fetch(`https://api.themoviedb.org/3/person/popular?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=${this.props.lang}&page=2`);
         } else {
-          responseMain = await fetch('https://api.themoviedb.org/3/movie/464052/credits?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=en-US');
+          responseMain = await fetch(`https://api.themoviedb.org/3/movie/464052/credits?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=${this.props.lang}`);
           if (this.props.filmId) {
-            responseMain = await fetch(`https://api.themoviedb.org/3/movie/${this.props.filmId}/credits?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=en-US`);
+            responseMain = await fetch(`https://api.themoviedb.org/3/movie/${this.props.filmId}/credits?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=${this.props.lang}`);
           }
         }
         this.setState({ type: this.props.type })
@@ -52,7 +53,7 @@ class CarouselMain extends React.Component {
     }
 }
     render() {
-
+      console.log(this.state.dataMain)
        if (this.state.dataMain.results){
           if (this.state.type === "films") {
             const responsive = {

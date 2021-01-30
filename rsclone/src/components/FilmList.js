@@ -102,7 +102,7 @@ class FilmList extends React.Component {
             }
             return (
                 <div>
-                <CaurouselMain type={"films"} />
+                <CaurouselMain type={"films"} lang={this.state.lang} key={this.state.lang} />
 
                 <div className="head-text">
                     {this.props.lang === 'ru' ? 'Рекомендуемые фильмы': 'What to watch'}
@@ -168,7 +168,7 @@ class FilmList extends React.Component {
             <div className="head-text">
                 {this.props.lang === 'ru' ? 'Звёзды' : 'Popular people'}
             </div>
-            <CaurouselMain type={"people"} key={this.state.lang} />
+            <CaurouselMain type={"people"} lang={this.state.lang} key={this.state.lang} />
             </div>
             );
         } else {
