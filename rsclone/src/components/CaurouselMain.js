@@ -58,7 +58,7 @@ class CarouselMain extends React.Component {
 
   componentDidUpdate(prevProps) {
     let res = '';
-    if (prevProps.lang !== this.props.lang) {
+    if ((prevProps.lang !== this.props.lang) && (this.props.type === 'films')) {
         console.log(prevProps, this.props.lang)    
         res = this.updateURL(this.props.lang).then((value) => {
             this.setState({dataMain: value});
