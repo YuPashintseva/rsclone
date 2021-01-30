@@ -6,14 +6,7 @@ import 'react-multi-carousel/lib/styles.css';
 import star from './assets/star.png'
 import play from './assets/play.png'
 import info from './assets/info-grey.png';
-
-
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const responsive = {
@@ -102,7 +95,7 @@ class FilmList extends React.Component {
             }
             return (
                 <div>
-                <CaurouselMain type={"films"} lang={this.state.lang} key={this.state.lang} />
+                <CaurouselMain type={"films"} lang={this.state.lang} key={2} />
 
                 <div className="head-text">
                     {this.props.lang === 'ru' ? 'Рекомендуемые фильмы': 'What to watch'}
@@ -147,11 +140,11 @@ class FilmList extends React.Component {
                                 <div className="film-title" onClick={()=>this.interestedCount(el.original_title)} onMouseOver={()=>{ sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}}>{el.title}</div>
                             </Link> 
                             
-                            <button type="button" className="add-to-watchlist-btn" onClick = {() => {this.handleModalShowHide(el, true); this.props.watchListincrement(el.id); }}>+ Watchlist</button>
+                            <button type="button" className="add-to-watchlist-btn" onClick = {() => {this.handleModalShowHide(el, true); this.props.watchListincrement(el.id); }}>{this.props.lang === 'ru'? '+ Добавить к просмотру' : '+ Watchlist' }</button>
                             <div className="additional-info">
                                 <Link to= {{pathname:'/Trailer',testinfo:'test'}}> 
                                     <div className="trailer">                                
-                                        <img src={play} alt="play button" className="play-button"/>  Trailer
+                                        <img src={play} alt="play button" className="play-button"/>{this.props.lang === 'ru' ? 'Трейлер' : 'Trailer'}
                                     </div>
                                 </Link>
                                 <div className="info-button-wrapper">
@@ -168,7 +161,7 @@ class FilmList extends React.Component {
             <div className="head-text">
                 {this.props.lang === 'ru' ? 'Звёзды' : 'Popular people'}
             </div>
-            <CaurouselMain type={"people"} lang={this.state.lang} key={this.state.lang} />
+            <CaurouselMain type={"people"} lang={this.state.lang} key={1} />
             </div>
             );
         } else {

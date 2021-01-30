@@ -95,13 +95,15 @@ class CarouselMain extends React.Component {
                   slidesToSlide={3}
                 >
                 {this.state.dataMain.results.map(el => (
+                  <div key={el.id}>
                     el.backdrop_path ?
-                    <div key={el.id} className="main-carousel-img">
+                    <div  key={el.id} className="main-carousel-img">
                       <Link to='/FilmPage'>
                       <img className="poster-img-main" onClick={()=>this.interestedCount(el.original_title)} onMouseOver={()=> {sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}}  src={`https://image.tmdb.org/t/p/original/${el.backdrop_path}`} alt={el.title}/>
                       </Link>
                       <h2><span>{el.title}</span></h2>
                     </div> : null
+                  </div>
                 ))};
                 </Carousel>
               </div>
@@ -146,6 +148,7 @@ class CarouselMain extends React.Component {
                   slidesToSlide={3}
                 >
                 {this.state.dataMain.results.map(el => (
+                  <div key={el.id}>
                     el.profile_path ?
                     <div key={el.id} className="main-carousel-img">
                       <Link to='/FilmPage'>
@@ -153,6 +156,7 @@ class CarouselMain extends React.Component {
                       </Link>
                       <h2 className="star-name-carousel"><div>{el.name}</div></h2>
                     </div> : null
+                  </div>
                 ))};
                 </Carousel>
               </div>
@@ -201,7 +205,7 @@ class CarouselMain extends React.Component {
               >
               {this.state.dataMain.cast.map(el => (
                 el.profile_path ?
-                <div>
+                <div key={el.id}>
                   <div key={el.id} className="main-carousel-img">
                     {el.profile_path && <Link to='/FilmPage'><img className="poster-img-main rounded-img"  onMouseOver={()=> {sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}} src={`https://image.tmdb.org/t/p/original/${el.profile_path}`} alt={el.profile_path}/></Link>}
                     <div><h2 className="star-name-carousel"><div>{el.name}</div></h2></div>
