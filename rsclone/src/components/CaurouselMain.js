@@ -94,12 +94,8 @@ class CarouselMain extends React.Component {
                         {
                           sessionStorage.removeItem("val");
                           sessionStorage.setItem("val",JSON.stringify(el));
-                          //sessionStorage.removeItem("lang");
-                          //sessionStorage.setItem("val",this.state.lang);
-                          if (this.props.lang) {
-                            sessionStorage.removeItem("lang");
-                            sessionStorage.setItem("lang",this.state.lang);
-                          }
+                          sessionStorage.removeItem("lang");
+                          sessionStorage.setItem("lang",this.state.lang);
                         }
                       }  src={`https://image.tmdb.org/t/p/original/${el.backdrop_path}`} alt={el.title}/>
                       </Link>

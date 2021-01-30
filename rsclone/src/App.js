@@ -44,6 +44,8 @@ class App extends Component {
   // flag: false,
   change(option) {
     localStorage.setItem("lang", option.target.value);
+    sessionStorage.removeItem("lang");
+    sessionStorage.setItem("lang", option.target.value);
     this.setState({ language: option.target.value });
   }
 
@@ -84,11 +86,8 @@ class App extends Component {
 
   componentDidMount() {
     this.defineNumberWatchList();
-    
   }
-  componentDidUpdate() {
-   
-  }
+
   // search
   handleSubmit = (e) => {
     e.preventDefault();
@@ -237,8 +236,8 @@ class App extends Component {
                     onChange={this.change}
                     value={lang}
                   >
-                    <option value="en">English</option>
                     <option value="ru">Русский</option>
+                    <option value="en">English</option>
                   </select>
                 </Nav.Link>
               </Nav>
@@ -254,7 +253,7 @@ class App extends Component {
         <div id="ourRoot" className="d-flex justify-content-around" style={{backgroundColor:`${this.state.color}`}}>
           <div id="fl" className="films-list">
             <Route exact path="/">
-              <FilmList watchListincrement={this.incrementWatchListNumber}  lang={this.state.language} key={this.state.language}/>
+              <FilmList watchListincrement={this.incrementWatchListNumber}  lang={this.state.language} key={1}/>
             </Route>
 
             <Route path="/">
@@ -262,7 +261,7 @@ class App extends Component {
             </Route>
 
             <Route path="/FilmPage">
-              <FilmPage />
+              <FilmPage lang={this.state.language} key={1}/>
             </Route>
 
             <Route path="/WatchList">

@@ -8,6 +8,18 @@ import CarouselMain from './CaurouselMain';
         super();
         this.state = {video:"",dat:JSON.parse(sessionStorage.getItem("val")), lang: sessionStorage.getItem("lang")};
     }
+
+    async updateURL(lang) {
+        let response ='';
+        try {
+            let response = await fetch(`https://api.themoviedb.org/3/movie/2240?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=${lang}`);
+            const json = await response.json();
+            return json;
+        } catch(err) {
+            alert(err);
+        }
+    }
+
     async componentDidMount(){
      const response = await fetch(`https://api.themoviedb.org/3/movie/${this.state.dat.id}/videos?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=${this.state.lang}`);
      const res = await response.json();
@@ -15,9 +27,20 @@ import CarouselMain from './CaurouselMain';
      let val = JSON.parse(sessionStorage.getItem("val"));
      this.setState({dat: val});
     }
+
+    componentDidUpdate(prevProps) {
+        let res = '';
+        if (prevProps.lang != this.state.lang) {
+            console.log(prevProps.lang, this.state.lang);
+            res = this.updateURL(this.state.lang).then((value) => {
+                console.log(value);
+            })
+        }
+    }
   
     render(){
-       
+        console.log('render')
+
         return(
             
             <div id = "fp" className=" container-fluid wrapperStyle">
@@ -26,20 +49,20 @@ import CarouselMain from './CaurouselMain';
                  <div className="row"></div>
                  <div className="row">
 
-                     <h2 className="col">{this.state.lang === 'ru' ? this.state.dat.title :this.state.dat.original_title}</h2>
+                     <h2 className="col">{this.props.lang === 'ru' ? this.state.dat.title :this.state.dat.original_title}</h2>
                     
                      
-                     <h4 className="col-auto">{this.state.lang === 'ru' ? 'Рейтинг':'Average Vote:'} {this.state.dat.vote_average}
+                     <h4 className="col-auto">{this.props.lang === 'ru' ? 'Рейтинг':'Average Vote:'} {this.state.dat.vote_average}
                      <img className = "star"src={star} ></img>
                      </h4>
                      
                      
-                     <h4 className="col-auto">{this.state.lang === 'ru' ? 'Голоса':'Votes:'} {this.state.dat.vote_count}</h4>
+                     <h4 className="col-auto">{this.props.lang === 'ru' ? 'Голоса':'Votes:'} {this.state.dat.vote_count}</h4>
                 
                </div>
                </div>
                <div id = "briefInfo" className="wrapper">
-                   <h5>{this.state.lang === 'ru' ? 'Дата выпуска':'Release Date:'} {this.state.dat.release_date}</h5>
+                   <h5>{this.props.lang === 'ru' ? 'Дата выпуска':'Release Date:'} {this.state.dat.release_date}</h5>
                    <div></div>
                 </div>
 
@@ -55,16 +78,16 @@ import CarouselMain from './CaurouselMain';
                 )}
                </div>
                <div style={{  margin: "8px"}}>
-               <h4 style={{  fontWeight: "bolder"}}>{this.state.lang === 'ru' ? 'Обзор':'Overview'}:</h4>
+               <h4 style={{  fontWeight: "bolder"}}>{this.props.lang === 'ru' ? 'Обзор':'Overview'}:</h4>
               <h5 > {this.state.dat.overview}</h5></div>
              
                <div id = "videoCarousel" className="wrapper"></div>
                <div id = "photoCarousel" className="wrapper"></div>
                <div id = "cast"></div>
                <div className="head-text">
-               {this.state.lang === 'ru' ? 'Актеры':'Actors'}
+               {this.props.lang === 'ru' ? 'Актеры':'Actors'}
                </div>
-               <CarouselMain type={"actors"} filmId={this.state.dat.id} lang={this.state.lang} key={1} />
+               <CarouselMain type={"actors"} filmId={this.state.dat.id} lang={this.props.lang} key={1} />
             </div>
         )
     }

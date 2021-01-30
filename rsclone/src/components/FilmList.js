@@ -44,7 +44,6 @@ class FilmList extends React.Component {
     }
 
     async componentDidMount() {
-        console.log("language", this.props.lang);
         const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=${this.props.lang}&page=1`);
         const json = await response.json();
         this.setState({ data: json});
@@ -58,6 +57,30 @@ class FilmList extends React.Component {
 
     returnState(){
         return this.state;
+    }
+
+    
+    async updateURL(lang) {
+        let response ='';
+        try {
+            let response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=${lang}&page=1`);
+            const json = await response.json();
+            return json;
+        } catch(err) {
+            alert(err);
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        console.log('componentDidUpdate', prevProps.lang,  localStorage.getItem("lang"));
+        let res = '';
+        if (prevProps.lang != this.props.lang) {
+            res = this.updateURL(this.state.lang).then((value) => {
+                this.setState({ data: value});
+                this.setState({lang: this.props.lang});
+                console.log('FILMS LIST VAL',value);
+            })
+        }
     }
 
     handleModalShowHide(film, isneedAlert) {
