@@ -72,7 +72,6 @@ class FilmList extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        console.log('componentDidUpdate', prevProps.lang,  this.props.lang);
         let res = '';
         if (prevProps.lang != this.props.lang) {
             let lan = 'en';
@@ -80,7 +79,6 @@ class FilmList extends React.Component {
             res = this.updateURL(lan).then((value) => {
                 this.setState({ data: value});
                 this.setState({lang: this.props.lang});
-                console.log('FILMS LIST VAL',value);
             })
         }
     }

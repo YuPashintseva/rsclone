@@ -4,15 +4,15 @@ import CarouselMain from './CaurouselMain';
 
 
  class FilmPage extends React.Component{
-    constructor() {
-        super();
-        this.state = {video:"",dat:JSON.parse(sessionStorage.getItem("val")), lang: sessionStorage.getItem("lang")};
+    constructor(props) {
+        super(props);
+        this.state = {video:"", dat:JSON.parse(sessionStorage.getItem("val")), lang: this.props.lang, id: sessionStorage.getItem("val").id};
     }
 
-    async updateURL(lang) {
+    async updateURL(lang, id) {
         let response ='';
         try {
-            let response = await fetch(`https://api.themoviedb.org/3/movie/2240?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=${lang}`);
+            let response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=${lang}`);
             const json = await response.json();
             return json;
         } catch(err) {
@@ -30,17 +30,16 @@ import CarouselMain from './CaurouselMain';
 
     componentDidUpdate(prevProps) {
         let res = '';
-        if (prevProps.lang != this.state.lang) {
-            console.log(prevProps.lang, this.state.lang);
-            res = this.updateURL(this.state.lang).then((value) => {
-                console.log(value);
+        if (prevProps.lang !== this.props.lang) {
+            console.log(prevProps, this.props.lang)    
+            res = this.updateURL(this.props.lang, this.state.dat.id).then((value) => {
+                this.setState({ dat: value});
+                this.setState({lang: this.props.lang});
             })
         }
     }
   
     render(){
-        console.log('render')
-
         return(
             
             <div id = "fp" className=" container-fluid wrapperStyle">
