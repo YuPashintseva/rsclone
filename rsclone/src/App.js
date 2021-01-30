@@ -261,7 +261,7 @@ class App extends Component {
             </Route>
 
             <Route path="/FilmPage">
-              <FilmPage lang={this.state.language} key={1}/>
+              <FilmPage lang={this.state.language} value={this.state.font} key={1}/>
             </Route>
 
             <Route path="/WatchList">

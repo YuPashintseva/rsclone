@@ -6,7 +6,7 @@ import CarouselMain from './CaurouselMain';
  class FilmPage extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {video:"", dat:JSON.parse(sessionStorage.getItem("val")), lang: this.props.lang, id: sessionStorage.getItem("val").id};
+        this.state = {video:"",font:'', dat:JSON.parse(sessionStorage.getItem("val")), lang: this.props.lang, id: sessionStorage.getItem("val").id};
     }
 
     async updateURL(lang, id) {
@@ -38,11 +38,14 @@ import CarouselMain from './CaurouselMain';
             })
         }
     }
-  
+    componentWillReceiveProps(props) {
+        this.setState({font:props})
+        
+      }
     render(){
         return(
             
-            <div id = "fp" className=" container-fluid wrapperStyle">
+            <div id = "fp" className=" container-fluid wrapperStyle" style={{fontFamily: this.state.font.value}}>
                
                <div id = "upperBlock" className="wrapper">
                  <div className="row"></div>
