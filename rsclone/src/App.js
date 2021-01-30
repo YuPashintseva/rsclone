@@ -1,4 +1,3 @@
-
 import FilmList from "./components/FilmList";
 import FilmPage from "./components/FilmPage";
 import Trailer from "./components/Trailer";
@@ -9,7 +8,7 @@ import mainLogo from "./logo-imdb.png";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
-import { Route, Link} from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import Watchlist from "./components/WatchList";
 import Statistics from "./components/Statistics";
 import GoogleAuth from "./components/GoogleAuth";
@@ -26,19 +25,27 @@ class App extends Component {
     this.decrementWatchListNumber = this.decrementWatchListNumber.bind(this);
     this.clearWatchList = this.clearWatchList.bind(this);
     this.change = this.change.bind(this);
-    this.state = { 
+    this.state = {
       watchlist: 0,
-       movies: [], 
-       searchTerm: "",
-       color:'',
-       count:0, 
-       colors:['blue','yellow','white','brown','purple','red','green'],
-       font:'',
-       fonts:['Times New Roman','Arial','Courier New','Brush Spirit MT','Copperplate','Lucida Console','Helvetica'],
-       flag: false, 
-       language: "en"
-       };
-    
+      movies: [],
+      searchTerm: "",
+      color: "",
+      count: 0,
+      colors: ["blue", "yellow", "white", "brown", "purple", "red", "green"],
+      font: "",
+      fonts: [
+        "Times New Roman",
+        "Arial",
+        "Courier New",
+        "Brush Spirit MT",
+        "Copperplate",
+        "Lucida Console",
+        "Helvetica",
+      ],
+      flag: false,
+      language: "en",
+    };
+
     this.apiKey = "c9ebd652172bbcdaa5b3746fa2e60207";
   }
   // flag: false,
@@ -129,28 +136,39 @@ class App extends Component {
 
   secondNav() {
     return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-    <Container style={{display:"flex",fontFamily:`${this.state.font}`}}>
-    
-      <a className="cursor" onClick={()=>this.backgroundChange()}>Change Background</a>
-      <a className="cursor" onClick={()=>this.setState({color:''})}>Default Background</a>
-      <a className="cursor" onClick={()=>this.fontChange()}>Change Font</a>
-      <a className="cursor" onClick={()=>this.setState({font:''})}>Default Font</a>
-      
-      </Container>
-    </Navbar>)
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Container
+          style={{ display: "flex", fontFamily: `${this.state.font}` }}
+        >
+          <a className="cursor" onClick={() => this.backgroundChange()}>
+            Change Background
+          </a>
+          <a className="cursor" onClick={() => this.setState({ color: "" })}>
+            Default Background
+          </a>
+          <a className="cursor" onClick={() => this.fontChange()}>
+            Change Font
+          </a>
+          <a className="cursor" onClick={() => this.setState({ font: "" })}>
+            Default Font
+          </a>
+        </Container>
+      </Navbar>
+    );
   }
   backgroundChange() {
-   this.setState({color:this.state.colors[this.state.count]});
-   
-   if(this.state.count>=this.state.colors.length-1)this.setState({count:0})
-   else this.setState({count:this.state.count + 1})
+    this.setState({ color: this.state.colors[this.state.count] });
+
+    if (this.state.count >= this.state.colors.length - 1)
+      this.setState({ count: 0 });
+    else this.setState({ count: this.state.count + 1 });
   }
   fontChange() {
-    this.setState({font:this.state.fonts[this.state.count]});
-   
-    if(this.state.count>=this.state.fonts.length-1)this.setState({count:0})
-    else this.setState({count:this.state.count + 1})
+    this.setState({ font: this.state.fonts[this.state.count] });
+
+    if (this.state.count >= this.state.fonts.length - 1)
+      this.setState({ count: 0 });
+    else this.setState({ count: this.state.count + 1 });
   }
   render() {
     const lang = localStorage.getItem("lang") || "en";
@@ -162,7 +180,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-          <Container style={{fontFamily:`${this.state.font}`}}>
+          <Container style={{ fontFamily: `${this.state.font}` }}>
             <Navbar.Brand>
               <Link to="/">
                 <img className="navbar-mainlogo" src={mainLogo}></img>
@@ -175,7 +193,7 @@ class App extends Component {
               <Nav className="mr-auto">
                 <Nav.Link href="#features">
                   <Link style={{ textDecoration: "none" }} to="/WatchList">
-                    <a className="nav-link">
+                    <a className="nav-link nav__item">
                       <ContextMenuTrigger
                         id="add_same_id"
                         className="context-menu-item"
@@ -185,7 +203,11 @@ class App extends Component {
                             id="add_same_id"
                             className="context-menu-item"
                           >
-                            <div className="wl">{this.state.language === 'ru' ? 'Фильмы к просмотру' : 'WatchList'}</div>
+                            <div className="wl">
+                              {this.state.language === "ru"
+                                ? "Фильмы к просмотру"
+                                : "WatchList"}
+                            </div>
                           </ContextMenuTrigger>
                           <ContextMenu className="menu" id="add_same_id">
                             <MenuItem
@@ -193,16 +215,20 @@ class App extends Component {
                               data={{ item: "Home" }}
                               className="menuItem"
                             >
-                              {this.state.language === 'ru' ? 'Очистить список фильмов' : 'Clear WatchList'}
+                              {this.state.language === "ru"
+                                ? "Очистить список фильмов"
+                                : "Clear WatchList"}
                             </MenuItem>
                             <MenuItem
                               data={{ item: "Home" }}
                               className="menuItem"
                             >
-                            {this.state.language === 'ru' ? 'Перейти к фильмам' : 'Go to WatchList'}
+                              {this.state.language === "ru"
+                                ? "Перейти к фильмам"
+                                : "Go to WatchList"}
                             </MenuItem>
                           </ContextMenu>
-                          <span class="badge rounded-pill badge-notification bg-warning text-dark">
+                          <span class="badge rounded-pill badge-notification bg-warning text-dark badge__info">
                             {this.state.watchlist}
                           </span>
 
@@ -211,16 +237,28 @@ class App extends Component {
                             </div> */}
                         </div>
                       </ContextMenuTrigger>
-                    
                     </a>
                   </Link>
                 </Nav.Link>
                 <Nav.Link>
-                  <a className="nav-link" onClick={()=>{!this.state.flag?this.setState({flag: true}):this.setState({flag:false})}}>{this.state.language === 'ru' ? 'Настройки' : 'Settings'}</a>
+                  <a
+                    className="nav-link"
+                    onClick={() => {
+                      !this.state.flag
+                        ? this.setState({ flag: true })
+                        : this.setState({ flag: false });
+                    }}
+                  >
+                    {this.state.language === "ru" ? "Настройки" : "Settings"}
+                  </a>
                 </Nav.Link>
                 <Nav.Link>
                   <Link to="/Statistics">
-                    <a className="nav-link">{this.state.language === 'ru' ? 'Статистика' : 'Statistic'}</a>
+                    <a className="nav-link">
+                      {this.state.language === "ru"
+                        ? "Статистика"
+                        : "Statistic"}
+                    </a>
                   </Link>
                 </Nav.Link>
 
@@ -249,11 +287,19 @@ class App extends Component {
             </Navbar.Collapse>
           </Container>
         </Navbar>
-         {this.state.flag?this.secondNav():''}
-        <div id="ourRoot" className="d-flex justify-content-around" style={{backgroundColor:`${this.state.color}`}}>
+        {this.state.flag ? this.secondNav() : ""}
+        <div
+          id="ourRoot"
+          className="d-flex justify-content-around"
+          style={{ backgroundColor: `${this.state.color}` }}
+        >
           <div id="fl" className="films-list">
             <Route exact path="/">
-              <FilmList watchListincrement={this.incrementWatchListNumber}  lang={this.state.language} key={1}/>
+              <FilmList
+                watchListincrement={this.incrementWatchListNumber}
+                lang={this.state.language}
+                key={1}
+              />
             </Route>
 
             <Route path="/">
@@ -261,7 +307,11 @@ class App extends Component {
             </Route>
 
             <Route path="/FilmPage">
-              <FilmPage lang={this.state.language} value={this.state.font} key={1}/>
+              <FilmPage
+                lang={this.state.language}
+                value={this.state.font}
+                key={1}
+              />
             </Route>
 
             <Route path="/WatchList">
@@ -277,7 +327,7 @@ class App extends Component {
           </div>
         </div>
         {/* footer isert here */}
-        <Footer value={this.state.font}/>
+        <Footer value={this.state.font} />
       </div>
     );
   }
