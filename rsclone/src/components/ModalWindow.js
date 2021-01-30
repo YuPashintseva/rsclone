@@ -3,9 +3,13 @@ import { Button, Modal, Container, Row, Col, Image } from 'react-bootstrap'
 import { Helmet } from "react-helmet";
 
 class ModalWindow extends React.Component{
+    constructor(props) {
+        super(props);
+    }
+
     render(){
-        console.log(this.props)
         let msgText = 'Successfully added to WatchList';
+        this.props.lang === 'ru' ?  msgText = 'Успешно добавлен в список фильмов для просмотра' : msgText = 'Successfully added to WatchList';
         if (this.props.toWatchList) {
             if (localStorage.getItem('films')) {
                 let arr = JSON.parse(localStorage.getItem('films'));
@@ -20,7 +24,7 @@ class ModalWindow extends React.Component{
                     infoArr.push(this.props.filmInfo.overview);
                     arr.push(infoArr);
                 } else {
-                    msgText = 'It is already in Watchlist';
+                    this.props.lang === 'ru' ? msgText = 'Фильм уже добавлен к списку для просмотра' : msgText ='It is already in Watchlist'
                 }
                 localStorage.setItem('films', JSON.stringify(arr));
             } else { 
@@ -42,7 +46,7 @@ class ModalWindow extends React.Component{
                         </Modal.Body>
                         <Modal.Footer>
                         <Button variant="secondary" onClick={this.props.handleModalShowHide}>
-                            Close
+                            {this.props.lang === 'ru' ? 'Закрыть' : 'Close'}
                         </Button>
                         </Modal.Footer>
                     </Modal>

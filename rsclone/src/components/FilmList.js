@@ -114,7 +114,7 @@ class FilmList extends React.Component {
         let mod = '';
         if (this.state.data.results) {
             if (this.state.showHide) {
-                mod = <ModalWindow handleModalShowHide = {this.handleModalShowHide2} filmInfo = {this.state.currFilmInfo} toWatchList={this.state.showAlert} />
+                mod = <ModalWindow handleModalShowHide = {this.handleModalShowHide2} filmInfo = {this.state.currFilmInfo} toWatchList={this.state.showAlert} lang={this.state.lang} />
             }
             return (
                 <div>
