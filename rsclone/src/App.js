@@ -175,7 +175,7 @@ class App extends Component {
               <Nav className="mr-auto">
                 <Nav.Link href="#features">
                   <Link style={{ textDecoration: "none" }} to="/WatchList">
-                    <a className="nav-link">
+                    <a className="nav-link nav__item">
                       <ContextMenuTrigger
                         id="add_same_id"
                         className="context-menu-item"
@@ -183,7 +183,7 @@ class App extends Component {
                         <div>
                           <ContextMenuTrigger
                             id="add_same_id"
-                            className="context-menu-item"
+                            className="context-menu-item "
                           >
                             <div className="wl">{this.state.language === 'ru' ? 'Фильмы к просмотру' : 'WatchList'}</div>
                           </ContextMenuTrigger>
@@ -202,7 +202,7 @@ class App extends Component {
                             {this.state.language === 'ru' ? 'Перейти к фильмам' : 'Go to WatchList'}
                             </MenuItem>
                           </ContextMenu>
-                          <span class="badge rounded-pill badge-notification bg-warning text-dark">
+                          <span class="badge rounded-pill badge-notification bg-warning text-dark badge__info">
                             {this.state.watchlist}
                           </span>
 

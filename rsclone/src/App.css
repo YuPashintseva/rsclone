@@ -200,10 +200,20 @@ html,
   transform: rotate(360deg) scale(1.5);
   background-color: red;
 }
-.cursor{
-  color:white;
+.cursor {
+  color: white;
   cursor: pointer;
 }
 .wl-wrap {
   display: flex;
+}
+
+.nav__item {
+  position: relative;
+}
+
+.badge__info {
+  position: absolute;
+  top: 5px;
+  right: 30px;
 }
