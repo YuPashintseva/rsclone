@@ -105,7 +105,7 @@ class FilmList extends React.Component {
                 <CaurouselMain type={"films"} />
 
                 <div className="head-text">
-                    What to watch
+                    {this.props.lang === 'ru' ? 'Рекомендуемые фильмы': 'What to watch'}
                 </div>
                 {mod}
                 <Carousel
@@ -128,11 +128,7 @@ class FilmList extends React.Component {
             >
             
             {this.state.data.results.map(el => (
-                
                 <div element={el.id} key ={el.id}>
-                
-           
-           
                     <div className="films-list-img App-link" >
                     
                         <Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage" > 
@@ -170,7 +166,7 @@ class FilmList extends React.Component {
                 
             </Carousel>
             <div className="head-text">
-                Popular people
+                {this.props.lang === 'ru' ? 'Звёзды' : 'Popular people'}
             </div>
             <CaurouselMain type={"people"} key={this.state.lang} />
             </div>

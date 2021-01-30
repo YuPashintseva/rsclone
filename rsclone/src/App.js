@@ -186,7 +186,7 @@ class App extends Component {
                             id="add_same_id"
                             className="context-menu-item"
                           >
-                            <div className="wl">{i18next.t("WatchList")}</div>
+                            <div className="wl">{this.state.language === 'ru' ? 'Фильмы к просмотру' : 'WatchList'}</div>
                           </ContextMenuTrigger>
                           <ContextMenu className="menu" id="add_same_id">
                             <MenuItem
@@ -194,13 +194,13 @@ class App extends Component {
                               data={{ item: "Home" }}
                               className="menuItem"
                             >
-                              Clear WatchList
+                              {this.state.language === 'ru' ? 'Очистить список фильмов' : 'Clear WatchList'}
                             </MenuItem>
                             <MenuItem
                               data={{ item: "Home" }}
                               className="menuItem"
                             >
-                              Go to WatchList
+                            {this.state.language === 'ru' ? 'Перейти к фильмам' : 'Go to WatchList'}
                             </MenuItem>
                           </ContextMenu>
                           <span class="badge rounded-pill badge-notification bg-warning text-dark">
@@ -217,11 +217,11 @@ class App extends Component {
                   </Link>
                 </Nav.Link>
                 <Nav.Link>
-                  <a className="nav-link" onClick={()=>{!this.state.flag?this.setState({flag: true}):this.setState({flag:false})}}>{i18next.t("Settings")}</a>
+                  <a className="nav-link" onClick={()=>{!this.state.flag?this.setState({flag: true}):this.setState({flag:false})}}>{this.state.language === 'ru' ? 'Настройки' : 'Settings'}</a>
                 </Nav.Link>
                 <Nav.Link>
                   <Link to="/Statistics">
-                    <a className="nav-link">{i18next.t("Statistics")}</a>
+                    <a className="nav-link">{this.state.language === 'ru' ? 'Статистика' : 'Statistic'}</a>
                   </Link>
                 </Nav.Link>
 
