@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 class CarouselMain extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {dataMain: [], type: "films"}
+        this.state = {dataMain: [], type: "films", lang: this.props.lang}
     }
 
     async componentDidMount() {
@@ -43,9 +43,31 @@ class CarouselMain extends React.Component {
         localStorage.clear();
         localStorage.setItem('count', JSON.stringify(obj));
     }
-}
+  }
+
+  async updateURL(lang) {
+    let response ='';
+    try {
+        let response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=${lang}&page=2`);
+        const json = await response.json();
+        return json;
+    } catch(err) {
+        alert(err);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    let res = '';
+    if (prevProps.lang !== this.props.lang) {
+        console.log(prevProps, this.props.lang)    
+        res = this.updateURL(this.props.lang).then((value) => {
+            this.setState({dataMain: value});
+            this.setState({lang: this.props.lang});
+        })
+    }
+  }
+
     render() {
-      console.log(this.state.dataMain)
        if (this.state.dataMain.results){
           if (this.state.type === "films") {
             const responsive = {
@@ -100,7 +122,7 @@ class CarouselMain extends React.Component {
                       }  src={`https://image.tmdb.org/t/p/original/${el.backdrop_path}`} alt={el.title}/>
                       </Link>
                       <h2><span>{el.title}</span></h2>
-                    </div> : null
+                    </div>
                   </div>
                 ))};
                 </Carousel>
