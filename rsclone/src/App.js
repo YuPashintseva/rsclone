@@ -252,7 +252,7 @@ class App extends Component {
                     {this.state.language === "ru" ? "Настройки" : "Settings"}
                   </a>
                 </Nav.Link>
-                <Nav.Link>
+                <Nav.Link >
                   <Link to="/Statistics">
                     <a className="nav-link">
                       {this.state.language === "ru"
@@ -278,13 +278,16 @@ class App extends Component {
                     <option value="en">English</option>
                   </select>
                 </Nav.Link>
-              </Nav>
-
-              <SearchArea
-                handleSubmit={this.handleSubmit}
-                handleChange={this.handleChange}
-              />
+            
+              
+              <Nav.Link>
+            <Link to="/SearchArea">
+              <input placeholder={'Search'}></input>
+            </Link>
+            </Nav.Link>
+            </Nav>
             </Navbar.Collapse>
+            
           </Container>
         </Navbar>
         {this.state.flag ? this.secondNav() : ""}
@@ -301,11 +304,11 @@ class App extends Component {
                 key={1}
               />
             </Route>
-
+           { /*
             <Route path="/">
               <MovieList movies={this.state.movies} />
             </Route>
-
+           */}
             <Route path="/FilmPage">
               <FilmPage
                 lang={this.state.language}
@@ -320,6 +323,14 @@ class App extends Component {
 
             <Route path="/Statistics">
               <Statistics />
+            </Route>
+
+            <Route path="/SearchArea">
+            <SearchArea
+                handleSubmit={this.handleSubmit}
+                handleChange={this.handleChange}
+                movies = {this.state.movies}
+              />
             </Route>
             <Route path="/Trailer">
               <Trailer />
