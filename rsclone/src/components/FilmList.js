@@ -125,7 +125,14 @@ class FilmList extends React.Component {
                     <div className="films-list-img App-link" >
                     
                         <Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage" > 
-                            <img className="poster-img" onClick={()=>this.interestedCount(el.original_title)} onMouseOver={()=> {sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}}  src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} alt={el.title}/>
+                            <img className="poster-img" onClick={()=>this.interestedCount(el.original_title)} onMouseOver={()=> 
+                                    {
+                                        sessionStorage.removeItem("val");
+                                        sessionStorage.setItem("val",JSON.stringify(el));
+                                        sessionStorage.removeItem("lang");
+                                        sessionStorage.setItem("lang",this.props.lang);
+                                    }
+                                }  src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} alt={el.title}/>
                         </Link>    
                        
                         <div className="bottom-content-wrapper">
@@ -137,7 +144,14 @@ class FilmList extends React.Component {
                                 </div>
                             </div>
                            <Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage">
-                                <div className="film-title" onClick={()=>this.interestedCount(el.original_title)} onMouseOver={()=>{ sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}}>{el.title}</div>
+                                <div className="film-title" onClick={()=>this.interestedCount(el.original_title)} onMouseOver={()=>
+                                    {
+                                        sessionStorage.removeItem("val");
+                                        sessionStorage.setItem("val",JSON.stringify(el));
+                                        sessionStorage.removeItem("lang");
+                                        sessionStorage.setItem("lang",this.props.lang);
+                                    }
+                                }>{el.title}</div>
                             </Link> 
                             
                             <button type="button" className="add-to-watchlist-btn" onClick = {() => {this.handleModalShowHide(el, true); this.props.watchListincrement(el.id); }}>{this.props.lang === 'ru'? '+ Добавить к просмотру' : '+ Watchlist' }</button>
