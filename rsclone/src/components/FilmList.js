@@ -72,10 +72,12 @@ class FilmList extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        console.log('componentDidUpdate', prevProps.lang,  localStorage.getItem("lang"));
+        console.log('componentDidUpdate', prevProps.lang,  this.props.lang);
         let res = '';
         if (prevProps.lang != this.props.lang) {
-            res = this.updateURL(this.state.lang).then((value) => {
+            let lan = 'en';
+            this.state.lang === 'en' ? lan = 'ru' : lan = 'en';
+            res = this.updateURL(lan).then((value) => {
                 this.setState({ data: value});
                 this.setState({lang: this.props.lang});
                 console.log('FILMS LIST VAL',value);
