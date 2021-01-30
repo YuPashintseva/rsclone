@@ -10,7 +10,6 @@ class CarouselMain extends React.Component {
     }
 
     async componentDidMount() {
-      console.log('main carousel', this.props.lang);
       let responseMain = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=fb0fcc2d34caffc53da53d676fbf678a&language=${this.props.lang}&page=2`);
       if (this.props.type) {
         if (this.props.type === 'films') {
@@ -36,7 +35,6 @@ class CarouselMain extends React.Component {
         }else {
             obj[title] = 1;
         }
-        //localStorage.clear();
         localStorage.setItem('count', JSON.stringify(obj));
     }
     else {
@@ -90,10 +88,20 @@ class CarouselMain extends React.Component {
                 >
                 {this.state.dataMain.results.map(el => (
                   <div key={el.id}>
-                    el.backdrop_path ?
                     <div  key={el.id} className="main-carousel-img">
                       <Link to='/FilmPage'>
-                      <img className="poster-img-main" onClick={()=>this.interestedCount(el.original_title)} onMouseOver={()=> {sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}}  src={`https://image.tmdb.org/t/p/original/${el.backdrop_path}`} alt={el.title}/>
+                      <img className="poster-img-main" onClick={()=>this.interestedCount(el.original_title)} onMouseOver={()=> 
+                        {
+                          sessionStorage.removeItem("val");
+                          sessionStorage.setItem("val",JSON.stringify(el));
+                          //sessionStorage.removeItem("lang");
+                          //sessionStorage.setItem("val",this.state.lang);
+                          if (this.props.lang) {
+                            sessionStorage.removeItem("lang");
+                            sessionStorage.setItem("lang",this.state.lang);
+                          }
+                        }
+                      }  src={`https://image.tmdb.org/t/p/original/${el.backdrop_path}`} alt={el.title}/>
                       </Link>
                       <h2><span>{el.title}</span></h2>
                     </div> : null
@@ -143,7 +151,6 @@ class CarouselMain extends React.Component {
                 >
                 {this.state.dataMain.results.map(el => (
                   <div key={el.id}>
-                    el.profile_path ?
                     <div key={el.id} className="main-carousel-img">
                       <Link to='/FilmPage'>
                       <img className="poster-img-main rounded-img"  onMouseOver={()=> {sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}} src={`https://image.tmdb.org/t/p/original/${el.profile_path}`} alt={el.profile_path}/>
