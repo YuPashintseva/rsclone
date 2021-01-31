@@ -4,10 +4,11 @@ import close from './assets/close.png'
 
 
 class Watchlist extends React.Component{
-    constructor() {
-        super();
-        this.state = {data: []};
+    constructor(props) {
+        super(props);
+        this.state = {data: [], lang: this.props.lang};
         this.updateWatchList = this.updateWatchList.bind(this);
+        
     }
 
     async componentDidMount() {
@@ -26,12 +27,12 @@ class Watchlist extends React.Component{
     }
     
     render() {
-        
+        console.log(this.props.lang)
         if (this.state.data) {         
             return (
                 <div id = "fp" className="container-fluid wrapperStyle">
                     <div className="top-menu-wrapper">
-                        <div className="head-text">Your Watchlist</div>
+                        <div className="head-text">{this.state.lang === 'ru' ? 'Фильмы к просмотру' : 'Your Watchlist'}</div>
                     </div>
                     <div>
                     {this.state.data.map(el => (
@@ -41,10 +42,10 @@ class Watchlist extends React.Component{
                                     {el[1] ? <Image className="poster-img-modal img-watchlist" src={`https://image.tmdb.org/t/p/original/${el[1]}`} alt={el[0]} thumbnail />: null}
                                 </Col>
                                 <Col xs={11} md={7}>
-                                    {el[4] ? <div><strong>Title: </strong> {el[4]}</div> : null}
-                                    {el[2] ? <div><strong>Release date: </strong>  {el[2]}</div> : null}
-                                    {el[3] ? <div><strong>Stars: </strong> {el[3]}</div> : null}
-                                    {el[5] ? <div><strong>Overview: </strong> {el[5]}</div> : null}
+                                    {el[4] ? <div><strong>{this.state.lang === 'ru' ? 'Наименование' : 'Title'}: </strong> {el[4]}</div> : null}
+                                    {el[2] ? <div><strong>{this.state.lang === 'ru' ? 'Дата выпуска' : 'Release date'}: </strong>  {el[2]}</div> : null}
+                                    {el[3] ? <div><strong>{this.state.lang === 'ru' ? 'Рейтинг' : 'Stars'}: </strong> {el[3]}</div> : null}
+                                    {el[5] ? <div><strong>{this.state.lang === 'ru' ? 'Обзор' : 'Overview'}: </strong> {el[5]}</div> : null}
                                 </Col>
                                 <Col xs={1} md={1}>
                                     {el[0] ? <div className="background-close-btn"><Image className="close-btn-img" src={close} alt="close button" onClick = {() => {this.updateWatchList(el[0]); }}/></div> : null}
@@ -57,8 +58,8 @@ class Watchlist extends React.Component{
             )
         } else {
             return (<div id = "fp" className="container-fluid wrapperStyle">
-                        <div className="head-text">Your Watchlist</div>
-                        Nothing was found
+                        <div className="head-text">{this.state.lang === 'ru' ? 'Фильмы к просмотру' : 'Your Watchlist'}</div>
+                            {this.state.lang === 'ru' ? 'Ничего не было найдено' : 'Nothing was found'} 
                     </div>);
         }
 

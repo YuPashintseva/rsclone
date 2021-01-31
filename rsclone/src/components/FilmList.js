@@ -179,11 +179,11 @@ class FilmList extends React.Component {
                             
                             <button type="button" className="add-to-watchlist-btn" onClick = {() => {this.handleModalShowHide(el, true); this.props.watchListincrement(el.id); }}>{this.props.lang === 'ru'? '+ Добавить к просмотру' : '+ Watchlist' }</button>
                             <div className="additional-info">
-                                <Link to= {{pathname:'/Trailer',testinfo:'test'}}> 
+                                
                                     <div className="trailer">                                
                                         <img src={play} alt="play button" className="play-button"/>{this.props.lang === 'ru' ? 'Трейлер' : 'Trailer'}
                                     </div>
-                                </Link>
+                              
                                 <div className="info-button-wrapper">
                                     <img src={info} alt="info button" className="info-button" onClick = {() => this.handleModalShowHide(el, false)}/> 
                                 </div>

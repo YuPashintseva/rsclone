@@ -110,7 +110,6 @@ class App extends Component {
   // search
   handleChange = (e) => {
     this.setState({ searchTerm: e.target.value });
-    
   };
 
   changeLinkState() {

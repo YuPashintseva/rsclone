@@ -66,8 +66,8 @@ class ModalWindow extends React.Component{
                                     <Image className="poster-img-modal" src={`https://image.tmdb.org/t/p/original/${this.props.filmInfo.poster_path}`} alt={this.props.filmInfo.title} thumbnail />
                                 </Col>
                                 <Col xs={12} md={8}>
-                                <strong>Overview: </strong>  {this.props.filmInfo.overview} <br/><br/>
-                                <strong>Release date: </strong> {this.props.filmInfo.release_date}
+                                <strong>{this.props.lang === 'ru' ? 'Обзор:' : 'Overview:'} </strong>  {this.props.filmInfo.overview} <br/><br/>
+                                <strong>{this.props.lang === 'ru' ? 'Дата выпуска:' : 'Release date:'} </strong> {this.props.filmInfo.release_date}
                                 </Col>
                             </Row>
                         </Container>
