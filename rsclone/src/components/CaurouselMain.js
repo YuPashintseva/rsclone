@@ -230,7 +230,7 @@ class CarouselMain extends React.Component {
                     <div><h2 className="star-name-carousel"><div>{el.name}</div></h2></div>
                   </div>
                 </div> : null
-              ))};
+              ))}
               </Carousel>
             </div>
           );
