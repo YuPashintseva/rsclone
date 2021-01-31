@@ -1,5 +1,5 @@
 import React from "react";
-import i18next from "i18next";
+import profile from '../components/assets/fake.png';
 
 class GoogleAuth extends React.Component {
   constructor() {
@@ -44,16 +44,26 @@ class GoogleAuth extends React.Component {
     this.auth.signOut();
   };
 
+  checkImage(imageSrc) {
+    var img = new Image();        
+    try {
+        img.src = imageSrc;
+        return imageSrc;
+    } catch(err) {
+        return profile;
+    }    
+  }
   renderAuthButton() {
     if (this.state.isSignedIn === null) {
       return null;
     } else if (this.state.isSignedIn) {
+      let profile = this.checkImage(this.auth.currentUser.get().getBasicProfile().fI);
       return (
         <a onClick={this.onSignOut} className="log-in-button">
           {(this.auth.currentUser.get().getBasicProfile()) ? (
             <img
               className="user-img"
-              src={this.auth.currentUser.get().getBasicProfile().fI}
+              src={profile}
               alt="user image"
             />
           ) : null}
@@ -63,7 +73,7 @@ class GoogleAuth extends React.Component {
     } else {
       return (
         <a onClick={this.onSignIn} className="nav-link log-in-button">
-          {i18next.t("SignIn")}
+          SignIn
         </a>
       );
     }
