@@ -228,7 +228,7 @@ class App extends Component {
                                 : "Go to WatchList"}
                             </MenuItem>
                           </ContextMenu>
-                          <span class="badge rounded-pill badge-notification bg-warning text-dark badge__info">
+                          <span className="badge rounded-pill badge-notification bg-warning text-dark badge__info">
                             {this.state.watchlist}
                           </span>
 
