@@ -23,6 +23,7 @@ class SearchArea extends React.Component{
       <Link to="/MovieList" onClick={(event)=>{!document.querySelector('input').value?event.preventDefault():event.returnValue = true}}>
       <input
         className="form-control mr-sm-2"
+        style={{minWidth: '120px'}}
         //onChange={this.searchCnangeHandler.bind(this)}
         onChange={this.props.handleChange}
         type="text"
