@@ -142,16 +142,16 @@ class App extends Component {
           style={{ display: "flex", fontFamily: `${this.state.font}` }}
         >
           <a className="cursor" onClick={() => this.backgroundChange()}>
-            Change Background
+            {this.state.language === 'ru' ? 'Изменить фон' : 'Change Background'}
           </a>
           <a className="cursor" onClick={() => this.setState({ color: "" })}>
-            Default Background
+            {this.state.language === 'ru' ? 'Фон по умолчанию' : 'Default Background'}
           </a>
           <a className="cursor" onClick={() => this.fontChange()}>
-            Change Font
+            {this.state.language === 'ru' ? 'Изменить шрифт' : 'Change Font'}
           </a>
           <a className="cursor" onClick={() => this.setState({ font: "" })}>
-            Default Font
+            {this.state.language === 'ru' ? 'Шрифт по умолчанию' : 'Default Font'}
           </a>
         </Container>
       </Navbar>
