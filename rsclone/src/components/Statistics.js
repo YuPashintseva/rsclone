@@ -2,11 +2,12 @@ import React from 'react';
 import Chart from "react-google-charts";
 
 class Statistics extends React.Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state={
          data: JSON.parse(sessionStorage.getItem('fullInf')),
-         switcher:0,
+         switcher: 0,
+         lang: this.props.lang
         };
        
     }
@@ -47,14 +48,31 @@ class Statistics extends React.Component {
       return all;
     }
         render () {
+            let best_rated = 'Best Rated Movies';
+            let popular = 'Movies Seen by the Largest Number of People';
+            let recently_released = 'Most Recently Released Movies';
+            let interested = 'Movies you were interested in';
+            let btn_best = 'Best Ratings';
+            let btn_often_seen = 'Most Often Seen';
+            let btn_recent = 'Most Recent';
+            let btn_interested_in = 'You Were Interested'; 
+            if (this.props.lang === 'ru') {
+              best_rated = 'Фильмы с лучшим рейтингом';
+              popular = 'Популярные фильмы';
+              recently_released = 'Новинки';
+              interested = 'Фильмы, которые интересны Вам';
+              btn_best = 'Лучший рейтинг';
+              btn_often_seen = 'Популярные';
+              btn_recent = 'Новинки';
+              btn_interested_in = 'Вы интересовались'; 
+            }
             return (
-
              <div id = 'st' className = 'container-fluid'>
                <div className='row' style={{margin: '1%'}}>
-              <button id = 'bestRatings'  className="btn btn-secondary" onClick={()=>this.setState({switcher:0})}>Best Ratings</button>
-              <button id = 'mostOftenSeen' className="btn btn-secondary" onMouseUp={()=>this.setState({switcher:1})}>Most Often Seen</button>
-              <button id = 'mostRecent' className="btn btn-secondary" onClick={()=>this.setState({switcher:2})}>Most Recent</button>
-              <button id = 'youWereInterested' className="btn btn-secondary" onClick={()=>this.setState({switcher:3})}>You Were Interested</button>
+              <button id = 'bestRatings'  className="btn btn-secondary" onClick={()=>this.setState({switcher:0})}>{btn_best}</button>
+              <button id = 'mostOftenSeen' className="btn btn-secondary" onMouseUp={()=>this.setState({switcher:1})}>{btn_often_seen}</button>
+              <button id = 'mostRecent' className="btn btn-secondary" onClick={()=>this.setState({switcher:2})}>{btn_recent}</button>
+              <button id = 'youWereInterested' className="btn btn-secondary" onClick={()=>this.setState({switcher:3})}>{btn_interested_in}</button>
               </div>
               <div id = 'columnchart_values' style={{height:'90vh',backgroundColor:'white', padding: '2%'}}>
               
@@ -66,12 +84,11 @@ class Statistics extends React.Component {
   chartType="Bar"
   loader={<div >Loading Chart</div>}
   data={this.state.switcher===0?this.bestRatings():this.state.switcher===1?this.mostOftenSeen():this.state.switcher===2?this.mostRecent():this.interested()}
-
   options={{
     colors: 'rgb(245, 197, 24)',
    
     chart:{
-    title: `${this.state.switcher===0?'Best Rated Movies':this.state.switcher===1?'Movies Seen by the Largest Number of People':this.state.switcher===2?'Most Recently Released Movies':'Movies you were interested in'}`,
+    title: `${this.state.switcher===0?best_rated:this.state.switcher===1?popular:this.state.switcher===2?recently_released:interested}`,
     subtitle: '',
   
     },

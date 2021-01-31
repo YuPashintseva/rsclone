@@ -323,11 +323,17 @@ class App extends Component {
             </Route>
 
             <Route path="/WatchList">
-              <Watchlist watchListdecrement={this.decrementWatchListNumber} />
+              <Watchlist watchListdecrement={this.decrementWatchListNumber} 
+                lang={this.state.language}
+                key={1} 
+              />
             </Route>
 
             <Route path="/Statistics">
-              <Statistics />
+              <Statistics                 
+                lang={this.state.language}
+                key={1} 
+              />
             </Route>
 
             <Route path="/MovieList">
