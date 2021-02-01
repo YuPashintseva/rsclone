@@ -14,7 +14,7 @@ const Movie = (props) => {
 
           <h4 className="col-auto">
             Average Vote: {props.vote_average}
-            <img className="star" src={star}></img>
+            <img className="star" src={star} />
           </h4>
 
           <h4 className="col-auto">Votes: {props.vote_count}</h4>

@@ -73,7 +73,7 @@ class FilmList extends React.Component {
 
     componentDidUpdate(prevProps) {
         let res = '';
-        if (prevProps.lang != this.props.lang) {
+        if (prevProps.lang !== this.props.lang) {
             let lan = 'en';
             this.state.lang === 'en' ? lan = 'ru' : lan = 'en';
             res = this.updateURL(lan).then((value) => {
@@ -110,7 +110,6 @@ class FilmList extends React.Component {
     }
 
     render() {
-        console.log('language', this.props.lang)
         let mod = '';
         if (this.state.data.results) {
             if (this.state.showHide) {

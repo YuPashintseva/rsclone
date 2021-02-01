@@ -13,7 +13,6 @@ import Watchlist from "./components/WatchList";
 import Statistics from "./components/Statistics";
 import GoogleAuth from "./components/GoogleAuth";
 import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
-import i18next from "i18next";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
@@ -191,7 +190,7 @@ class App extends Component {
 
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">
-                <Nav.Link href="#">
+                <Nav.Link>
                   <Link style={{ textDecoration: "none" }} to="/WatchList">
                     <a className="nav-link nav__item">
                     <div className='nav__item_flex'>
