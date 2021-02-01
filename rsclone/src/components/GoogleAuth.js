@@ -51,7 +51,6 @@ class GoogleAuth extends React.Component {
       return null;
     } else if (this.state.isSignedIn) {
       let profile = this.auth.currentUser.get().getBasicProfile();
-      console.log('profile',profile)
       return (
         <a onClick={this.onSignOut} className="log-in-button">
           {(this.auth.currentUser.get().getBasicProfile()) ? (
