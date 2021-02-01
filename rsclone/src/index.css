@@ -92,8 +92,6 @@ footer {
 }
 
 .star-name-carousel {
-  justify-content: center;
-
   display: flex;
   background: rgba(0, 0, 0, 0.7);
   background: #000;
@@ -106,11 +104,10 @@ footer {
   font-size: 16px;
   line-height: 55px;
   padding: 0;
+
 }
 
-.star-name-carousel div {
-  display: flex;
-}
+
 
 .img-watchlist {
   width: 70%;

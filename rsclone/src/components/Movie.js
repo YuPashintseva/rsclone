@@ -7,9 +7,10 @@ const Movie = (props) => {
   return (
     <div id="fp" className="container-fluid wrapper wrapperStyle">
       <div id="upperBlock" className="wrapper">
-        <div className="row"></div>
         <div className="row">
+
                      <h2 className="col">{props.original_title}</h2>
+
 
 
           <h4 className="col-auto">
