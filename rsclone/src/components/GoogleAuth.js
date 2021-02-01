@@ -26,6 +26,7 @@ class GoogleAuth extends React.Component {
     });
   }
 
+
   showCurrentUserInfo() {
     var googleUser = this.auth.currentUser.get().Mt;
     return googleUser.Mt;

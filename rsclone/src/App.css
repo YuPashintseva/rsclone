@@ -213,8 +213,6 @@ html,
 }
 
 .badge__info {
-  background-color: #f5c518;
-  color: #1a1a1a;
-  border-radius: 40%;
-  padding: 0 0.45rem;
+  color: #f5c518;
+
 }
