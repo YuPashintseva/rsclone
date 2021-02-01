@@ -20,7 +20,6 @@ const MovieList = (props) => {
                 vote_average={movie.vote_average}
                 vote_count={movie.vote_count}
                 popularity={movie.popularity}
-                video={movie.video}
               />
             );
           })}
