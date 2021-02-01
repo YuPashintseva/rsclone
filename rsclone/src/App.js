@@ -191,9 +191,10 @@ class App extends Component {
 
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">
-                <Nav.Link href="#features">
+                <Nav.Link href="#">
                   <Link style={{ textDecoration: "none" }} to="/WatchList">
                     <a className="nav-link nav__item">
+                    <div className='nav__item_flex'>
                       <ContextMenuTrigger
                         id="add_same_id"
                         className="context-menu-item"
@@ -228,15 +229,16 @@ class App extends Component {
                                 : "Go to WatchList"}
                             </MenuItem>
                           </ContextMenu>
-                          <span className="badge rounded-pill badge-notification bg-warning text-dark badge__info">
-                            {this.state.watchlist}
-                          </span>
 
                           {/* <div className="watchlist-num">
                               {this.state.watchlist}
                             </div> */}
                         </div>
                       </ContextMenuTrigger>
+                      <span  className="badge__info">
+                        {this.state.watchlist}
+                      </span>
+                      </div>
                     </a>
                   </Link>
                 </Nav.Link>

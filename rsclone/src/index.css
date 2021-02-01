@@ -231,3 +231,8 @@ footer {
 .react-contextmenu-item:hover {
     opacity: 1;
 }
+
+.nav__item_flex {
+    display: flex;
+    justify-content: space-around;
+}
