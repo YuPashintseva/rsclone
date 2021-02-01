@@ -163,6 +163,7 @@ html,
 
 .star {
   transition-duration: 2s;
+  margin: 10px;
 }
 .star:hover {
   transform: translate(1px, 6px) rotate(290deg) scale(1.3);
@@ -214,5 +215,7 @@ html,
 
 .badge__info {
   color: #f5c518;
-
+  position: absolute;
+  top: 5px;
+  right: 10px;
 }

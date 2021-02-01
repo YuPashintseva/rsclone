@@ -235,7 +235,7 @@ class App extends Component {
                             </div> */}
                         </div>
                       </ContextMenuTrigger>
-                      <span  className="badge__info">
+                      <span  className="badge rounded-pill badge-notification bg-warning text-dark badge__info">
                         {this.state.watchlist}
                       </span>
                       </div>
