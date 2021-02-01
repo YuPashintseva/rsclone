@@ -1,7 +1,6 @@
 import React from "react";
 import noImage from "./assets/noimage.jpg";
 import star from "./assets/megastar.png";
-import { Route, Link } from "react-router-dom";
 
 const Movie = (props) => {
   return (

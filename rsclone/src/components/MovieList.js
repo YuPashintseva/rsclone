@@ -1,8 +1,6 @@
 import React from "react";
 import Movie from "./Movie";
 
-import i18next from "i18next";
-
 const MovieList = (props) => {
   return (
     <div className="container">

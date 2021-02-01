@@ -1,11 +1,9 @@
 import React from 'react'
 import { Button, Modal, Container, Row, Col, Image } from 'react-bootstrap'
-import { Helmet } from "react-helmet";
+
 
 class ModalWindow extends React.Component{
-    constructor(props) {
-        super(props);
-    }
+
 
     render(){
         let msgText = 'Successfully added to WatchList';

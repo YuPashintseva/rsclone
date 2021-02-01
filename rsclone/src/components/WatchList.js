@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Modal, Container, Row, Col, Image } from 'react-bootstrap';
+import {Row, Col, Image } from 'react-bootstrap';
 import close from './assets/close.png'
 
 
