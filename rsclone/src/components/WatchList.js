@@ -27,7 +27,6 @@ class Watchlist extends React.Component{
     }
     
     render() {
-        console.log(this.props.lang)
         if (this.state.data) {         
             return (
                 <div id = "fp" className="container-fluid wrapperStyle">
@@ -37,7 +36,7 @@ class Watchlist extends React.Component{
                     <div>
                     {this.state.data.map(el => (
                         <div key={el.id}>
-                            <Row className="row-bottom-padding">
+                            <Row key={el.id} className="row-bottom-padding">
                                 <Col xs={6} md={4}>
                                     {el[1] ? <Image className="poster-img-modal img-watchlist" src={`https://image.tmdb.org/t/p/original/${el[1]}`} alt={el[0]} thumbnail />: null}
                                 </Col>
