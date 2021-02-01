@@ -92,18 +92,22 @@ footer {
 }
 
 .star-name-carousel {
-  justify-content: center;
   display: flex;
   background: rgba(0, 0, 0, 0.7);
   background: #000;
   opacity: 0.6;
   width: calc(100% - 20px);
   margin-left: 10px;
+  justify-content: center;
+  align-items: center;
   color: #fff;
   font-size: 16px;
   line-height: 55px;
   padding: 0;
+
 }
+
+
 
 .img-watchlist {
   width: 70%;

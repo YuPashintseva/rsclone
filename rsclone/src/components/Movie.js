@@ -8,9 +8,10 @@ const Movie = (props) => {
     <div id="fp" className="container-fluid wrapper wrapperStyle">
       <div id="upperBlock" className="wrapper">
         <div className="row">
-          <Link className="search-title" to="/FilmPage">
-            <h2>{props.original_title}</h2>
-          </Link>
+
+                     <h2 className="col">{props.original_title}</h2>
+
+
 
           <h4 className="col-auto">
             Average Vote: {props.vote_average}

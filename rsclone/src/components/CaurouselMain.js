@@ -173,7 +173,7 @@ class CarouselMain extends React.Component {
                       <Link to='/FilmPage'>
                       <img className="poster-img-main rounded-img"  onMouseOver={()=> {sessionStorage.removeItem("val");sessionStorage.setItem("val",JSON.stringify(el))}} src={`https://image.tmdb.org/t/p/original/${el.profile_path}`} alt={el.profile_path}/>
                       </Link>
-                      <h2 className="star-name-carousel"><div>{el.name}</div></h2>
+                      <h2 className="star-name-carousel">{el.name}</h2>
                     </div> : null
                   </div>
                 ))};
