@@ -44,33 +44,23 @@ class GoogleAuth extends React.Component {
     this.auth.signOut();
   };
 
-  doesFileExist(urlToFile) {
-    let xhr = new XMLHttpRequest();
-    xhr.open('HEAD', urlToFile, false);
-    xhr.send();
 
-    if (xhr.status == "404") {
-        return profile;
-    } else {
-        return urlToFile;
-    }
-  }
   renderAuthButton() {
     if (this.state.isSignedIn === null) {
       return null;
     } else if (this.state.isSignedIn) {
-      let profile = this.doesFileExist(this.auth.currentUser.get().getBasicProfile().fI);
+      let profile = this.auth.currentUser.get().getBasicProfile();
       console.log('profile',profile)
       return (
         <a onClick={this.onSignOut} className="log-in-button">
           {(this.auth.currentUser.get().getBasicProfile()) ? (
             <img
               className="user-img"
-              src={this.auth.currentUser.get().getBasicProfile().fI}
+              src={profile.getImageUrl()}
               alt="user image"
             />
           ) : null}
-          {this.state.userInfo ? this.auth.currentUser.get().getBasicProfile().sd : null}
+          {this.state.userInfo ? profile.getName() : null}
         </a>
       );
     } else {
