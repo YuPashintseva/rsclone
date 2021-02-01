@@ -1,15 +1,16 @@
 import React from "react";
 import noImage from "./assets/noimage.jpg";
 import star from "./assets/megastar.png";
+import { Route, Link } from "react-router-dom";
 
 const Movie = (props) => {
-
   return (
     <div id="fp" className="container-fluid wrapper wrapperStyle">
       <div id="upperBlock" className="wrapper">
-        <div className="row"></div>
         <div className="row">
-          <h2 className="col">{props.original_title}</h2>
+          <Link className="search-title" to="/FilmPage">
+            <h2>{props.original_title}</h2>
+          </Link>
 
           <h4 className="col-auto">
             Average Vote: {props.vote_average}
@@ -40,7 +41,6 @@ const Movie = (props) => {
             style={{ margin: "2%" }}
           />
         )}
-
       </div>
       <div style={{ margin: "8px" }}>
         <h4 style={{ fontWeight: "bolder" }}>Overview:</h4>

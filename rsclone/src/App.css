@@ -219,3 +219,8 @@ html,
   top: 5px;
   right: 10px;
 }
+
+.search-title {
+  font-size: 2rem;
+  color: white;
+}
