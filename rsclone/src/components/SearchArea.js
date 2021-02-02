@@ -1,18 +1,9 @@
 // import Option from "./Option";
-import React, { useEffect, useState } from "react";
-import ReactHTMLDatalist from "react-html-datalist";
-import MovieList from './MovieList';
+import React from "react";
 import i18next from "i18next";
-import { Route, Link } from "react-router-dom";
-import Form from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/FormControl";
-import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 class SearchArea extends React.Component{
-  constructor(props){
-    super(props);
-    //this.state={movies:[]}
-  }
   render(){
   return (
    
