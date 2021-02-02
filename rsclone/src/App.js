@@ -103,7 +103,7 @@ class App extends Component {
     )
       .then((data) => data.json())
       .then((data) => {
-        this.setState({ movies: [...data.results]});
+        this.setState({ movies: [...data.results] });
       });
   };
   // search
@@ -140,16 +140,22 @@ class App extends Component {
           style={{ display: "flex", fontFamily: `${this.state.font}` }}
         >
           <a className="cursor" onClick={() => this.backgroundChange()}>
-            {this.state.language === 'ru' ? 'Изменить фон' : 'Change Background'}
+            {this.state.language === "ru"
+              ? "Изменить фон"
+              : "Change Background"}
           </a>
           <a className="cursor" onClick={() => this.setState({ color: "" })}>
-            {this.state.language === 'ru' ? 'Фон по умолчанию' : 'Default Background'}
+            {this.state.language === "ru"
+              ? "Фон по умолчанию"
+              : "Default Background"}
           </a>
           <a className="cursor" onClick={() => this.fontChange()}>
-            {this.state.language === 'ru' ? 'Изменить шрифт' : 'Change Font'}
+            {this.state.language === "ru" ? "Изменить шрифт" : "Change Font"}
           </a>
           <a className="cursor" onClick={() => this.setState({ font: "" })}>
-            {this.state.language === 'ru' ? 'Шрифт по умолчанию' : 'Default Font'}
+            {this.state.language === "ru"
+              ? "Шрифт по умолчанию"
+              : "Default Font"}
           </a>
         </Container>
       </Navbar>
@@ -181,7 +187,7 @@ class App extends Component {
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Container style={{ fontFamily: `${this.state.font}` }}>
             <Navbar.Brand>
-              <Link to="/">
+              <Link to="/rsclone">
                 <img className="navbar-mainlogo" src={mainLogo}></img>
               </Link>
             </Navbar.Brand>
@@ -191,52 +197,52 @@ class App extends Component {
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">
                 <Nav.Link>
-                  <Link style={{ textDecoration: "none" }} to="/WatchList">
+                  <Link style={{ textDecoration: "none" }} to="/rsclone/WatchList">
                     <a className="nav-link nav__item">
-                    <div className='nav__item_flex'>
-                      <ContextMenuTrigger
-                        id="add_same_id"
-                        className="context-menu-item"
-                      >
-                        <div>
-                          <ContextMenuTrigger
-                            id="add_same_id"
-                            className="context-menu-item"
-                          >
-                            <div className="wl">
-                              {this.state.language === "ru"
-                                ? "Фильмы к просмотру"
-                                : "WatchList"}
-                            </div>
-                          </ContextMenuTrigger>
-                          <ContextMenu className="menu" id="add_same_id">
-                            <MenuItem
-                              onClick={(e) => this.clearWatchList(e)}
-                              data={{ item: "Home" }}
-                              className="menuItem"
+                      <div className="nav__item_flex">
+                        <ContextMenuTrigger
+                          id="add_same_id"
+                          className="context-menu-item"
+                        >
+                          <div>
+                            <ContextMenuTrigger
+                              id="add_same_id"
+                              className="context-menu-item"
                             >
-                              {this.state.language === "ru"
-                                ? "Очистить список фильмов"
-                                : "Clear WatchList"}
-                            </MenuItem>
-                            <MenuItem
-                              data={{ item: "Home" }}
-                              className="menuItem"
-                            >
-                              {this.state.language === "ru"
-                                ? "Перейти к фильмам"
-                                : "Go to WatchList"}
-                            </MenuItem>
-                          </ContextMenu>
+                              <div className="wl">
+                                {this.state.language === "ru"
+                                  ? "Фильмы к просмотру"
+                                  : "WatchList"}
+                              </div>
+                            </ContextMenuTrigger>
+                            <ContextMenu className="menu" id="add_same_id">
+                              <MenuItem
+                                onClick={(e) => this.clearWatchList(e)}
+                                data={{ item: "Home" }}
+                                className="menuItem"
+                              >
+                                {this.state.language === "ru"
+                                  ? "Очистить список фильмов"
+                                  : "Clear WatchList"}
+                              </MenuItem>
+                              <MenuItem
+                                data={{ item: "Home" }}
+                                className="menuItem"
+                              >
+                                {this.state.language === "ru"
+                                  ? "Перейти к фильмам"
+                                  : "Go to WatchList"}
+                              </MenuItem>
+                            </ContextMenu>
 
-                          {/* <div className="watchlist-num">
+                            {/* <div className="watchlist-num">
                               {this.state.watchlist}
                             </div> */}
-                        </div>
-                      </ContextMenuTrigger>
-                      <span  className="badge rounded-pill badge-notification bg-warning text-dark badge__info">
-                        {this.state.watchlist}
-                      </span>
+                          </div>
+                        </ContextMenuTrigger>
+                        <span className="badge rounded-pill badge-notification bg-warning text-dark badge__info">
+                          {this.state.watchlist}
+                        </span>
                       </div>
                     </a>
                   </Link>
@@ -253,8 +259,8 @@ class App extends Component {
                     {this.state.language === "ru" ? "Настройки" : "Settings"}
                   </a>
                 </Nav.Link>
-                <Nav.Link >
-                  <Link to="/Statistics">
+                <Nav.Link>
+                  <Link to="/rsclone/Statistics">
                     <a className="nav-link">
                       {this.state.language === "ru"
                         ? "Статистика"
@@ -279,20 +285,17 @@ class App extends Component {
                     <option value="en">English</option>
                   </select>
                 </Nav.Link>
-            
-              
-              <Nav.Link>
-              {/*<Link to="/MovieList">*/}
-              <SearchArea
-                handleSubmit={this.handleSubmit}
-                handleChange={this.handleChange}
-                
-              />
-           {/* </Link>*/}
-            </Nav.Link>
-            </Nav>
+
+                <Nav.Link>
+                  {/*<Link to="/MovieList">*/}
+                  <SearchArea
+                    handleSubmit={this.handleSubmit}
+                    handleChange={this.handleChange}
+                  />
+                  {/* </Link>*/}
+                </Nav.Link>
+              </Nav>
             </Navbar.Collapse>
-            
           </Container>
         </Navbar>
         {this.state.flag ? this.secondNav() : ""}
@@ -302,19 +305,19 @@ class App extends Component {
           style={{ backgroundColor: `${this.state.color}` }}
         >
           <div id="fl" className="films-list">
-            <Route exact path="/">
+            <Route exact path="/rsclone/">
               <FilmList
                 watchListincrement={this.incrementWatchListNumber}
                 lang={this.state.language}
                 key={1}
               />
             </Route>
-           { /*
+            {/*
             <Route path="/">
               <MovieList movies={this.state.movies} />
             </Route>
            */}
-            <Route path="/FilmPage">
+            <Route exact path="/rsclone/FilmPage">
               <FilmPage
                 lang={this.state.language}
                 value={this.state.font}
@@ -322,24 +325,22 @@ class App extends Component {
               />
             </Route>
 
-            <Route path="/WatchList">
-              <Watchlist watchListdecrement={this.decrementWatchListNumber} 
+            <Route path="/rsclone/WatchList">
+              <Watchlist
+                watchListdecrement={this.decrementWatchListNumber}
                 lang={this.state.language}
-                key={1} 
+                key={1}
               />
             </Route>
 
-            <Route path="/Statistics">
-              <Statistics                 
-                lang={this.state.language}
-                key={1} 
-              />
+            <Route path="/rsclone/Statistics">
+              <Statistics lang={this.state.language} key={1} />
             </Route>
 
-            <Route path="/MovieList">
-           <MovieList movies = {this.state.movies}/>
+            <Route path="/rsclone/MovieList">
+              <MovieList movies={this.state.movies} />
             </Route>
-            <Route path="/Trailer">
+            <Route path="/rsclone/Trailer">
               <Trailer />
             </Route>
           </div>
