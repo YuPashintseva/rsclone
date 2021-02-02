@@ -146,8 +146,6 @@ html,
 
 /* navbar */
 
-
-
 /* search full page */
 .table-cell {
   display: table-cell;
@@ -220,6 +218,9 @@ html,
 
 .badge__info {
   color: #f5c518;
+  position: absolute;
+  top: 0;
+  right: 0;
   margin-left: 10px;
   max-width: 23px;
   max-height: 23px;
