@@ -141,7 +141,7 @@ class CarouselMain extends React.Component {
               },
               tablet: {
                 breakpoint: { max: 1024, min: 464 },
-                items: 4
+                items: 3
               },
               mobile: {
                 breakpoint: { max: 464, min: 0 },
@@ -151,8 +151,8 @@ class CarouselMain extends React.Component {
             return(
               <div className="main-carousel-wrapper">
                 <Carousel                 
-                  swipeable={false}
-                  draggable={false}
+                  swipeable={true}
+                  draggable={true}
                   showDots={false}
                   responsive={responsive}
                   ssr={true}

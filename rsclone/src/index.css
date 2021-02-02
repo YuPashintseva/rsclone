@@ -72,7 +72,7 @@ footer {
 }
 
 .nav-link {
-  width: 9.5em;
+  min-width: 6em;
   text-decoration: none;
 }
 
@@ -183,6 +183,7 @@ footer {
 .log-in-button {
   width: 7rem;
   display: flex;
+  flex-direction: column;
   color: #f5c518;
   cursor: pointer;
   text-decoration: none;
@@ -267,3 +268,4 @@ footer {
 #photoVideo img {
   min-width: 200px;
 }
+

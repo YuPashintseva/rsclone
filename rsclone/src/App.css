@@ -146,9 +146,7 @@ html,
 
 /* navbar */
 
-.navbar-mainlogo {
-  height: 50px;
-}
+
 
 /* search full page */
 .table-cell {
@@ -223,8 +221,8 @@ html,
 .badge__info {
   color: #f5c518;
   margin-left: 10px;
-  min-width: 20px;
-  min-height: 20px;
+  max-width: 23px;
+  max-height: 23px;
   padding-top: 1px;
 }
 
