@@ -135,7 +135,6 @@ class FilmList extends React.Component {
                 customTransition="all .5"
                 transitionDuration={1000}
                 containerClass="carousel-container"
-                removeArrowOnDeviceType={["tablet", "mobile"]}
                 dotListClass="custom-dot-list-style"
                 itemClass="carousel-item-padding"
                 centerMode={false}

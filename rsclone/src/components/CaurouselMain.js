@@ -102,7 +102,6 @@ class CarouselMain extends React.Component {
                   customTransition="all .5"
                   transitionDuration={1000}
                   containerClass="carousel-container"
-                  removeArrowOnDeviceType={["tablet", "mobile"]}
                   dotListClass="custom-dot-list-style"
                   itemClass="carousel-item-padding"
                   centerMode={false}
@@ -151,7 +150,7 @@ class CarouselMain extends React.Component {
             return(
               <div className="main-carousel-wrapper">
                 <Carousel                 
-                  swipeable={true}
+                  swipeable={false}
                   draggable={true}
                   showDots={false}
                   responsive={responsive}
@@ -162,7 +161,6 @@ class CarouselMain extends React.Component {
                   customTransition="all .5"
                   transitionDuration={1000}
                   containerClass="carousel-container"
-                  removeArrowOnDeviceType={["tablet", "mobile"]}
                   dotListClass="custom-dot-list-style"
                   itemClass="carousel-item-padding"
                   centerMode={false}
@@ -218,7 +216,6 @@ class CarouselMain extends React.Component {
                 customTransition="all .5"
                 transitionDuration={1000}
                 containerClass="carousel-container"
-                removeArrowOnDeviceType={["tablet", "mobile"]}
                 dotListClass="custom-dot-list-style"
                 itemClass="carousel-item-padding"
                 centerMode={false}
