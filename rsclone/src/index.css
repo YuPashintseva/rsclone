@@ -233,6 +233,16 @@ footer {
 
 }
 
+@media screen and (max-device-width: 1200px) {
+  iframe {
+    width: 100%;
+    min-height: 250px;
+  }
+  #photoVideo img {
+    width: 85%;
+  }
+}
+
 
 @media screen and (max-device-width: 1020px) {
   h2 {
@@ -265,7 +275,14 @@ footer {
 }
 
 
+
+
+
+
 #photoVideo img {
   min-width: 200px;
 }
 
+iframe {
+  min-width: 200px;
+}
