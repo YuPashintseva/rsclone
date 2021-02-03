@@ -1,6 +1,5 @@
 
 import React from 'react';
-
 class Trailer extends React.Component{    
     render() {  
             return (
@@ -15,5 +14,4 @@ class Trailer extends React.Component{
 
     }
 }
-
 export default Trailer;
