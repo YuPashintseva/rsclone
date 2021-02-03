@@ -145,7 +145,7 @@ class FilmList extends React.Component {
                 <div element={el.id} key ={el.id}>
                     <div className="films-list-img App-link" >
                     
-                        <Link style={{ textDecoration: 'none', color: 'white' }} to= "/rsclone/FilmPage" > 
+                        <Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage" > 
                             <img className="poster-img" onClick={()=>this.interestedCount(el.original_title)} onMouseOver={()=> 
                                     {
                                         sessionStorage.removeItem("val");
@@ -164,7 +164,7 @@ class FilmList extends React.Component {
                                     <div className="vote_average">{el.vote_average}</div>
                                 </div>
                             </div>
-                           <Link style={{ textDecoration: 'none', color: 'white' }} to= "/rsclone/FilmPage">
+                           <Link style={{ textDecoration: 'none', color: 'white' }} to= "/FilmPage">
                                 <div className="film-title" onClick={()=>this.interestedCount(el.original_title)} onMouseOver={()=>
                                     {
                                         sessionStorage.removeItem("val");

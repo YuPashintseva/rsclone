@@ -122,7 +122,7 @@ class CarouselMain extends React.Component {
                 el.backdrop_path ? (
                   <div key={el.id}>
                     <div key={el.id} className="main-carousel-img">
-                      <Link to="/rsclone/FilmPage">
+                      <Link to="/FilmPage">
                         <img
                           className="poster-img-main"
                           onClick={() =>

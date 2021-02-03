@@ -11,7 +11,7 @@ class SearchArea extends React.Component{
       className="container-fluid my-2 my-lg-0"
       onSubmit={this.props.handleSubmit}
     >
-      <Link to="/rsclone/MovieList" onClick={(event)=>{!document.querySelector('input').value?event.preventDefault():event.returnValue = true}}>
+      <Link to="/MovieList" onClick={(event)=>{!document.querySelector('input').value?event.preventDefault():event.returnValue = true}}>
       <input
         className="form-control mr-sm-2"
         style={{minWidth: '120px'}}

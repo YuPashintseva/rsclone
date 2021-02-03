@@ -187,7 +187,7 @@ class App extends Component {
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Container style={{ fontFamily: `${this.state.font}` }}>
             <Navbar.Brand>
-              <Link to="/rsclone">
+              <Link to="/">
                 <img className="navbar-mainlogo" src={mainLogo}></img>
               </Link>
             </Navbar.Brand>
@@ -197,7 +197,7 @@ class App extends Component {
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">
                 <Nav.Link>
-                  <Link style={{ textDecoration: "none" }} to="/rsclone/WatchList">
+                  <Link style={{ textDecoration: "none" }} to="/WatchList">
                     <a className="nav-link nav__item">
                       <div className="nav__item_flex">
                         <ContextMenuTrigger
@@ -260,7 +260,7 @@ class App extends Component {
                   </a>
                 </Nav.Link>
                 <Nav.Link>
-                  <Link to="/rsclone/Statistics">
+                  <Link to="/Statistics">
                     <a className="nav-link">
                       {this.state.language === "ru"
                         ? "Статистика"
@@ -305,7 +305,7 @@ class App extends Component {
           style={{ backgroundColor: `${this.state.color}` }}
         >
           <div id="fl" className="films-list">
-            <Route exact path="/rsclone/">
+            <Route exact path="/">
               <FilmList
                 watchListincrement={this.incrementWatchListNumber}
                 lang={this.state.language}
@@ -317,7 +317,7 @@ class App extends Component {
               <MovieList movies={this.state.movies} />
             </Route>
            */}
-            <Route exact path="/rsclone/FilmPage">
+            <Route exact path="/FilmPage">
               <FilmPage
                 lang={this.state.language}
                 value={this.state.font}
@@ -325,7 +325,7 @@ class App extends Component {
               />
             </Route>
 
-            <Route path="/rsclone/WatchList">
+            <Route path="/WatchList">
               <Watchlist
                 watchListdecrement={this.decrementWatchListNumber}
                 lang={this.state.language}
@@ -333,14 +333,14 @@ class App extends Component {
               />
             </Route>
 
-            <Route path="/rsclone/Statistics">
+            <Route path="/Statistics">
               <Statistics lang={this.state.language} key={1} />
             </Route>
 
-            <Route path="/rsclone/MovieList">
+            <Route path="/MovieList">
               <MovieList movies={this.state.movies} />
             </Route>
-            <Route path="/rsclone/Trailer">
+            <Route path="/Trailer">
               <Trailer />
             </Route>
           </div>
