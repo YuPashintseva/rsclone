@@ -1,6 +1,6 @@
 # rsclone
 IMDB CLONE APP Для запуска приложения необходимо:
 
-Склонировать ветку develop git clone https://github.com/YuPashintseva/rsclone.git
-Перейти в папку rsclone и установить зависимости npm install
-Запустить приложение npm start
+1. Склонировать ветку develop git clone https://github.com/YuPashintseva/rsclone.git
+2. Перейти в папку rsclone и установить зависимости npm install
+3. Запустить приложение npm start
